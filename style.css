@@ -1,4 +1,101 @@
-body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
-header { margin-bottom: 40px; }
-nav a { margin-right: 10px; text-decoration: none; color: #333; }
-h1, h2 { color: #222; }
+body {
+  margin: 0;
+  font-family: 'Press Start 2P', monospace;
+  background: #000;
+  color: #fff;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+}
+
+.pixel-title {
+  font-size: 24px;
+  background: linear-gradient(90deg, #ffde59, #ff66c4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+  font-size: 12px;
+  color: #ccc;
+}
+
+main {
+  display: flex;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 250px;
+  margin-right: 20px;
+}
+
+.avatar {
+  width: 100%;
+  border: 3px solid #fff;
+}
+
+.info-box {
+  border: 2px solid #fff;
+  padding: 10px;
+  margin-top: 15px;
+  font-size: 10px;
+}
+
+.content {
+  flex: 1;
+}
+
+.dialogue-box {
+  border: 2px solid #fff;
+  padding: 15px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  background: #111;
+}
+
+.section-title {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #ffde59;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.project-card {
+  border: 2px solid #fff;
+  padding: 10px;
+  font-size: 10px;
+  background: #111;
+}
+
+.project-card a {
+  color: #ff66c4;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.stats-panel {
+  margin-top: 15px;
+  font-size: 10px;
+}
+
+.bar {
+  background: #333;
+  height: 12px;
+  margin: 5px 0 15px;
+  border: 1px solid #fff;
+}
+
+.fill {
+  background: #ffde59;
+  height: 100%;
+}
