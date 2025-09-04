@@ -1,7 +1,8 @@
 body {
   margin: 0;
-  font-family: 'Press Start 2P', monospace;
-  background: #000;
+  font-family: 'Pixel Font', monospace;
+  background: url('../assets/images/background.png') no-repeat center center fixed;
+  background-size: cover;
   color: #fff;
 }
 
@@ -11,27 +12,28 @@ header {
 }
 
 .pixel-title {
-  font-size: 24px;
+  font-size: 32px;
   background: linear-gradient(90deg, #ffde59, #ff66c4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .tagline {
-  font-size: 12px;
+  font-size: 14px;
   color: #ccc;
 }
 
 main {
   display: flex;
+  flex-direction: column;
   max-width: 1200px;
   margin: auto;
   padding: 20px;
 }
 
 .sidebar {
-  width: 250px;
-  margin-right: 20px;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .avatar {
@@ -43,7 +45,7 @@ main {
   border: 2px solid #fff;
   padding: 10px;
   margin-top: 15px;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .content {
@@ -54,13 +56,13 @@ main {
   border: 2px solid #fff;
   padding: 15px;
   margin-bottom: 20px;
-  font-size: 12px;
-  background: #111;
+  font-size: 14px;
+  background: rgba(17, 17, 17, 0.8);
 }
 
 .section-title {
   margin-top: 30px;
-  font-size: 14px;
+  font-size: 18px;
   color: #ffde59;
 }
 
@@ -73,8 +75,8 @@ main {
 .project-card {
   border: 2px solid #fff;
   padding: 10px;
-  font-size: 10px;
-  background: #111;
+  font-size: 12px;
+  background: rgba(17, 17, 17, 0.8);
 }
 
 .project-card a {
@@ -85,7 +87,7 @@ main {
 
 .stats-panel {
   margin-top: 15px;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .bar {
@@ -98,4 +100,15 @@ main {
 .fill {
   background: #ffde59;
   height: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .projects {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
 }

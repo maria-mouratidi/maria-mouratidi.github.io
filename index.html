@@ -2,78 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Maria Mouratidi – AI Engineer & Cognitive Science Researcher</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Pixel font -->
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retro Pixel Portfolio</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link href="assets/fonts/pixel-font.ttf" rel="stylesheet" type="font/ttf">
 </head>
 <body>
   <header>
-    <h1 class="pixel-title">MARIA MOURATIDI</h1>
-    <p class="tagline">AI Engineer & Cognitive Science Researcher</p>
+    <h1 class="pixel-title">Retro Pixel Portfolio</h1>
+    <nav>
+      <a href="pages/about.html">About</a>
+      <a href="pages/projects.html">Projects</a>
+      <a href="pages/contact.html">Contact</a>
+    </nav>
   </header>
 
   <main>
-    <!-- Left panel -->
-    <section class="sidebar">
-      <img src="images/avatar.png" alt="Pixel avatar" class="avatar">
-      <div class="info-box">
-        <p><strong>Role:</strong> AI Engineer</p>
-        <p><strong>Focus:</strong> Cognitive Science & AI</p>
-      </div>
-      <div class="info-box">
-        <p><strong>Contact</strong></p>
-        <p><a href="mailto:your@email.com">Email</a></p>
-        <p><a href="https://github.com/maria-mouratidi">GitHub</a></p>
-        <p><a href="https://linkedin.com/in/...">LinkedIn</a></p>
-      </div>
-      <div class="info-box">
-        <p><strong>Skills</strong></p>
-        <ul>
-          <li>Python</li>
-          <li>PyTorch</li>
-          <li>Machine Learning</li>
-          <li>Data Analysis</li>
-        </ul>
-      </div>
+    <section class="hero">
+      <img src="assets/images/background.png" alt="Background" class="background-image">
+      <img src="assets/images/avatar.png" alt="Avatar" class="avatar">
+      <h2>Welcome to My Portfolio</h2>
+      <p>Explore my projects and experiences in AI and Cognitive Science.</p>
     </section>
 
-    <!-- Right panel -->
-    <section class="content">
-      <div class="dialogue-box">
-        <p>Welcome to my portfolio! Explore my projects, publications, and experience.</p>
-      </div>
-
-      <h2 class="section-title">Projects</h2>
-      <div class="projects">
+    <section class="projects-preview">
+      <h2>Featured Projects</h2>
+      <div class="project-thumbnails">
         <div class="project-card">
+          <img src="assets/images/project-thumbnails/project1.png" alt="Project 1">
           <h3>Project One</h3>
-          <p>Short description here.</p>
-          <p>
-            <a href="#">[Code]</a> 
-            <a href="#">[Demo]</a>
-          </p>
+          <p>Short description of Project One.</p>
         </div>
         <div class="project-card">
+          <img src="assets/images/project-thumbnails/project2.png" alt="Project 2">
           <h3>Project Two</h3>
-          <p>Short description here.</p>
-          <p>
-            <a href="#">[Code]</a>
-            <a href="#">[Paper]</a>
-          </p>
+          <p>Short description of Project Two.</p>
         </div>
-      </div>
-
-      <h2 class="section-title">Experience & Education</h2>
-      <div class="stats-panel">
-        <p>BSc Cognitive Science</p>
-        <div class="bar"><div class="fill" style="width: 100%"></div></div>
-        <p>MSc Cognitive Science & AI</p>
-        <div class="bar"><div class="fill" style="width: 100%"></div></div>
-        <p>AI Engineer (Part-time)</p>
-        <div class="bar"><div class="fill" style="width: 70%"></div></div>
       </div>
     </section>
   </main>
+
+  <footer>
+    <p>Connect with me:</p>
+    <a href="mailto:your@email.com"><img src="assets/images/icons/email.svg" alt="Email"></a>
+    <a href="https://github.com/yourusername"><img src="assets/images/icons/github.svg" alt="GitHub"></a>
+    <a href="https://linkedin.com/in/yourprofile"><img src="assets/images/icons/linkedin.svg" alt="LinkedIn"></a>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/animation.js"></script>
+  <script src="js/audio.js"></script>
 </body>
 </html>
