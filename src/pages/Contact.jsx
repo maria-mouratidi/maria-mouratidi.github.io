@@ -44,11 +44,11 @@ const themeStyles = {
   }
 };
 
-const emailInitial = "ab007shetty";
+const emailInitial = "mouratidi.m";
 const emailDomains = [
   { domain: "gmail.com", color: "#06b622" },
-  { domain: "outlook.com", color: "#ec4899" },
-  { domain: "icloud.com", color: "#a56635" }
+  { domain: "gmail.com", color: "#ec4899" },
+  { domain: "gmail.com", color: "#a56635" }
 ];
 
 const contactInfo = [
@@ -56,22 +56,22 @@ const contactInfo = [
     icon: <FaEnvelope />,
     label: "Email",
     value: "", // handled in ContactCard for animation
-    link: "mailto:ab007shetty@gmail.com",
-    description: "Only active on Gmail"
+    link: "mailto:mouratidi.m@gmail.com",
+    description: ""
   },
   {
     icon: <FaPhone />,
     label: "Phone",
-    value: "+91 8150071512",
-    link: "tel:+918150071512",
-    description: "Call may not connect as there's no balance"
+    value: "+31 653490108 | +30 6934766706", //TODO: the dual phone could be a bit more aesthetic
+    link: "tel:+31653490108",
+    description: ""
   },
   {
     icon: <FaMapMarkerAlt />,
     label: "Location",
-    value: "Udupi, Karnataka",
-    link: "https://maps.google.com/?q=Udupi,Karnataka",
-    description: "Technically not an island anymore"
+    value: "Utrecht, Netherlands",
+    link: "https://maps.google.com/?q=Utrecht,Netherlands",
+    description: ""
   }
 ];
 
@@ -79,45 +79,45 @@ const socialLinks = [
   {
     icon: <FaGithub />,
     name: "GitHub",
-    url: "https://github.com/ab007shetty",
+    url: "https://github.com/maria-mouratidi",
     color: "text-gray-800 dark:text-gray-200",
-    description: "2nd Fav Hub"
+    description: ""
   },
   {
     icon: <FaLinkedin />,
     name: "LinkedIn",
-    url: "https://linkedin.com/in/ab007shetty",
+    url: "www.linkedin.com/in/maria-mouratidi",
     color: "text-blue-600",
-    description: "Thinking of Uninstalling"
-  },
-  {
-    icon: <FaXTwitter />,
-    name: "X",
-    url: "https://x.com/ab007shetty",
-    color: "text-blue-400",
-    description: "Place to pick Fights"
-  },
-  {
-    icon: <FaInstagram />,
-    name: "Instagram",
-    url: "https://www.instagram.com/a.b.shetty",
-    color: "text-pink-500",
-    description: "No life behind the code"
-  },
-  {
-    icon: <SiGooglescholar />,
-    name: "Google Scholar",
-    url: "https://scholar.google.com/citations?user=i1vJxMYAAAAJ",
-    color: "text-blue-500",
-    description: "Im not a Scholar"
-  },
-  {
-    icon: <SiQwiklabs />,
-    name: "Qwiklabs",
-    url: "https://www.qwiklabs.com/public_profiles/a71f17d6-36af-4e30-b70f-8771bf211324",
-    color: "text-green-500",
-    description: "Just for Goodies"
-  }
+    description: "Let's connect"
+  }, //TODO: find a way to place these in the center
+  // {
+  //   icon: <FaXTwitter />,
+  //   name: "X",
+  //   url: "https://x.com/",
+  //   color: "text-blue-400",
+  //   description: ""
+  // },
+  // {
+  //   icon: <FaInstagram />,
+  //   name: "Instagram",
+  //   url: "https://www.instagram.com/",
+  //   color: "text-pink-500",
+  //   description: ""
+  // },
+  // {
+  //   icon: <SiGooglescholar />,
+  //   name: "Google Scholar",
+  //   url: "https://scholar.google.com/citations?user=",
+  //   color: "text-blue-500",
+  //   description: ""
+  // },
+  // {
+  //   icon: <SiQwiklabs />,
+  //   name: "Qwiklabs",
+  //   url: "https://www.qwiklabs.com/public_profiles/",
+  //   color: "text-green-500",
+  //   description: ""
+  // }
 ];
 
 // Contact Card with animated domain for email
@@ -245,7 +245,7 @@ export default function Contact() {
             Get In <span className={styles.accent}>Touch</span>
           </h1>
           <p className={`text-xl ${styles.textSecondary} max-w-3xl mx-auto leading-relaxed`}>
-            Stuck, bored, or sad? You know where to find me!
+            TODO:Some text
           </p>
         </div>
       </div>
@@ -255,7 +255,7 @@ export default function Contact() {
         <div className="text-center mb-8">
           <h2 className={`text-3xl font-bold ${styles.text} mb-4 flex items-center justify-center gap-3`}>
             <FaRocket className={`${styles.accent} mr-2`} />
-            Hire Me
+           TODO: Some text
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
@@ -270,10 +270,11 @@ export default function Contact() {
         <div className="text-center mb-12">
           <h2 className={`text-3xl font-bold ${styles.text} mb-4 flex items-center justify-center gap-3`}>
             <FaLightbulb className={styles.accent} />
-            Follow My Journey
+            TODO: Some Text
           </h2>
           <p className={`${styles.textSecondary} text-lg`}>
-            Stay updated with my latest projects and tech insights
+            Stay updated with my latest projects and developments 
+            {/* TODO:this could be bold or other font or right aligned */}
           </p>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
@@ -290,9 +291,9 @@ export default function Contact() {
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className={`text-sm ${styles.textSecondary} text-center md:text-left break-words w-full`}>
                 <p className="flex items-center justify-center md:justify-start gap-2 flex-wrap break-all w-full">
-                  © {currentYear} Anirudha B Shetty. Made with
+                  © {currentYear} Maria Mouratidi
                   <FaHeart className={`${styles.accent} animate-pulse`} />
-                  in India
+             
                 </p>
               </div>
               {/* Fix: Always force 'Powered by React' to be a single line on desktop */}
