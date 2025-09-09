@@ -101,22 +101,22 @@ const allSkillDetails = [
 
 // GROUPS
 const skillSections = [
-  { group: "Programming Languages", icon: <FaCode className="text-yellow-600" />, keys: ["python", "java", "js", "php", "sql"] },
-  { group: "Front-End Development", icon: <FaReact className="text-cyan-400" />, keys: ["react", "redux", "bootstrap", "tailwind"] },
-  { group: "Back-End Development", icon: <FaServer className="text-blue-500" />, keys: ["nodejs", "express", "django", "restapi"] },
-  { group: "Databases", icon: <FaDatabase className="text-orange-700" />, keys: ["mongodb", "mysql", "firebase", "cloudera"] },
-  { group: "Testing & Debugging", icon: <FaBug className="text-red-500" />, keys: ["jest", "postman", "chromedevtools"] },
-  { group: "DevOps & Deployment", icon: <FaTools className="text-green-600" />, keys: ["git", "bitbucket", "docker", "railway", "vercel", "gcp"] },
+  { group: "Programming Languages", icon: <FaCode className="text-yellow-600" />, keys: ["python", "C++"] }, //TODO: add C++ graphics
+  // { group: "Front-End Development", icon: <FaReact className="text-cyan-400" />, keys: ["react", "redux", "bootstrap", "tailwind"] },
+  { group: "Back-End Development", icon: <FaServer className="text-blue-500" />, keys: [ "restapi"] },
+  // { group: "Databases", icon: <FaDatabase className="text-orange-700" />, keys: ["mongodb", "mysql", "firebase", "cloudera"] },
+  // { group: "Testing & Debugging", icon: <FaBug className="text-red-500" />, keys: ["jest", "postman", "chromedevtools"] },
+  { group: "DevOps & Deployment", icon: <FaTools className="text-green-600" />, keys: ["git", "docker"] },
   { group: "Project Management", icon: <FaJira className="text-blue-500" />, keys: ["jira", "agile"] }
 ];
 
 // HIGHLIGHTS, EXPERIENCE, EDUCATION
 const highlights = [
-  { emoji: "🎓", text: "Completed 100+ courses on Coursera.", link: "https://www.coursera.org/user/9a1f6f65c70233a4cbf41887f48e0c06" },
-  { emoji: "☁️", text: "Google Cloud Arcade Champion — completed 400+ Google Cloud Qwiklabs.", link: "https://www.cloudskillsboost.google/public_profiles/a71f17d6-36af-4e30-b70f-8771bf211324" },
-  { emoji: "🏅", text: "Hackothsav National Finalist: Consolation prize winner in a national-level hackathon.", link: "" },
-  { emoji: "🌟", text: "Ranked among Top 6000 GitHub developers (India) with 170+ stars and 50+ forks.", link: "https://stardev.io/developers/ab007shetty#country-badge" },
-  { emoji: "📄", text: 'Authored a research paper: "Facial Recognition Using Haar Cascade and LBP Classifiers", 130+ citations (Elsevier).', link: "https://scholar.google.com/citations?user=i1vJxMYAAAAJ" }
+  // { emoji: "🎓", text: "Completed 100+ courses on Coursera.", link: "https://www.coursera.org/user/9a1f6f65c70233a4cbf41887f48e0c06" },
+  // { emoji: "☁️", text: "Google Cloud Arcade Champion — completed 400+ Google Cloud Qwiklabs.", link: "https://www.cloudskillsboost.google/public_profiles/a71f17d6-36af-4e30-b70f-8771bf211324" },
+  // { emoji: "🏅", text: "Hackothsav National Finalist: Consolation prize winner in a national-level hackathon.", link: "" },
+  // { emoji: "🌟", text: "Ranked among Top 6000 GitHub developers (India) with 170+ stars and 50+ forks.", link: "https://stardev.io/developers/ab007shetty#country-badge" },
+  // { emoji: "📄", text: 'Authored a research paper: "Facial Recognition Using Haar Cascade and LBP Classifiers", 130+ citations (Elsevier).', link: "https://scholar.google.com/citations?user=i1vJxMYAAAAJ" }
 ];
 
 const experienceGroups = [
@@ -190,20 +190,20 @@ const experienceGroups = [
 
 
 const educationGroups = [
+  // {
+  //   label: "SSLC (10th Grade)",
+  //   icon: <FaSchool className="text-cyan-500" />,
+  //   entries: [{  institution: "Maryknoll High School, Udupi", period: "2015", location: "Udupi, Karnataka", grade: "96.16% – Secured 6th place at the district level in Kannada medium." }]
+  // },
   {
-    label: "SSLC (10th Grade)",
-    icon: <FaSchool className="text-cyan-500" />,
-    entries: [{  institution: "Maryknoll High School, Udupi", period: "2015", location: "Udupi, Karnataka", grade: "96.16% – Secured 6th place at the district level in Kannada medium." }]
-  },
-  {
-    label: "PU Course (PCMB)",
+    label: "MSc Artificial Intelligence",
     icon: <FaGraduationCap className="text-yellow-600" />,
-    entries: [{  institution: "Viveka PU College, Udupi", period: "2017", location: "Udupi, Karnataka", grade: "87.83% – PCMB" }]
+    entries: [{  institution: "Utrecht University", period: "2025", location: "Utrecht, Netherlands", grade: "8.2 GPA" }]
   },
   {
-    label: "B.E. – Computer Science",
+    label: "BSc Cognitive Science and Artificial Intelligence",
     icon: <FaUniversity className="text-blue-500" />,
-    entries: [{  institution: "Shri Madhwa Vadiraja Institute of Technology and Management, Udupi", period: "2021", location: "Udupi, Karnataka", grade: "7.38 CGPA" }]
+    entries: [{  institution: "Tilburg University", period: "2023", location: "Tilburg, Netherlands", grade: "8 GPA, Cum Laude" }]
   }
 ];
 
@@ -354,7 +354,7 @@ export default function About() {
           About <span className={styles.accent}>Me</span>
         </h1>
         <p className={`text-lg md:text-xl ${styles.textSecondary} max-w-3xl mx-auto leading-relaxed`}>
-          Passionate Full-Stack Developer with 2 years of Professional Experience and 4+ Overall.
+          AI Researcher and Engineer, focused on Natural Language Processing.
         </p>
       </div>
       {/* Main Tabs */}
