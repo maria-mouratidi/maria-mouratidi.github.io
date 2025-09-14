@@ -8,43 +8,30 @@ const images = [
 ];
 
 const accentsMap = {
-  icy: {
-    highlight: "text-cyan-600",
+  lavender: {
+    highlight: "text-[#38487c]", // New blue color
     secondary: "text-gray-700",
     text: "text-gray-600",
-    glassBackground: "bg-white/[0.08]",
-    glassBorder: "border-white/[0.15]",
-    buttonPrimary: "bg-cyan-500 hover:bg-cyan-400 text-white border-none",
-    buttonSecondary: "bg-white/90 text-cyan-700 hover:bg-white border-none",
-    imageBorder: "border-white/[0.2]",
-    shadowColor: "rgba(255, 255, 255, 0.1)",
-    nameColor: "text-cyan-600",
-    backdropBlur: "backdrop-blur-[20px]",
-  },
-  hot: {
-    highlight: "text-yellow-600",
-    secondary: "text-white/80",
-    text: "text-white/90",
-    glassBackground: "bg-white/[0.08]",
-    glassBorder: "border-white/[0.15]",
-    buttonPrimary: "bg-yellow-400/90 hover:bg-yellow-300 text-yellow-900 border-none",
-    buttonSecondary: "bg-white/90 text-yellow-700 hover:bg-yellow-100 border-none",
-    imageBorder: "border-white/[0.2]",
-    shadowColor: "rgba(255, 255, 255, 0.1)",
-    nameColor: "text-yellow-600",
+    glassBackground: "bg-[#38487c]/[0.08]", // New blue color
+    glassBorder: "border-[#38487c]/[0.15]", // New blue color
+    buttonPrimary: "bg-[#38487c] hover:bg-[#4a5a8e] text-white border-none", // Button with hover effect
+    buttonSecondary: "bg-white/90 text-[#38487c] hover:bg-[#eef0f6] border-none", // Secondary button
+    imageBorder: "border-[#38487c]/[0.2]", // Image border
+    shadowColor: "rgba(56, 72, 124, 0.1)", // Shadow with new blue RGB
+    nameColor: "text-[#38487c]", // Name color
     backdropBlur: "backdrop-blur-[20px]",
   },
   dark: {
-    highlight: "text-blue-400",
+    highlight: "text-[#6983c5]", // Lighter blue for dark theme
     secondary: "text-white/80",
     text: "text-white/90",
-    glassBackground: "bg-white/[0.08]",
-    glassBorder: "border-white/[0.15]",
-    buttonPrimary: "bg-blue-600/90 hover:bg-blue-500 text-white border-none",
-    buttonSecondary: "bg-white/90 text-blue-900 hover:bg-blue-100 border-none",
-    imageBorder: "border-white/[0.2]",
-    shadowColor: "rgba(255, 255, 255, 0.1)",
-    nameColor: "text-blue-400",
+    glassBackground: "bg-[#1a1f2e]/[0.75]", // Dark blue background
+    glassBorder: "border-[#38487c]/[0.3]",
+    buttonPrimary: "bg-[#38487c]/90 hover:bg-[#4a5a8e] text-white border-none",
+    buttonSecondary: "bg-[#202942]/90 text-[#6983c5] hover:bg-[#2a365a] border-[#38487c]/30",
+    imageBorder: "border-[#38487c]/[0.3]",
+    shadowColor: "rgba(56, 72, 124, 0.2)",
+    nameColor: "text-[#6983c5]",
     backdropBlur: "backdrop-blur-[20px]",
   }
 };
@@ -140,7 +127,7 @@ const TypewriterText = React.memo(({ currentText, accents }) => (
 // Main component
 function LandingPage() {
   const { theme } = useTheme();
-  const accents = useMemo(() => accentsMap[theme] || accentsMap.icy, [theme]);
+  const accents = useMemo(() => accentsMap[theme] || accentsMap.lavender, [theme]);
 
   // Profile image animation
   const [imgIdx, setImgIdx] = useState(0);
@@ -255,9 +242,13 @@ function LandingPage() {
           <div className="relative z-10">
             {/* Greeting */}
             <div className="mb-8 text-center md:text-left">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 animate-fade-in">
-                <span className="wave-animation inline-block">🙏</span>
-                <span className="ml-3">Namaste!</span>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 animate-fade-in flex items-center">
+                <img 
+                  src="/images/pixel-comp.png" // Replace with the path to your custom icon
+                  alt="Pixelated Computer Icon"
+                  className="inline-block h-10 md:h-12 mr-3"
+                />
+                <span className="ml-3">Welcome!</span>
               </h1>
 
               <div className="text-lg md:text-xl lg:text-2xl mb-6">
@@ -265,15 +256,15 @@ function LandingPage() {
                 <span
                   className={`font-bold text-2xl md:text-3xl lg:text-4xl ${accents.nameColor} drop-shadow-sm`}
                 >
-                  Anirudha B Shetty
+                  Maria Mouratidi
                 </span>
               </div>
-                          {/* Description */}
-            <div className={`space-y-4 mb-10 ${accents.text} text-center md:text-left`}>
-              <p className="text-lg md:text-xl leading-relaxed animate-fade-in-up">
-                 <span className={`${accents.highlight} font-semibold`}>Full Stack Developer</span> - MERN, Firebase, Tailwind
-              </p>
-            </div>
+
+              <div className={`space-y-4 mb-10 ${accents.text} text-center md:text-left`}>
+                <p className="text-lg md:text-xl leading-relaxed animate-fade-in-up">
+                  <span className={`${accents.highlight} font-semibold`}>NLP Researcher and AI Engineer</span>
+                </p>
+              </div>
 
               <TypewriterText currentText={currentText} accents={accents} />
             </div>
@@ -281,7 +272,7 @@ function LandingPage() {
             {/* Action buttons */}
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up delay-400 justify-center md:justify-start">
               <a
-                href="/resume.pdf"
+                href="/resume.pdf" // Replace with the actual path to your CV
                 download
                 className={`
                   group px-8 py-4 rounded-2xl font-semibold transition-all duration-300
