@@ -90,35 +90,7 @@ const socialLinks = [
     url: "www.linkedin.com/in/maria-mouratidi",
     color: "text-blue-600",
     description: "Let's connect"
-  }, //TODO: find a way to place these in the center
-  // {
-  //   icon: <FaXTwitter />,
-  //   name: "X",
-  //   url: "https://x.com/",
-  //   color: "text-blue-400",
-  //   description: ""
-  // },
-  // {
-  //   icon: <FaInstagram />,
-  //   name: "Instagram",
-  //   url: "https://www.instagram.com/",
-  //   color: "text-pink-500",
-  //   description: ""
-  // },
-  // {
-  //   icon: <SiGooglescholar />,
-  //   name: "Google Scholar",
-  //   url: "https://scholar.google.com/citations?user=",
-  //   color: "text-blue-500",
-  //   description: ""
-  // },
-  // {
-  //   icon: <SiQwiklabs />,
-  //   name: "Qwiklabs",
-  //   url: "https://www.qwiklabs.com/public_profiles/",
-  //   color: "text-green-500",
-  //   description: ""
-  // }
+  },
 ];
 
 // Social card (old card grid style)
@@ -163,29 +135,29 @@ export default function Contact() {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-16 relative">
       {/* Header centered */}
-      <div className="mb-16 flex flex-col items-center justify-center">
+      <div className="mb-8 flex flex-col items-center justify-center">
         <div className="text-center max-w-2xl mx-auto">
           <h1 className={`text-5xl md:text-6xl font-bold ${styles.text} mb-4`}>
             Get In <span className={styles.accent}>Touch</span>
           </h1>
           <p className={`text-xl ${styles.textSecondary} max-w-3xl mx-auto leading-relaxed`}>
-            I'm always open to new opportunities and collaborations
+            I'm open to new opportunities!
           </p>
         </div>
       </div>
 
       {/* Combined Contact Information & Social Links in one grid */}
       <div className="mb-16">
-        <div className="text-center mb-8">
+        {/* <div className="text-center mb-8">
           <h2 className={`text-3xl font-bold ${styles.text} mb-4 flex items-center justify-center gap-3`}>
             <FaRocket className={`${styles.accent} mr-2`} />
             Connect With Me
           </h2>
-        </div>
+        </div> */}
         
         {/* Centered container for all links */}
         <div className="flex justify-center">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-5xl">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-w-20xl">
             {allLinks.map((item, index) => (
               <SocialCard key={item.name} social={item} index={index} theme={theme} />
             ))}
