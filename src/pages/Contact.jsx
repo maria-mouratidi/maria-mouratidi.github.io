@@ -51,27 +51,28 @@ const emailDomains = [
   { domain: "gmail.com", color: "#a56635" }
 ];
 
+// Update the contactInfo array to remove direct values
 const contactInfo = [
   {
     icon: <FaEnvelope />,
-    label: "Email",
-    value: "", // handled in ContactCard for animation
-    link: "mailto:mouratidi.m@gmail.com",
-    description: ""
+    name: "Email",
+    url: "mailto:mouratidi.m@gmail.com",
+    color: "text-blue-500",
+    description: "I prefer email :)"
   },
   {
     icon: <FaPhone />,
-    label: "Phone",
-    value: "+31 653490108 | +30 6934766706", //TODO: the dual phone could be a bit more aesthetic
-    link: "tel:+31653490108",
-    description: ""
+    name: "Phone",
+    url: "tel:+31653490108",
+    color: "text-green-500",
+    description: "Call or text"
   },
   {
     icon: <FaMapMarkerAlt />,
-    label: "Location",
-    value: "Utrecht, Netherlands",
-    link: "https://maps.google.com/?q=Utrecht,Netherlands",
-    description: ""
+    name: "Location",
+    url: "https://maps.google.com/?q=Utrecht,Netherlands",
+    color: "text-red-500",
+    description: "Utrecht, Netherlands"
   }
 ];
 
@@ -81,7 +82,7 @@ const socialLinks = [
     name: "GitHub",
     url: "https://github.com/maria-mouratidi",
     color: "text-gray-800 dark:text-gray-200",
-    description: ""
+    description: "Find my projects"
   },
   {
     icon: <FaLinkedin />,
@@ -120,86 +121,6 @@ const socialLinks = [
   // }
 ];
 
-// Contact Card with animated domain for email
-const ContactCard = ({ contact, index, theme }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const styles = themeStyles[theme];
-  const [domainIdx, setDomainIdx] = useState(0);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), index * 200);
-    return () => clearTimeout(timer);
-  }, [index]);
-
-  useEffect(() => {
-    if (contact.label !== "Email") return;
-    const interval = setInterval(
-      () => setDomainIdx(idx => (idx + 1) % emailDomains.length),
-      2100
-    );
-    return () => clearInterval(interval);
-  }, [contact.label]);
-
-  return (
-    <a
-      href={contact.link}
-      target={contact.link.startsWith('http') ? "_blank" : "_self"}
-      rel={contact.link.startsWith('http') ? "noopener noreferrer" : undefined}
-      className={`block p-6 rounded-2xl border transition-all duration-700 ${styles.cardBg} ${styles.cardHover} shadow-lg transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'} group overflow-x-auto`}
-      style={{ transitionDelay: `${index * 100}ms`, maxWidth: "100%" }}
-    >
-      <div className="flex items-start gap-4 min-w-0">
-        <div className={`p-3 rounded-xl ${styles.cardBg} border group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
-          <span className={`text-2xl ${styles.icon}`}>{contact.icon}</span>
-        </div>
-        <div className="flex-1 min-w-0">
-          <h3 className={`text-lg font-bold ${styles.text} mb-1`}>{contact.label}</h3>
-          <p className={`text-base font-semibold ${styles.accent} mb-2 break-all`}>
-            {contact.label === "Email" ? (
-              <span
-                className="transition-colors font-mono cursor-pointer inline-block"
-                title={`${emailInitial}@${emailDomains[domainIdx].domain}`}
-                style={{
-                  letterSpacing: "0.06em",
-                  userSelect: "text",
-                  padding: "0.1em 0.15em",
-                  fontSize: "1.05em",
-                  wordBreak: "break-all",
-                  maxWidth: "100%",
-                }}
-              >
-                <span>{emailInitial}</span>
-                <span className={`mx-1 font-bold`} style={{ textShadow: "none" }}>@</span>
-                <span
-                  className="animate-email-domain font-bold"
-                  style={{
-                    color: emailDomains[domainIdx].color,
-                    animation: "email-domain 0.5s both"
-                  }}
-                >
-                  {emailDomains[domainIdx].domain}
-                </span>
-              </span>
-            ) : contact.value}
-          </p>
-          <p className={`text-sm ${styles.textSecondary}`}>{contact.description}</p>
-        </div>
-      </div>
-      <style>
-        {`
-        @keyframes email-domain {
-          0% { opacity: 0; transform: translateY(-12px);}
-          100% { opacity: 1; transform: translateY(0);}
-        }
-        .animate-email-domain {
-          animation: email-domain 0.5s both;
-        }
-        `}
-      </style>
-    </a>
-  );
-};
-
 // Social card (old card grid style)
 const SocialCard = ({ social, index, theme }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -235,6 +156,9 @@ export default function Contact() {
   const { theme } = useTheme();
   const styles = themeStyles[theme] || themeStyles.icy;
   const currentYear = new Date().getFullYear();
+  
+  // Combine contactInfo and socialLinks into a single array
+  const allLinks = [...contactInfo, ...socialLinks];
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-16 relative">
@@ -245,46 +169,31 @@ export default function Contact() {
             Get In <span className={styles.accent}>Touch</span>
           </h1>
           <p className={`text-xl ${styles.textSecondary} max-w-3xl mx-auto leading-relaxed`}>
-            TODO:Some text
+            I'm always open to new opportunities and collaborations
           </p>
         </div>
       </div>
 
-      {/* Contact Information */}
+      {/* Combined Contact Information & Social Links in one grid */}
       <div className="mb-16">
         <div className="text-center mb-8">
           <h2 className={`text-3xl font-bold ${styles.text} mb-4 flex items-center justify-center gap-3`}>
             <FaRocket className={`${styles.accent} mr-2`} />
-           TODO: Some text
+            Connect With Me
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
-          {contactInfo.map((contact, index) => (
-            <ContactCard key={contact.label} contact={contact} index={index} theme={theme} />
-          ))}
+        
+        {/* Centered container for all links */}
+        <div className="flex justify-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-5xl">
+            {allLinks.map((item, index) => (
+              <SocialCard key={item.name} social={item} index={index} theme={theme} />
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Social Links (old card grid style) */}
-      <div className="mb-16">
-        <div className="text-center mb-12">
-          <h2 className={`text-3xl font-bold ${styles.text} mb-4 flex items-center justify-center gap-3`}>
-            <FaLightbulb className={styles.accent} />
-            TODO: Some Text
-          </h2>
-          <p className={`${styles.textSecondary} text-lg`}>
-            Stay updated with my latest projects and developments 
-            {/* TODO:this could be bold or other font or right aligned */}
-          </p>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-          {socialLinks.map((social, index) => (
-            <SocialCard key={social.name} social={social} index={index} theme={theme} />
-          ))}
-        </div>
-      </div>
-
-      {/* Footer */}
+      {/* Footer remains unchanged */}
       <footer className={`relative mt-20 ${styles.footerBg}`}>
         <div className={`border-t border-opacity-20 ${styles.cardBg} backdrop-blur-xl`}>
           <div className="max-w-7xl mx-auto px-4 py-6">
@@ -293,10 +202,8 @@ export default function Contact() {
                 <p className="flex items-center justify-center md:justify-start gap-2 flex-wrap break-all w-full">
                   © {currentYear} Maria Mouratidi
                   <FaHeart className={`${styles.accent} animate-pulse`} />
-             
                 </p>
               </div>
-              {/* Fix: Always force 'Powered by React' to be a single line on desktop */}
               <div className="flex items-center gap-2 text-sm whitespace-nowrap">
                 <span className={styles.textSecondary}>Powered by</span>
                 <FaReact className={`${styles.accent} animate-spin-slow`} />
