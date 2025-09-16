@@ -2,9 +2,9 @@ import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { useTheme } from "../ThemeContext";
 
 const images = [
-  "/images/profile1.png",
-  "/images/profile2.png",
-  "/images/profile3.png",
+  "/images/profile0.png",
+  "/images/profile0.png",
+  "/images/profile0.png",
 ];
 
 const accentsMap = {
@@ -37,11 +37,8 @@ const accentsMap = {
 };
 
 const typewriterText = [
-  "Full-Stack Developer",
-  "AI Enthusiast", 
-  "Cloud Architect",
-  "Problem Solver",
-  "Dream Builder"
+  "NLP Researcher",
+  "AI Engineer", 
 ];
 
 // Memoized floating elements component
@@ -129,8 +126,6 @@ function LandingPage() {
   const { theme } = useTheme();
   const accents = useMemo(() => accentsMap[theme] || accentsMap.lavender, [theme]);
 
-  // Profile image animation
-  const [imgIdx, setImgIdx] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Typewriter effect
@@ -148,12 +143,6 @@ function LandingPage() {
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: "smooth" });
     }
-  }, []);
-
-  // Image rotation effect
-  useEffect(() => {
-    const interval = setInterval(() => setImgIdx(idx => (idx + 1) % images.length), 6000);
-    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -212,7 +201,7 @@ function LandingPage() {
     >
       <FloatingElements />
 
-      <ProfileImages imgIdx={imgIdx} images={images} />
+      <ProfileImages imgIdx={0} images={images} />
 
       {/* Content Section */}
       <div
@@ -261,9 +250,9 @@ function LandingPage() {
               </div>
 
               <div className={`space-y-4 mb-10 ${accents.text} text-center md:text-left`}>
-                <p className="text-lg md:text-xl leading-relaxed animate-fade-in-up">
+                {/* <p className="text-lg md:text-xl leading-relaxed animate-fade-in-up">
                   <span className={`${accents.highlight} font-semibold`}>NLP Researcher and AI Engineer</span>
-                </p>
+                </p> */}
               </div>
 
               <TypewriterText currentText={currentText} accents={accents} />
