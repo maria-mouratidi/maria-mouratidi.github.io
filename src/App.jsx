@@ -29,10 +29,7 @@ const PageLoader = React.memo(() => (
 
 // Theme styles for ScrollToTop (moved from Contact.js)
 const themeStyles = {
-  icy: {
-    primaryButton: "bg-cyan-500 hover:bg-cyan-600 text-white",
-  },
-  hot: {
+  light: {
     primaryButton: "bg-yellow-500 hover:bg-yellow-600 text-white",
   },
   dark: {
@@ -43,7 +40,7 @@ const themeStyles = {
 // ScrollToTop component (moved from Contact.js)
 const ScrollToTop = ({ theme, activeSection }) => {
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const styles = themeStyles[theme] || themeStyles.icy;
+  const styles = themeStyles[theme] || themeStyles.light;
 
   useEffect(() => {
     const handleScroll = () => {

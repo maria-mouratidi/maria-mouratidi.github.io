@@ -6,23 +6,11 @@ import { useTheme } from "../ThemeContext";
 
 // ===== THEME STYLES =====
 const themeStyles = {
-  icy: {
-    cardBg: "bg-white/15 backdrop-blur-xl border-white/20",
-    cardHover: "hover:bg-white/25 hover:border-cyan-300/40 hover:shadow-cyan-400/20",
+  light: {
+    cardBg: "bg-white/15 backdrop-blur-xl border-yellow-200/20",
+    cardHover: "hover:bg-yellow-50/25 hover:border-yellow-400/40 hover:shadow-yellow-400/20",
     text: "text-gray-800",
     textSecondary: "text-gray-600",
-    accent: "text-cyan-600",
-    button: "bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-800 border-cyan-400/40",
-    badge: "bg-cyan-100/30 text-cyan-800 border-cyan-300/40",
-    glow: "shadow-cyan-400/20",
-    filterActive: "bg-cyan-500/30 text-cyan-800 border-cyan-400/60",
-    lightboxBg: "bg-white/95 backdrop-blur-xl"
-  },
-  hot: {
-    cardBg: "bg-yellow-50/15 backdrop-blur-xl border-yellow-300/20",
-    cardHover: "hover:bg-yellow-50/25 hover:border-yellow-400/40 hover:shadow-yellow-400/20",
-    text: "text-yellow-900",
-    textSecondary: "text-yellow-800",
     accent: "text-yellow-600",
     button: "bg-yellow-400/20 hover:bg-yellow-400/30 text-yellow-900 border-yellow-500/40",
     badge: "bg-yellow-100/30 text-yellow-900 border-yellow-400/40",
@@ -349,7 +337,7 @@ const Modal = ({ isOpen, onClose, children }) => {
 // ========== CERTIFICATE LIGHTBOX ==========
 const CertificateLightbox = ({ certificates, index, isOpen, onClose, onPrev, onNext }) => {
   const { theme } = useTheme();
-  const styles = themeStyles[theme] || themeStyles.icy;
+  const styles = themeStyles[theme] || themeStyles.light;
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

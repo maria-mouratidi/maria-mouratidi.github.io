@@ -11,23 +11,11 @@ import { useTheme } from "../ThemeContext";
 
 // ========== Theme Styles ==========
 const themeStyles = {
-  icy: {
-    cardBg: "bg-white/10 backdrop-blur-xl border-white/20",
-    cardHover: "hover:bg-white/20 hover:border-cyan-300/40 hover:shadow-cyan-400/30",
+  light: {
+    cardBg: "bg-white/10 backdrop-blur-xl border-yellow-200/20",
+    cardHover: "hover:bg-yellow-50/20 hover:border-yellow-400/40 hover:shadow-yellow-400/30",
     text: "text-gray-800",
     textSecondary: "text-gray-600",
-    accent: "text-cyan-600",
-    button: "bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-800 border-cyan-400/40",
-    badge: "bg-cyan-100/30 text-cyan-800 border-cyan-300/40",
-    glow: "shadow-cyan-400/20",
-    filterActive: "bg-cyan-500/30 text-cyan-800 border-cyan-400/60",
-    bg: ""
-  },
-  hot: {
-    cardBg: "bg-yellow-50/10 backdrop-blur-xl border-yellow-300/20",
-    cardHover: "hover:bg-yellow-50/20 hover:border-yellow-400/40 hover:shadow-yellow-400/30",
-    text: "text-yellow-900",
-    textSecondary: "text-yellow-800",
     accent: "text-yellow-600",
     button: "bg-yellow-400/20 hover:bg-yellow-400/30 text-yellow-900 border-yellow-500/40",
     badge: "bg-yellow-100/30 text-yellow-900 border-yellow-400/40",
@@ -534,7 +522,7 @@ if (normalizedIndex === 0) {
 // ========== Main Component ==========
 const Projects = () => {
   const { theme } = useTheme();
-  const styles = themeStyles[theme] || themeStyles.icy;
+  const styles = themeStyles[theme] || themeStyles.light;
   const isMobile = useIsMobile(768);
 
   const [activeStatus, setActiveStatus] = useState("Completed");

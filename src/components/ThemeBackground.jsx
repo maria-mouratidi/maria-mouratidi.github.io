@@ -1,68 +1,13 @@
 import React, { useMemo } from "react";
 import { useTheme } from "../ThemeContext";
-import IcyThemeBackground from "../themes/IcyThemeBackground";
-import HotThemeBackground from "../themes/HotThemeBackground";
+import LightThemeBackground from "../themes/LightThemeBackground";
 import DarkThemeBackground from "../themes/DarkThemeBackground";
 
 // Memoized static background components
-const IcyStaticBackground = React.memo(() => (
-  <div className="fixed inset-0 w-full h-full -z-10 transition-all duration-700 pointer-events-none select-none">
-    {/* Main background: mostly white, a hint of teal */}
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        position: "absolute",
-        inset: 0,
-        zIndex: 1,
-        background: `
-          linear-gradient(120deg, #fafdff 0%, #e5fafd 50%, #d5f6fe 100%)
-        `,
-        opacity: 1,
-        WebkitBackdropFilter: "blur(52px) brightness(1.13)",
-        backdropFilter: "blur(52px) brightness(1.13)",
-        transition: "all 0.7s cubic-bezier(.45,.8,.55,1)",
-      }}
-    />
-    {/* Strong white gloss ellipse for the "frosted" effect */}
-    <div
-      style={{
-        position: "absolute",
-        top: "10%",
-        left: "17%",
-        width: "65vw",
-        height: "32vh",
-        background:
-          "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.11) 85%)",
-        opacity: 0.73,
-        filter: "blur(28px)",
-        pointerEvents: "none",
-        zIndex: 2,
-      }}
-    />
-    {/* Subtle teal gloss at bottom */}
-    <div
-      style={{
-        position: "absolute",
-        bottom: "0%",
-        left: "30%",
-        width: "55vw",
-        height: "13vh",
-        background:
-          "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(103,232,249,0.16) 0%, rgba(103,232,249,0) 80%)",
-        opacity: 0.92,
-        filter: "blur(17px)",
-        pointerEvents: "none",
-        zIndex: 2,
-      }}
-    />
-  </div>
-));
-
-const HotStaticBackground = React.memo(() => (
+const LightStaticBackground = React.memo(() => (
   <div className="fixed inset-0 -z-10 transition-all duration-700"
     style={{
-      background: "linear-gradient(135deg, #fffbe6 0%, #fff4cc 60%, #ffe4a3 100%)",
+      background: "linear-gradient(120deg, #fafdff 0%, #fefce8 60%, #e2e8f0 100%)",
       backdropFilter: "blur(28px)",
       WebkitBackdropFilter: "blur(28px)",
     }}
@@ -84,23 +29,23 @@ const BackgroundSelector = React.memo(({ theme, activeSection }) => {
   // Landing page: animated backgrounds
   if (activeSection === "home") {
     switch (theme) {
-      case "hot":
-        return <HotThemeBackground />;
+      case "light":
+        return <LightThemeBackground />;
       case "dark":
         return <DarkThemeBackground />;
       default:
-        return <IcyThemeBackground />;
+        return <LightThemeBackground />;
     }
   }
 
   // Other pages: static backgrounds for better performance
   switch (theme) {
-    case "hot":
-      return <HotStaticBackground />;
+    case "light":
+      return <LightStaticBackground />;
     case "dark":
       return <DarkStaticBackground />;
     default:
-      return <IcyStaticBackground />;
+      return <LightStaticBackground />;
   }
 });
 

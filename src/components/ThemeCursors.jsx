@@ -85,9 +85,9 @@ function MoonCursor() {
 
 const ThemeCursors = () => {
   const { theme } = useTheme();
-  if (theme === "hot") return <SunCursor />;
+  if (theme === "light") return <SunCursor />;
   if (theme === "dark") return <MoonCursor />;
-  return <SnowballCursor />;
+  return null;
 };
 
 export default ThemeCursors;

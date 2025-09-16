@@ -12,32 +12,14 @@ import { useTheme } from "../ThemeContext";
 
 // ========== THEME STYLES (certificate style) ==========
 const themeStyles = {
-  icy: {
-    cardBg: "bg-white/15 backdrop-blur-xl border-white/20",
-    cardHover: "hover:bg-white/25 hover:border-cyan-300/40 hover:shadow-cyan-400/20",
+  light: {
+    cardBg: "bg-white/15 backdrop-blur-xl border-yellow-200/20",
+    cardHover: "hover:bg-yellow-50/25 hover:border-yellow-400/40 hover:shadow-yellow-400/20",
     text: "text-gray-800",
     textSecondary: "text-gray-600",
-    accent: "text-cyan-600",
+    accent: "text-yellow-600",
     cardTitle: "font-bold text-gray-800",
     cardDesc: "font-normal text-gray-700",
-    percent: "text-cyan-500",
-    barBg: "bg-cyan-100/50",
-    bar: "from-cyan-400 to-cyan-200",
-    button: "bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-800 border-cyan-400/40",
-    glow: "shadow-cyan-400/20",
-    badge: "bg-cyan-100/30 text-cyan-800 border-cyan-300/40",
-    filterActive: "bg-cyan-500/30 text-cyan-800 border-cyan-400/60",
-    sidebarActive: "bg-cyan-500/20 text-cyan-800 border-cyan-400/40 font-bold",
-    sidebar: "text-cyan-900 hover:text-cyan-700"
-  },
-  hot: {
-    cardBg: "bg-yellow-50/15 backdrop-blur-xl border-yellow-300/20",
-    cardHover: "hover:bg-yellow-50/25 hover:border-yellow-400/40 hover:shadow-yellow-400/20",
-    text: "text-yellow-900",
-    textSecondary: "text-yellow-800",
-    accent: "text-yellow-600",
-    cardTitle: "font-bold text-yellow-900",
-    cardDesc: "font-normal text-yellow-800",
     percent: "text-yellow-600",
     barBg: "bg-yellow-100/50",
     bar: "from-yellow-400 to-yellow-200",
@@ -240,7 +222,7 @@ function MainTabBar({ activeTab, setActiveTab, styles }) {
 
 function SideTabBar({ groups, activeIndex, setActiveIndex, iconMap = {} }) {
   const { theme } = useTheme();
-  const styles = themeStyles[theme] || themeStyles.icy;
+  const styles = themeStyles[theme] || themeStyles.light;
   return (
     <div className="grid grid-cols-2 md:flex md:flex-col gap-2 md:pr-6 mb-4 md:mb-0 w-full md:w-auto">
       {groups.map((g, idx) => (

@@ -87,21 +87,12 @@ const socials = [
 ];
 
 const accentsMap = {
-  icy: {
-    highlight: "text-cyan-200",
-    highlightDomain: "text-cyan-400",
-    highlightDomain2: "text-pink-400",
-    highlightDomain3: "text-lime-400",
-    atColor: "text-white",
-    outline: "theme-outline",
-    iconHover: "hover:text-cyan-300",
-  },
-  hot: {
+  light: {
     highlight: "text-yellow-400",
     highlightDomain: "text-yellow-500",
     highlightDomain2: "text-pink-400",
     highlightDomain3: "text-lime-400",
-    atColor: "text-white",
+    atColor: "text-black",
     outline: "theme-outline",
     iconHover: "hover:text-yellow-400",
   },
@@ -118,7 +109,7 @@ const accentsMap = {
 
 export default function SocialsAndEmail() {
   const { theme } = useTheme();
-  const accents = accentsMap[theme] || accentsMap.icy;
+  const accents = accentsMap[theme] || accentsMap.light;
 
   // Email domain animation
   const [domainIdx, setDomainIdx] = useState(0);

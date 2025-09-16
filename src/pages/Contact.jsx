@@ -9,25 +9,14 @@ import { useTheme } from "../ThemeContext";
 
 // =================== Theme Styles ===================
 const themeStyles = {
-  icy: {
-    cardBg: "bg-white/15 backdrop-blur-xl border-white/20",
-    cardHover: "hover:bg-white/25 hover:border-cyan-300/40",
+  light: {
+    cardBg: "bg-white/15 backdrop-blur-xl border-yellow-200/20",
+    cardHover: "hover:bg-yellow-50/25 hover:border-yellow-400/40",
     text: "text-gray-800",
     textSecondary: "text-gray-600",
-    accent: "text-cyan-600",
-    icon: "text-cyan-600",
-    footerBg: "bg-gradient-to-t from-white/20 to-white/10 backdrop-blur-xl border-t border-white/20",
-    primaryButton: "bg-cyan-500 hover:bg-cyan-600 text-white",
-    glow: "shadow-cyan-400/20"
-  },
-  hot: {
-    cardBg: "bg-yellow-50/15 backdrop-blur-xl border-yellow-300/20",
-    cardHover: "hover:bg-yellow-50/25 hover:border-yellow-400/40",
-    text: "text-yellow-900",
-    textSecondary: "text-yellow-800",
     accent: "text-yellow-600",
     icon: "text-yellow-600",
-    footerBg: "bg-gradient-to-t from-yellow-50/20 to-yellow-50/10 backdrop-blur-xl border-t border-yellow-300/20",
+    footerBg: "bg-gradient-to-t from-yellow-50/20 to-yellow-50/10 backdrop-blur-xl border-t border-yellow-200/20",
     primaryButton: "bg-yellow-500 hover:bg-yellow-600 text-white",
     glow: "shadow-yellow-400/20"
   },
@@ -126,7 +115,7 @@ const SocialCard = ({ social, index, theme }) => {
 
 export default function Contact() {
   const { theme } = useTheme();
-  const styles = themeStyles[theme] || themeStyles.icy;
+  const styles = themeStyles[theme] || themeStyles.light;
   const currentYear = new Date().getFullYear();
   
   // Combine contactInfo and socialLinks into a single array

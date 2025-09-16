@@ -15,24 +15,13 @@ const sectionIcons = {
 };
 
 const themeNavbarStyles = {
-  icy: {
+  light: {
     bg: "bg-white/20 backdrop-blur-lg",
-    border: "border border-cyan-400/60",
-    link: "text-black",
-    active: "bg-white/80 text-black",
-    hover: "hover:bg-cyan-100/40 hover:text-black",
-    fill: "bg-cyan-100/75",
-    outline: "ring-cyan-400",
-    highlight: "bg-cyan-400/70",
-    toggleBtn: "bg-black text-white hover:bg-black/80",
-  },
-  hot: {
-    bg: "bg-yellow-50/20 backdrop-blur-lg",
-    border: "border border-yellow-400/60",
+    border: "border border-yellow-200/60",
     link: "text-black",
     active: "bg-white/80 text-black",
     hover: "hover:bg-yellow-100/40 hover:text-black",
-    fill: "bg-yellow-100/70",
+    fill: "bg-yellow-100/75",
     outline: "ring-yellow-400",
     highlight: "bg-yellow-400/70",
     toggleBtn: "bg-black text-white hover:bg-black/80",
@@ -129,7 +118,7 @@ export default function Navbar({ sections = [], onNavClick }) {
   );
 
   const { theme } = useTheme();
-  const themeStyle = useMemo(() => themeNavbarStyles[theme] || themeNavbarStyles.icy, [theme]);
+  const themeStyle = useMemo(() => themeNavbarStyles[theme] || themeNavbarStyles.light, [theme]);
   const [activeSection, setActiveSection] = useState(filteredSections[0]?.id || "home");
   const navRefs = useRef({});
 

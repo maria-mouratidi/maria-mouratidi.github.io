@@ -24,20 +24,17 @@ function describeArc(cx, cy, rOuter, rInner, startAngle, endAngle) {
   ].join(" ");
 }
 
-const themeOrder = ["icy", "hot", "dark"];
+const themeOrder = ["light", "dark"];
 const themeColors = {
-  icy: "#0ea5e9",
-  hot: "#f59e0b",
+  light: "#e2e8f0",
   dark: "#475569",
 };
 const themeAccents = {
-  icy: "#67e8f9",
-  hot: "#fde047", 
+  light: "#fbbf24",
   dark: "#64748b",
 };
 const themeIcons = {
-  icy: <FaSnowflake />,
-  hot: <FaFire />,
+  light: <FaFire />, // Replace with a sun icon if available
   dark: <FaMoon />,
 };
 
@@ -56,7 +53,7 @@ const ThemeArc = React.memo(({
     {/* Main arc */}
     <path
       d={path}
-      fill={isActive ? `url(#${theme}Gradient)` : (isHovered ? `url(#${theme}Gradient)` : "#f8fafc")}
+  fill={isActive ? `url(#${theme}Gradient)` : (isHovered ? `url(#${theme}Gradient)` : "#f8fafc")}
       stroke={themeColors[theme]}
       strokeWidth={size * (isActive ? 0.015 : 0.012)}
       style={{
@@ -201,23 +198,19 @@ export default function ThemeWheelArc({
     const OUTER_RADIUS = size * 0.45;
     const ARC_THICKNESS = size * 0.18;
     const INNER_RADIUS = OUTER_RADIUS - ARC_THICKNESS;
-    const angles = [0, 120, 240];
-    
-    return { CENTER, OUTER_RADIUS, INNER_RADIUS, angles };
+  const angles = [0, 180];
+  return { CENTER, OUTER_RADIUS, INNER_RADIUS, angles };
   }, [size]);
 
   // Memoized gradients and styles
   const centerStyles = useMemo(() => {
     const centerBg =
-      theme === "icy"
-        ? "radial-gradient(circle at 60% 40%, #f0f9ff 30%, #e0f2fe 65%, #0ea5e9 100%)"
-        : theme === "hot"
-        ? "radial-gradient(circle at 40% 60%, #fffbeb 30%, #fef3c7 60%, #f59e0b 100%)"
+      theme === "light"
+        ? "radial-gradient(circle at 60% 40%, #fefce8 30%, #e2e8f0 65%, #fbbf24 100%)"
         : "radial-gradient(circle at 30% 70%, #f8fafc 30%, #e2e8f0 60%, #475569 100%)";
 
     const centerBorderColor = customCursor ? "#10b981" : themeColors[theme];
     const centerGlowColor = customCursor ? "#10b981" : themeAccents[theme];
-    
     return { centerBg, centerBorderColor, centerGlowColor };
   }, [theme, customCursor]);
 
@@ -298,16 +291,11 @@ export default function ThemeWheelArc({
         }}
       >
         <defs>
-          {/* Enhanced gradients for each theme */}
-          <radialGradient id="icyGradient" cx="50%" cy="30%" r="70%">
-            <stop offset="0%" stopColor="#f0f9ff" />
-            <stop offset="60%" stopColor="#0ea5e9" />
-            <stop offset="100%" stopColor="#0284c7" />
-          </radialGradient>
-          <radialGradient id="hotGradient" cx="50%" cy="30%" r="70%">
-            <stop offset="0%" stopColor="#fffbeb" />
-            <stop offset="60%" stopColor="#f59e0b" />
-            <stop offset="100%" stopColor="#d97706" />
+          {/* Gradients for each theme */}
+          <radialGradient id="lightGradient" cx="50%" cy="30%" r="70%">
+            <stop offset="0%" stopColor="#fefce8" />
+            <stop offset="60%" stopColor="#fbbf24" />
+            <stop offset="100%" stopColor="#e2e8f0" />
           </radialGradient>
           <radialGradient id="darkGradient" cx="50%" cy="30%" r="70%">
             <stop offset="0%" stopColor="#f8fafc" />
