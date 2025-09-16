@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { FaSnowflake, FaFire, FaMoon } from "react-icons/fa";
+import { MdSunny } from "react-icons/md"; // <-- Add this import
 import { useTheme } from "../ThemeContext";
 
 // Helper: SVG arc path with enhanced precision
@@ -34,8 +35,8 @@ const themeAccents = {
   dark: "#64748b",
 };
 const themeIcons = {
-  light: <FaFire />, // Replace with a sun icon if available
-  dark: <FaMoon />,
+  light: <MdSunny color="#fbbf24" />, // <-- Use MdSunny for light theme
+  dark: <FaMoon color="#64748b" />,
 };
 
 // Memoized theme arc component
@@ -86,10 +87,10 @@ const ThemeArc = React.memo(({
     <path
       d={path}
       fill="none"
-      stroke={themeColors[theme]}
-      strokeWidth={size * 0.025}
+      stroke={theme === "light" ? "#f59e0b" : themeColors[theme]} // <-- Stronger yellow for light theme
+      strokeWidth={size * 0.025} // <-- Slightly thicker for light theme
       style={{
-        opacity: isActive ? 0.3 : 0.15,
+        opacity: theme === "light" ? 0.7 : (isActive ? 0.3 : 0.15), // <-- Higher opacity for light theme
         pointerEvents: "none",
         transition: "opacity 0.3s ease"
       }}
@@ -122,9 +123,9 @@ const CenterButton = React.memo(({
       width: size * 0.34,
       height: size * 0.34,
       borderRadius: "50%",
-      border: `${size * 0.027}px solid ${centerBorderColor}`,
+      border: `${size * 0.027}px solid ${themeAccents[theme]}`, // Use accent for border
       background: centerBg,
-      color: themeColors[theme],
+      color: theme === "light" ? "#f59e0b" : "#64748b", // Strong color for icon
       fontWeight: 900,
       fontSize: size * 0.18,
       display: "flex",
@@ -150,7 +151,7 @@ const CenterButton = React.memo(({
       style={{
         transform: `scale(${isPressed ? 0.9 : 1})`,
         transition: "transform 0.15s ease",
-        filter: `drop-shadow(0 2px 4px ${themeColors[theme]}44)`
+        filter: `drop-shadow(0 2px 4px ${themeAccents[theme]}44)` // Use accent for shadow
       }}
     >
       {themeIcons[theme]}
@@ -198,7 +199,7 @@ export default function ThemeWheelArc({
     const OUTER_RADIUS = size * 0.45;
     const ARC_THICKNESS = size * 0.18;
     const INNER_RADIUS = OUTER_RADIUS - ARC_THICKNESS;
-  const angles = [0, 180];
+  const angles = [90, 270];
   return { CENTER, OUTER_RADIUS, INNER_RADIUS, angles };
   }, [size]);
 
@@ -206,7 +207,7 @@ export default function ThemeWheelArc({
   const centerStyles = useMemo(() => {
     const centerBg =
       theme === "light"
-        ? "radial-gradient(circle at 60% 40%, #fefce8 30%, #e2e8f0 65%, #fbbf24 100%)"
+        ? "radial-gradient(circle at 40% 60%, #fffbeb 30%, #fef3c7 60%, #f59e0b 100%)"
         : "radial-gradient(circle at 30% 70%, #f8fafc 30%, #e2e8f0 60%, #475569 100%)";
 
     const centerBorderColor = customCursor ? "#10b981" : themeColors[theme];
@@ -295,7 +296,7 @@ export default function ThemeWheelArc({
           <radialGradient id="lightGradient" cx="50%" cy="30%" r="70%">
             <stop offset="0%" stopColor="#fefce8" />
             <stop offset="60%" stopColor="#fbbf24" />
-            <stop offset="100%" stopColor="#e2e8f0" />
+            <stop offset="100%" stopColor="#fbbf24" /> {/* <-- Strong accent at edge */}
           </radialGradient>
           <radialGradient id="darkGradient" cx="50%" cy="30%" r="70%">
             <stop offset="0%" stopColor="#f8fafc" />
@@ -314,9 +315,9 @@ export default function ThemeWheelArc({
         </defs>
 
         {themeOrder.map((t, i) => {
-          const gap = 2.5;
-          const angleStart = wheelConfig.angles[i] - 60 + gap / 2;
-          const angleEnd = wheelConfig.angles[i] + 60 - gap / 2;
+          // Remove the gap and 60-degree offset
+          const angleStart = wheelConfig.angles[i];
+          const angleEnd = wheelConfig.angles[i] + 180;
           const path = describeArc(
             wheelConfig.CENTER, 
             wheelConfig.CENTER, 
