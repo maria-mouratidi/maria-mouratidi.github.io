@@ -65,6 +65,7 @@ const ProfileImages = React.memo(({ imgIdx, images }) => (
   <div
     className="flex items-center justify-center profile-pic-container"
     style={{
+      marginTop: "-80px", // <-- Add this line
       flex: "0 0 auto",
       minWidth: "320px",
       minHeight: "320px", 
@@ -231,7 +232,7 @@ function LandingPage() {
           <div className="relative z-10">
             {/* Greeting */}
             <div className="mb-8 text-center md:text-left">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 animate-fade-in flex items-center">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 animate-fade-in flex">
                 <img 
                   src="/images/pixel-comp.png" // Replace with the path to your custom icon
                   alt="Pixelated Computer Icon"

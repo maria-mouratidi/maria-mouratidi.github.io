@@ -103,47 +103,13 @@ const highlights = [
 
 const experienceGroups = [
   {
-    label: "Infosys",
+    label: "Next Epoch",
     entries: [
       {
-        title: "Systems Engineer",
-        company: "Infosys",
-        location: "Mangaluru, Karnataka",
-        period: "Aug 2021 – Apr 2023",
-        description: [
-          "Built web applications using React.js across two major international projects, such as Waters and Elanco.",
-          "Integrated product dashboards with search and filter features, shopping cart, and order history components.",
-          "Created interfaces for medicine stock tracking, doctor prescription entry, and report generation using Chart.js.",
-          "Utilized Git, Postman, and JIRA for efficient development, testing, and project management.",
-          "Ensured code quality through ESLint and Prettier, also done unit testing with Jest.",
-          "Resolved UI/API issues through debugging, isolation testing, and effective team collaboration.",
-          "Collaborated with the DevOps team to implement CI/CD pipelines, enabling efficient deployment workflows through GitHub Actions and Jenkins.",
-          "Developed a personal web app to call LLMs to debug and speed up the development process.",
-          "Additionally completed the Full-Stack Web Development with React (by Hong Kong University) via Coursera to enhance technical delivery."
-        ],
-        skills: [
-          "React.js",
-          "Chart.js",
-          "Node.js",
-          "Jest",
-          "CI/CD",
-          "GitHub Actions",
-          "Jenkins",
-          "Git",
-          "Postman",
-          "JIRA"
-        ]
-      }
-    ]
-  },
-  {
-    label: "Digitran Technologies",
-    entries: [
-      {
-        title: "Software Developer (Part-Time)",
-        company: "Digitran Technologies",
-        location: "Udupi, Karnataka",
-        period: "2023 – 2025",
+        title: "AI Engineer",
+        company: "Next Epoch",
+        location: "Rotterdam, Netherlands",
+        period: "12/2023 – Present",
         description: [
           "Handled full-stack web application development for logistics and healthcare SaaS products.",
           "Developed and maintained core features while ensuring scalability and performance improvements.",
@@ -167,7 +133,71 @@ const experienceGroups = [
         ]
       }
     ]
-  }
+  },
+  {
+    label: "Utrecht University",
+    entries: [
+      {
+        title: "Teaching Assistant - Human Centered Machine Learning",
+        company: "Utrecht University",
+        location: "Utrecht, Netherlands",
+        period: "04/2025 – 08/2025",
+        description: [
+          "Leading lab sessions",
+          "Supporting students with assignments",
+          "Grading coursework",
+        ],
+        skills: [
+          "Node.js",
+          "React.js",
+          "MongoDB",
+          "Firebase",
+          "MySQL",
+          "GCP",
+          "Firebase",
+          "REST APIs",
+          "Agile",
+          "Code Reviews",
+          "Client Demos"
+        ]
+      }
+    ]
+  },
+  {
+    label: "Tilburg University",
+    entries: [
+      {
+        title: "Student Assistant",
+        company: "Tilburg University",
+        location: "Tilburg, Netherlands",
+        period: "Aug 2021 – Apr 2023",
+        description: [
+          "Supporting first-year students",
+          "Helping with university integration, admin, team building, socializing",
+        ],
+        skills: [
+          "Mentoring",
+          "Presenting",
+          "Communication",
+        ]
+      },
+      {
+        title: "Research Intern",
+        company: "Tilburg University",
+        location: "Tilburg, Netherlands",
+        period: "Aug 2021 – Apr 2023",
+        description: [
+          "Finetuning GPT-2 with human next-word prediction",
+          "Analyzed generazability of the finetuned model across datasets",
+        ],
+        skills: [
+          "Model finetuning",
+          "Model probing",
+          "Model evaluation",
+        ]
+      }
+    ]
+  },
 ];
 
 
@@ -180,7 +210,7 @@ const educationGroups = [
   {
     label: "MSc Artificial Intelligence",
     icon: <FaGraduationCap className="text-yellow-600" />,
-    entries: [{  institution: "Utrecht University", period: "2025", location: "Utrecht, Netherlands", grade: "8.2 GPA" }]
+    entries: [{  institution: "Utrecht University", period: "2025", location: "Utrecht, Netherlands", grade: "8.2 GPA", }]
   },
   {
     label: "BSc Cognitive Science and Artificial Intelligence",
@@ -193,7 +223,7 @@ const educationGroups = [
 function MainTabBar({ activeTab, setActiveTab, styles }) {
   const tabs = [
     { id: "skills", label: "Skills", icon: <FaCode className="text-blue-500" /> },
-    { id: "highlights", label: "Highlights", icon: <FaTrophy className="text-yellow-500" /> },
+    // { id: "highlights", label: "Highlights", icon: <FaTrophy className="text-yellow-500" /> },
     { id: "experience", label: "Experience", icon: <FaBriefcase className="text-purple-600" /> },
     { id: "education", label: "Education", icon: <FaGraduationCap className="text-green-500" /> }
   ];
