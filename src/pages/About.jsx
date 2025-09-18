@@ -111,25 +111,28 @@ const experienceGroups = [
         location: "Rotterdam, Netherlands",
         period: "12/2023 – Present",
         description: [
-          "Handled full-stack web application development for logistics and healthcare SaaS products.",
-          "Developed and maintained core features while ensuring scalability and performance improvements.",
-          "Integrated REST APIs and optimized data flow for smooth user experience.",
-          "Actively participated in Agile ceremonies, including sprint planning and retrospectives.",
-          "Conducted code reviews and improved overall code quality.",
-          "Gave product demos to US-based clients and incorporated feedback effectively."
+          "Built end-to-end LLM-powered automation agents for business workflow processing, including CRM systems and invoice processing solutions",
+          "Developed intelligent document processing pipelines that extract, transform, and restructure data from emails, files and other unstructured formats",
+          "Integrated multi-platform connectors including WhatsApp Business API, Microsoft Office, SharePoint, for seamless data flow",
+          "Designed and implemented behavior tree architectures for complex agent decision-making and workflow orchestration",
+          "Created custom evaluation frameworks with ground truth validation to measure extraction accuracy and system performance"
         ],
         skills: [
-          "Node.js",
-          "React.js",
-          "MongoDB",
-          "Firebase",
+          "Python",
+          "FastAPI",
+          "Azure",
+          "OpenAI API",
+          "LangChain",
           "MySQL",
-          "GCP",
-          "Firebase",
-          "REST APIs",
-          "Agile",
-          "Code Reviews",
-          "Client Demos"
+          "MongoDB",,  
+          "WhatsApp Business API",
+          "Microsoft APIs",
+          "HubSpot API",
+          "Docker",
+          "Jira",
+          "WSL",
+          "Behavior Trees",
+          "Ground Truth Validation"
         ]
       }
     ]
@@ -148,17 +151,11 @@ const experienceGroups = [
           "Grading coursework",
         ],
         skills: [
-          "Node.js",
-          "React.js",
-          "MongoDB",
-          "Firebase",
-          "MySQL",
-          "GCP",
-          "Firebase",
-          "REST APIs",
-          "Agile",
-          "Code Reviews",
-          "Client Demos"
+          "Machine Learning",  
+          "Explainable AI",
+          "Algorithmic Fairness",
+          "Teaching",
+          "Communication",
         ]
       }
     ]
@@ -177,7 +174,7 @@ const experienceGroups = [
         ],
         skills: [
           "Mentoring",
-          "Presenting",
+          "Presentation",
           "Communication",
         ]
       },
