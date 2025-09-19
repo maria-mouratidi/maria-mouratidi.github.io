@@ -67,17 +67,18 @@ const techIcons = {
 const projects = [
   {
     id: 1,
-    title: "CRM Agent",
-    description: "Django blog app with GitHub OAuth login, users can upload text and images, comment, and favorite posts.",
-    image: "https://plus.unsplash.com/premium_photo-1720744786849-a7412d24ffbf?auto=format&fit=crop&w=600&q=80",
-    technologies: ["Django", "Bootstrap", "SQLite"],
+    title: "CRM in your WhatsApp",
+    description: "WhatsApp-integrated lead management system with automated follow-up scheduling and reminder notifications.",
+    image: "https://images.unsplash.com/photo-1719204718581-5c95889c8ec9?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    technologies: ["FastAPI", "OpenAI API", "WhatsApp API"],
     status: "Completed",
-    github: "https://github.com/ab007shetty/dj4e",
-    live: "https://ab007shetty.pythonanywhere.com/",
-    forks: 16,
-    stars: 26
+    github: "https://github.com/maria-mouratidi/whatsapp-crm",
+    // live: "",
+    // forks: 16,
+    // stars: 26
   },
 ];
+
 
 // ========== Statuses ==========
 const statuses = [
@@ -200,20 +201,35 @@ const MobileCard = ({ project, onPrev, onNext, isTransitioning, styles, techIcon
             <FaGithub />
             Code
           </a>
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`
-              ${styles.button} border px-3 py-2 rounded-lg
-              flex items-center gap-2 text-xs font-medium
-              transition-all duration-300 hover:scale-105
-              flex-1 justify-center
-            `}
-          >
-            <FaExternalLinkAlt />
-            Live
-          </a>
+          {project.live ? (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`
+                ${styles.button} border px-3 py-2 rounded-lg
+                flex items-center gap-2 text-xs font-medium
+                transition-all duration-300 hover:scale-105
+                flex-1 justify-center
+              `}
+            >
+              <FaExternalLinkAlt />
+              Live
+            </a>
+          ) : (
+            <button
+              disabled
+              className={`
+                bg-gray-300/20 border border-gray-400/20 px-3 py-2 rounded-lg
+                flex items-center gap-2 text-xs font-medium
+                flex-1 justify-center opacity-50 cursor-not-allowed
+                ${styles.textSecondary}
+              `}
+            >
+              <FaExternalLinkAlt />
+              Not deployed
+            </button>
+          )}
         </div>
       </div>
     </div>
@@ -342,21 +358,36 @@ if (normalizedIndex === 0) {
             <FaGithub />
             Code
           </a>
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`
-              ${styles.button} border px-3 py-2 rounded-lg
-              flex items-center gap-2 text-xs font-medium
-              transition-all duration-300 hover:scale-105
-              flex-1 justify-center
-            `}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <FaExternalLinkAlt />
-            Live
-          </a>
+          {project.live ? (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`
+                ${styles.button} border px-3 py-2 rounded-lg
+                flex items-center gap-2 text-xs font-medium
+                transition-all duration-300 hover:scale-105
+                flex-1 justify-center
+              `}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <FaExternalLinkAlt />
+              Live
+            </a>
+          ) : (
+            <button
+              disabled
+              className={`
+                bg-gray-300/20 border border-gray-400/20 px-3 py-2 rounded-lg
+                flex items-center gap-2 text-xs font-medium
+                flex-1 justify-center opacity-50 cursor-not-allowed
+                ${styles.textSecondary}
+              `}
+            >
+              <FaExternalLinkAlt />
+              Not deployed
+            </button>
+          )}
         </div>
       </div>
     </div>
@@ -445,219 +476,89 @@ const Projects = () => {
     const diffX = startXRef.current - clientX;
     const diffY = startYRef.current - clientY;
     if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY)) {
-      if (diffX > 0) nextSlide();
-      else prevSlide();
+      if (diffX > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
       isDraggingRef.current = false;
     }
   };
 
-  const handleEnd = () => { isDraggingRef.current = false; };
-
-  useEffect(() => {
-    if (isMobile) return;
-    const handleKeyDown = (e) => {
-      if (e.key === 'ArrowLeft') prevSlide();
-      if (e.key === 'ArrowRight') nextSlide();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isTransitioning, filteredProjects.length, isMobile]);
+  const handleEnd = () => {
+    if (isTransitioning) return;
+    isDraggingRef.current = false;
+  };
 
   return (
-    <div className={styles.bg + " min-h-screen relative overflow-hidden"}>
-      <div className="relative z-10 p-4 md:p-8">
-        <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className={`pt-10 text-4xl md:text-5xl font-bold ${styles.text} mb-4 flex items-center justify-center gap-4`}>
-              <FaCode className={styles.accent} />
-              My Projects
-            </h1>
-            <p className={`text-lg md:text-xl ${styles.textSecondary} max-w-3xl mx-auto`}>
-              A collection of my academic personal and freelance projects.
-            </p>
-          </div>
-          {/* Status Filter */}
-          <div className="flex flex-wrap gap-4 justify-center mb-0">
-            <span className="flex items-center gap-2">
-              <FaFilter className={`${styles.textSecondary}`} />
-              <span className={`${styles.text} font-medium`}>Filter by Status:</span>
-            </span>
+    <div className="min-h-screen py-10">
+      <div className="max-w-6xl mx-auto px-4">
+        {/* Status Filter */}
+        <div className="mb-8">
+          <div className="flex flex-wrap gap-2">
             {statuses.map((status) => (
               <button
                 key={status}
                 onClick={() => setActiveStatus(status)}
                 className={`
-                  px-4 py-2 rounded-lg border text-sm font-medium transition-all duration-300
-                  ${activeStatus === status
-                    ? styles.filterActive + " ring-2 ring-offset-2 ring-cyan-400"
-                    : `${styles.button} hover:scale-105`
-                  }
+                  ${styles.button} border px-4 py-2 rounded-lg
+                  flex items-center gap-2 text-sm font-medium
+                  transition-all duration-300
+                  flex-1 text-center
+                  ${activeStatus === status ? `${styles.filterActive} scale-105` : ''}
                 `}
               >
-                {status}
-                <span className={`ml-2 inline-block px-1.5 py-0.5 rounded-full text-xs font-bold ${
-                  activeStatus === status 
-                    ? 'bg-white/20 text-current' 
-                    : 'bg-black/10 text-current'
-                }`}>
-                  {getProjectCount(status)}
-                </span>
-                {activeStatus === status && (
-                  <span className="ml-2 inline-block text-xs font-bold text-green-600">✓</span>
+                {status} 
+                {getProjectCount(status) > 0 && (
+                  <span className="bg-gray-800 text-white rounded-full px-2 py-0.5 text-xs font-semibold">
+                    {getProjectCount(status)}
+                  </span>
                 )}
               </button>
             ))}
           </div>
-          {/* Mobile View */}
-          {isMobile ? (
-            <div className="relative mt-8">
-              <div
-                className="w-full"
-                onTouchStart={handleStart}
-                onTouchMove={handleMove}
-                onTouchEnd={handleEnd}
-                onMouseDown={handleStart}
-                onMouseMove={handleMove}
-                onMouseUp={handleEnd}
-                onMouseLeave={handleEnd}
-              >
-                {filteredProjects.length > 0 && (
-                  <MobileCard
-                    project={filteredProjects[currentIndex]}
-                    onPrev={prevSlide}
-                    onNext={nextSlide}
-                    isTransitioning={isTransitioning}
-                    styles={styles}
-                    techIcons={techIcons}
-                  />
-                )}
-              </div>
-              {/* Mobile Dots Indicator */}
-              <div className="flex justify-center mt-6 gap-2">
-                {filteredProjects.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndexState(index)}
-                    className={`
-                      w-2 h-2 rounded-full transition-all duration-300
-                      ${index === currentIndex
-                        ? `${styles.accent} w-6`
-                        : `${styles.textSecondary} opacity-50`
-                      }
-                    `}
-                  />
-                ))}
-              </div>
-            </div>
-          ) : (
-            /* Desktop View */
-            <div className="relative mt-16">
-              {/* Desktop Cards Container */}
-              <div
-                ref={containerRef}
-                className="w-[1000px] h-[540px] mx-auto relative"
-                onMouseDown={handleStart}
-                onMouseMove={handleMove}
-                onMouseUp={handleEnd}
-                onMouseLeave={handleEnd}
-              >
-                {filteredProjects.map((project, index) => (
-                  <DesktopCard
-                    key={project.id}
-                    project={project}
-                    index={index}
-                    currentIndex={currentIndex}
-                    filteredProjects={filteredProjects}
-                    styles={styles}
-                    techIcons={techIcons}
-                    goToSlide={goToSlide}
-                  />
-                ))}
-                {/* Navigation Buttons on card sides */}
-                <button
-                  onClick={prevSlide}
-                  disabled={isTransitioning}
-                  className={`
-                    absolute left-0 top-1/2 -translate-y-1/2 z-40
-                    p-4 rounded-full transition-all duration-300
-                    ${styles.button} hover:scale-110 shadow-xl
-                    ${isTransitioning ? 'opacity-50 cursor-not-allowed' : ''}
-                  `}
-                  style={{ marginLeft: '-10px' }}
-                >
-                  <FaChevronLeft className="text-xl" />
-                </button>
-                <button
-                  onClick={nextSlide}
-                  disabled={isTransitioning}
-                  className={`
-                    absolute right-0 top-1/2 -translate-y-1/2 z-40
-                    p-4 rounded-full transition-all duration-300
-                    ${styles.button} hover:scale-110 shadow-xl
-                    ${isTransitioning ? 'opacity-50 cursor-not-allowed' : ''}
-                  `}
-                  style={{ marginRight: '-10px' }}
-                >
-                  <FaChevronRight className="text-xl" />
-                </button>
-              </div>
-              {/* Desktop Dots Indicator */}
-              <div className="flex justify-center mt-8 gap-3">
-                {filteredProjects.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToSlide(index)}
-                    className={`
-                      w-3 h-3 rounded-full transition-all duration-300 hover:scale-125
-                      ${index === currentIndex
-                        ? `${styles.accent} shadow-lg`
-                        : `${styles.textSecondary} opacity-60 hover:opacity-80`
-                      }
-                    `}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-          {/* Empty State */}
-          {filteredProjects.length === 0 && (
-            <div className="text-center py-20">
-              <div className={`text-6xl ${styles.textSecondary} mb-4`}>🔍</div>
-              <h3 className={`text-2xl font-bold ${styles.text} mb-2`}>No projects found</h3>
-              <p className={`${styles.textSecondary}`}>
-                Try adjusting your filters to see more projects.
-              </p>
-            </div>
-          )}
+        </div>
+
+        {/* Projects Container */}
+        <div className="relative">
+          <div
+            ref={containerRef}
+            className="w-full flex overflow-hidden touch-manipulation"
+            onMouseDown={handleStart}
+            onTouchStart={handleStart}
+            onMouseMove={handleMove}
+            onTouchMove={handleMove}
+            onMouseUp={handleEnd}
+            onTouchEnd={handleEnd}
+            style={{ cursor: isTransitioning ? 'wait' : 'grab' }}
+          >
+            {filteredProjects.map((project, index) => (
+              isMobile ? (
+                <MobileCard
+                  key={project.id}
+                  project={project}
+                  onPrev={prevSlide}
+                  onNext={nextSlide}
+                  isTransitioning={isTransitioning}
+                  styles={styles}
+                  techIcons={techIcons}
+                />
+              ) : (
+                <DesktopCard
+                  key={project.id}
+                  project={project}
+                  index={index}
+                  currentIndex={currentIndex}
+                  filteredProjects={filteredProjects}
+                  styles={styles}
+                  techIcons={techIcons}
+                  goToSlide={goToSlide}
+                />
+              )
+            ))}
+          </div>
         </div>
       </div>
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute top-20 left-10 w-32 h-32 ${styles.accent} opacity-10 rounded-full blur-3xl animate-pulse`} />
-        <div className={`absolute bottom-20 right-10 w-24 h-24 ${styles.accent} opacity-10 rounded-full blur-2xl animate-pulse delay-1000`} />
-        <div className={`absolute top-1/2 left-1/2 w-40 h-40 ${styles.accent} opacity-5 rounded-full blur-3xl animate-pulse delay-500`} />
-      </div>
-      <style>{`
-        .line-clamp-1 {
-          display: -webkit-box;
-          -webkit-line-clamp: 1;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-        .line-clamp-2 {
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-        .touch-pan-x {
-          touch-action: pan-x;
-        }
-        .space-y-3 > :last-child {
-          margin-bottom: 0 !important;
-        }
-      `}</style>
     </div>
   );
 };
