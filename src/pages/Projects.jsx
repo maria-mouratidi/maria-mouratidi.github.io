@@ -95,7 +95,33 @@ const projects = [
     // forks: 8,
     // stars: 15
 
-  }
+  },
+  // {
+  //   id: 4,
+  //   title: "Fair airfare",
+  //   description: "An algorithm predicting dynamic pricing from airlines to help with booking.",
+  //   image: "https://images.unsplash.com/photo-1567748534085-467f8a8a475d?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //   technologies: ["Python", "Pandas"],
+  //   status: ["In Progress"],
+  //   github: "",
+  //   live: ""
+  //   // forks: 8,
+  //   // stars: 15
+
+  // },
+  //   {
+  //   id: 4,
+  //   title: "Wolf in AI clothing",
+  //   description: "AI agents that play the conversation game Werewolf (Mafia) inspired by the AIWolfDial2025 challenge.",
+  //   image: "",
+  //   technologies: ["Python", "Pandas"],
+  //   status: "In Progress",
+  //   github: "",
+  //   live: ""
+  //   // forks: 8,
+  //   // stars: 15
+
+  // }
 ];
 
 
@@ -103,7 +129,8 @@ const projects = [
 const statuses = [
   "All",
   "Technical",
-  "Research"
+  "Research",
+  //"In Progress"
 ];
 
 // ========== Responsive Helper ==========
@@ -232,7 +259,7 @@ const MobileCard = ({ project, onPrev, onNext, isTransitioning, styles, techIcon
             `}
           >
             <FaExternalLinkAlt />
-            Live
+            Demo
           </a>
         </div>
       </div>
@@ -375,7 +402,7 @@ if (normalizedIndex === 0) {
             onClick={(e) => e.stopPropagation()}
           >
             <FaExternalLinkAlt />
-            Live
+            Demo
           </a>
         </div>
       </div>

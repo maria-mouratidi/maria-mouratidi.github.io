@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import {
   FaBriefcase, FaGraduationCap, FaCode, FaTrophy, FaBuilding, FaSchool, FaUniversity,
   FaServer, FaTools, FaDatabase, FaCheckCircle, FaExternalLinkAlt,
-  FaMapMarkerAlt, FaCalendarAlt, FaReact, FaNodeJs, FaGitAlt, FaDocker, FaJira, FaBug, FaJava, FaCloud
+  FaMapMarkerAlt, FaCalendarAlt, FaReact, FaNodeJs, FaGitAlt, FaDocker, FaJira,
 } from "react-icons/fa";
 import {
-  SiPython, SiJavascript, SiC, SiCsharp, SiPhp, SiRedux, SiPostman, SiBootstrap, SiTailwindcss, SiExpress, SiMysql, SiMongodb, SiJest, SiBitbucket, SiFirebase, SiRailway, SiVercel, SiDjango, SiMicrosoftsqlserver, SiCloudera
+  SiPython, SiJavascript, SiCplusplus, SiMysql, SiMongodb, SiDjango, SiMicrosoftsqlserver
 } from "react-icons/si";
+import {DiProlog
+} from "react-icons/di";
+import {VscAzure
+} from "react-icons/vsc";
 import { FaChrome } from "react-icons/fa";
 import { useTheme } from "../ThemeContext";
 
@@ -51,45 +55,32 @@ const themeStyles = {
 };
 
 const allSkillDetails = [
-  { key: "python", name: "Python", icon: <SiPython className="text-yellow-500"/>, desc: "Programming Language", percent: 90 },
-  { key: "java", name: "Java", icon: <FaJava className="text-red-500"/>, desc: "Programming Language", percent: 85 },
-  { key: "js", name: "Javascript", icon: <SiJavascript className="text-yellow-400"/>, desc: "Programming Language", percent: 92 },
-  { key: "php", name: "PHP", icon: <SiPhp className="text-indigo-400"/>, desc: "Programming Language", percent: 80 },
+  { key: "python", name: "Python", icon: <SiPython className="text-yellow-500"/>, desc: "Programming Language", percent: 95 },
+  { key: "js", name: "Javascript", icon: <SiJavascript className="text-yellow-400"/>, desc: "Programming Language", percent: 15 },
+  { key: "c++", name: "C++", icon: <SiCplusplus className="text-blue-400"/>, desc: "Programming Language", percent: 40 },
+  { key: "prolog", name: "Prolog", icon: <DiProlog className="text-blue-400"/>, desc: "Programming Language", percent: 20 },
   { key: "sql", name: "SQL", icon: <SiMicrosoftsqlserver className="text-red-800"/>, desc: "Programming Language", percent: 75 },
-  { key: "react", name: "React.js", icon: <FaReact className="text-cyan-400"/>, desc: "Front-End Framework", percent: 88 },
-  { key: "redux", name: "Redux.js", icon: <SiRedux className="text-purple-600"/>, desc: "State Management", percent: 78 },
-  { key: "bootstrap", name: "Bootstrap", icon: <SiBootstrap className="text-purple-700"/>, desc: "CSS Framework", percent: 82 },
-  { key: "tailwind", name: "Tailwind", icon: <SiTailwindcss className="text-cyan-400"/>, desc: "CSS Framework", percent: 84 },
-  { key: "nodejs", name: "Node.js", icon: <FaNodeJs className="text-green-600"/>, desc: "Backend Runtime", percent: 85 },
-  { key: "express", name: "Express.js", icon: <SiExpress className="text-black dark:text-white"/>, desc: "Backend Framework", percent: 80 },
-  { key: "django", name: "Django", icon: <SiDjango className="text-green-900"/>, desc: "Backend Framework", percent: 75 },
-  { key: "restapi", name: "RESTful APIs", icon: <FaServer className="text-blue-400"/>, desc: "API Design", percent: 82 },
-  { key: "gcp", name: "Google Cloud Platform", icon: <FaCloud className="text-blue-400"/>, desc: "Cloud Platform", percent: 72 },
-  { key: "mongodb", name: "MongoDB", icon: <SiMongodb className="text-green-500"/>, desc: "NoSQL Database", percent: 84 },
+  { key: "azure", name: "Azure", icon: <VscAzure className="text-blue-600"/>, desc: "Cloud Platform", percent: 50 },
+  { key: "react", name: "React.js", icon: <FaReact className="text-cyan-400"/>, desc: "Front-End Framework", percent: 10 },
+  { key: "nodejs", name: "Node.js", icon: <FaNodeJs className="text-green-600"/>, desc: "Backend Runtime", percent: 30 },
+  { key: "restapi", name: "RESTful APIs", icon: <FaServer className="text-blue-400"/>, desc: "API Design", percent: 50 },
+  { key: "mongodb", name: "MongoDB", icon: <SiMongodb className="text-green-500"/>, desc: "NoSQL Database", percent: 60 },
   { key: "mysql", name: "MySQL", icon: <SiMysql className="text-blue-700"/>, desc: "RDBMS", percent: 80 },
-  { key: "firebase", name: "Firebase", icon: <SiFirebase className="text-yellow-500"/>, desc: "Cloud Database", percent: 77 },
-  { key: "cloudera", name: "Cloudera", icon: <SiCloudera className="text-yellow-900"/>, desc: "Big Data Platform", percent: 70 },
-  { key: "jest", name: "Jest", icon: <SiJest className="text-pink-600"/>, desc: "Testing", percent: 78 },
-  { key: "postman", name: "Postman", icon: <SiPostman className="text-orange-500"/>, desc: "API Testing", percent: 86 },
-  { key: "chromedevtools", name: "Chrome Dev Tools", icon: <FaChrome className="text-blue-500"/>, desc: "Debugging", percent: 85 },
-  { key: "git", name: "Git", icon: <FaGitAlt className="text-orange-700"/>, desc: "Version Control", percent: 92 },
-  { key: "bitbucket", name: "Bitbucket", icon: <SiBitbucket className="text-blue-600"/>, desc: "Version Control", percent: 72 },
-  { key: "docker", name: "Docker", icon: <FaDocker className="text-blue-500"/>, desc: "Containerization", percent: 85 },
-  { key: "railway", name: "Railway", icon: <SiRailway className="text-indigo-400"/>, desc: "Cloud Deployment", percent: 69 },
-  { key: "vercel", name: "Vercel", icon: <SiVercel className="text-black dark:text-white"/>, desc: "Cloud Deployment", percent: 72 },
+  { key: "git", name: "Git", icon: <FaGitAlt className="text-orange-700"/>, desc: "Version Control", percent: 90 },
+  { key: "docker", name: "Docker", icon: <FaDocker className="text-blue-500"/>, desc: "Containerization", percent: 30 },
   { key: "jira", name: "Jira", icon: <FaJira className="text-blue-500"/>, desc: "Project Management", percent: 78 },
   { key: "agile", name: "Agile & Scrum", icon: <FaTools className="text-green-600"/>, desc: "Methodology", percent: 80 },
 ];
 
 // GROUPS
 const skillSections = [
-  { group: "Programming Languages", icon: <FaCode className="text-yellow-600" />, keys: ["python", "C++"] }, //TODO: add C++ graphics
-  // { group: "Front-End Development", icon: <FaReact className="text-cyan-400" />, keys: ["react", "redux", "bootstrap", "tailwind"] },
-  { group: "Back-End Development", icon: <FaServer className="text-blue-500" />, keys: [ "restapi"] },
-  // { group: "Databases", icon: <FaDatabase className="text-orange-700" />, keys: ["mongodb", "mysql", "firebase", "cloudera"] },
+  { group: "Programming Languages", icon: <FaCode className="text-yellow-600" />, keys: ["python", "c++", "js", "prolog"] }, //TODO: add C++ graphics
+    { group: "Back-End Development", icon: <FaServer className="text-blue-500" />, keys: [ "restapi", "nodejs"] },
+  { group: "Front-End Development", icon: <FaReact className="text-cyan-400" />, keys: ["react"] },
+  { group: "Databases", icon: <FaDatabase className="text-orange-700" />, keys: ["mysql", "mongodb"] },
   // { group: "Testing & Debugging", icon: <FaBug className="text-red-500" />, keys: ["jest", "postman", "chromedevtools"] },
-  { group: "DevOps & Deployment", icon: <FaTools className="text-green-600" />, keys: ["git", "docker"] },
-  { group: "Project Management", icon: <FaJira className="text-blue-500" />, keys: ["jira", "agile"] }
+  { group: "DevOps & Deployment", icon: <FaTools className="text-green-600" />, keys: ["git", "azure", "docker"] },
+  { group: "Project Management", icon: <FaJira className="text-blue-500" />, keys: ["jira"] }
 ];
 
 // HIGHLIGHTS, EXPERIENCE, EDUCATION
