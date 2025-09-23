@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaAward, FaTrophy, FaTimes, FaChevronLeft, FaChevronRight,
+import { FaAward, FaBook, FaTimes, FaChevronLeft, FaChevronRight,
   FaFilter
 } from "react-icons/fa";
 import { useTheme } from "../ThemeContext";
@@ -36,171 +36,11 @@ const themeStyles = {
 const certificates = [
   {
     id: 1,
-    title: "Google IT Support",
-    organization: "Google",
-    category: "Professional",
-    skills: ["Network Protocols", "Cybersecurity", "Operating Systems"],
-    image: "/images/it-support.jpg"
-  },
-  {
-    id: 2,
-    title: "IBM Cybersecurity Analyst",
-    organization: "IBM",
-    category: "Professional",
-    skills: ["Pen testing", "forensics", "Incident Response"],
-    image: "/images/cybersecurity.png"
-  },
-  {
-    id: 3,
-    title: "Cloud Architecture with Google Cloud",
-    organization: "Google Cloud",
-    category: "Professional",
-    skills: ["Containerization", "Cloud Services", "Prompt Engineering"],
-    image: "/images/google-cloud.jpg"
-  },
-  {
-    id: 4,
-    title: "Full-Stack Web Development with React Specialization",
-    organization: "The Hong Kong University of Science and Technology",
-    category: "Specialization",
-    skills: ["React", "Node.js", "MongoDB", "Express.js", "Bootstrap"],
-    image: "/images/react.png"
-  },
-  {
-    id: 5,
-    title: "Python for Everybody",
-    organization: "University of Michigan",
-    category: "Specialization",
-    skills: ["Data Structures", "Web Scrapping", "Visualizing"],
-    image: "/images/py.png"
-  },
-  {
-    id: 6,
-    title: "Django for Everybody",
-    organization: "University of Michigan",
-    category: "Specialization",
-    skills: ["Django", "PythonAnywhere", "JSON", "SQLite"],
-    image: "/images/django.jpg"
-  },
-  {
-    id: 7,
-    title: "Web Design for Everybody",
-    organization: "University of Michigan",
-    category: "Specialization",
-    skills: ["Wireframing", "Responsive Design"],
-    image: "/images/web-design.jpg"
-  },
-  {
-    id: 8,
-    title: "Modern Big Data Analysis with SQL",
-    organization: "Cloudera",
-    category: "Specialization",
-    skills: ["Hadoop", "Hive", "Spark", "SQL"],
-    image: "/images/big-data.jpg"
-  },
-  {
-    id: 9,
-    title: "Blockchain",
-    organization: "University at Buffalo",
-    category: "Specialization",
-    skills: ["Blockchain", "Distributed Systems"],
-    image: "/images/blockchain.png"
-  },
-  {
-    id: 10,
-    title: "Narrative Economics",
-    organization: "Yale University, Stanford Online",
-    category: "Course",
-    skills: ["Socioeconomics", "Consumer Behaviour"],
-    image: "/images/economy.png"
-  },
-  {
-    id: 11,
-    title: "Machine Learning",
-    organization: "Stanford Online",
-    category: "Course",
-    skills: ["Machine Learning", "AI"],
-    image: "/images/ml.png"
-  },
-  {
-    id: 12,
-    title: "Introduction to Psychology",
-    organization: "Yale University",
-    category: "Course",
-    skills: ["Critical Thinking", "Psychology"],
-    image: "/images/psychology.jpg"
-  },
-  {
-    id: 13,
-    title: "Infosys certified Google Cloud Digital Leader",
-    organization: "Infosys",
-    category: "Infosys",
-    skills: ["Google Cloud"],
-    image: "/images/infy-gcp-leader.png"
-  },
-  {
-    id: 14,
-    title: "Infosys Certified Front End Web Developer",
-    organization: "Infosys",
-    category: "Infosys",
-    skills: ["Front End Web Development"],
-    image: "/images/infy-frontend.png"
-  },
-  {
-    id: 15,
-    title: "Infosys Certified Cloud Beginner",
-    organization: "Infosys",
-    category: "Infosys",
-    skills: ["Cloud Computing", "Cloud Fundamentals"],
-    image: "/images/infy-cloud.png"
-  },
-  {
-    id: 16,
-    title: "Hackothsav",
-    organization: "SMVITM",
-    category: "Others",
-    skills: ["MERN Stack", "Hackathon"],
-    image: "/images/hackothsav.png"
-  },
-  {
-    id: 17,
-    title: "SSLC District Topper",
-    organization: "SMVITM",
-    category: "Others",
-    skills: ["SSLC", "Topper"],
-    image: "/images/sslc.jpg"
-  },
-  {
-    id: 18,
-    title: "Entrepreneurship Awareness Camp",
-    organization: "Entrepreneurship Development Institute of India",
-    category: "Others",
-    skills: ["Entrepreneurship Awareness"],
-    image: "/images/entrepreneurship.jpg"
-  },
-  {
-    id: 19,
-    title: "Web Development Internship",
-    organization: "Inmovidu",
-    category: "Others",
-    skills: ["Web Development", "Internship"],
-    image: "/images/internship.png"
-  },
-  {
-    id: 20,
-    title: "Technical Quiz",
-    organization: "SMVITM",
-    category: "Others",
-    skills: ["Technical Quiz"],
-    image: "/images/quiz.jpg"
-  },
-  {
-    id: 21,
-    title: "Build a Face Recognition Application using Python",
-    organization: "GUVI",
-    category: "Others",
-    skills: ["Python", "Face Recognition"],
-    image: "/images/guvi.png"
+    title: "Comparing Eye-gaze and Transformer Attention Mechanisms in Reading Tasks",
+    conference: "Recenter Advanced in Natural Language Processing (RANLP) 2025",
+    link: "",
+    citation: "",
+    image: ""
   }
 ];
 
@@ -693,12 +533,12 @@ const Certifications = () => {
               whiteSpace: "normal"
             }}
           >
-            <FaTrophy className={`shrink-0 ${styles.accent}`} style={{ fontSize: "1.2em" }} />
-            <span style={{ minWidth: 0, maxWidth: "100%" }}>Certifications</span>
+            <FaBook className={`shrink-0 ${styles.accent}`} style={{ fontSize: "1.2em" }} />
+            <span style={{ minWidth: 0, maxWidth: "100%" }}>Publications</span>
           </h1>
-          <p className={`text-xl ${styles.textSecondary} max-w-3xl mx-auto`}>
+          {/* <p className={`text-xl ${styles.textSecondary} max-w-3xl mx-auto`}>
             This is Exactly how I spent my time during the Corona Pandemic.
-          </p>
+          </p> */}
         </div>
         <div className="flex flex-wrap gap-4 justify-center mb-12">
           <span className="flex items-center gap-2">

@@ -14,7 +14,7 @@ import Redirector from "./Redirector";
 // Lazy load components that aren't immediately visible
 const About = lazy(() => import("./pages/About"));
 const Projects = lazy(() => import("./pages/Projects"));
-// const Certifications = lazy(() => import("./pages/Certifications"));
+const Certifications = lazy(() => import("./pages/Certifications"));
 const Contact = lazy(() => import("./pages/Contact"));
 
 // Loading fallback component
@@ -72,7 +72,7 @@ const SECTIONS = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "projects", label: "Projects" },
-  // { id: "certifications", label: "Certifications" },
+  { id: "certifications", label: "Publications" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -107,9 +107,9 @@ function Portfolio() {
       }, 1000);
 
       // Load certifications last (likely has images)
-      // const loadCertifications = setTimeout(() => {
-      //   setLoadedSections(prev => new Set([...prev, 'certifications']));
-      // }, 1500);
+      const loadCertifications = setTimeout(() => {
+        setLoadedSections(prev => new Set([...prev, 'certifications']));
+      }, 1500);
 
       return () => {
         clearTimeout(loadAbout);
@@ -210,7 +210,7 @@ function Portfolio() {
       <Suspense fallback={<PageLoader />}>
         {id === "about" && <About />}
         {id === "projects" && <Projects />}
-        {/* {id === "certifications" && <Certifications />} */}
+        {id === "certifications" && <Certifications />}
         {id === "contact" && (
           <div className="w-full">
             <Contact />
