@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import {
-  FaGithub, FaExternalLinkAlt, FaCodeBranch, FaStar, FaChevronLeft, FaChevronRight, FaRocket, FaFilter, FaCode
+  FaGithub, FaExternalLinkAlt, FaCodeBranch, FaStar, FaChevronLeft, FaChevronRight, FaRocket, FaFilter, FaCode,
 } from "react-icons/fa";
 import {
   SiReact, SiNodedotjs, SiMongodb, SiBootstrap, SiPython, SiPhp, SiDjango, SiMysql, SiScikitlearn, SiPandas, SiOpencv, SiFirebase,
-  SiSocketdotio, SiOpenai, SiWhatsapp, SiFastapi,
+  SiSocketdotio, SiOpenai, SiWhatsapp, SiFastapi, SiCplusplus,
   SiNumpy, SiScipy
 } from "react-icons/si";
 
@@ -55,9 +55,11 @@ const techIcons = {
   networkx: (<img src="/images/networkx-logo.png" alt="networkx" />),
   SciPy: <SiScipy className="text-blue-500" />,
   NumPy: <SiNumpy className="text-blue-500" />,
+  "C++": <SiCplusplus className="text-blue-600" />,
+  FLTK: (<img src="/images/fltk-logo.png" alt="FLTK" />),
 };
 
-// ========== Projects ==========
+// ========== Projects ========== 
 const projects = [
   {
     id: 1,
@@ -67,7 +69,7 @@ const projects = [
     technologies: ["FastAPI", "OpenAI API", "WhatsApp API"],
     status: "Technical",
     github: "https://github.com/maria-mouratidi/whatsapp-crm",
-    live: "",
+    live: "https://github.com/maria-mouratidi/whatsapp-crm#readme",
     // forks: 16,
     // stars: 26
   },
@@ -96,8 +98,20 @@ const projects = [
     // stars: 15
 
   },
+{
+  id: 4,
+  title: "BipBop Breakout Game",
+  description: "Classic Breakout-style game with realistic ball physics, paddle controls and progressive brick destruction.",
+  image: "https://plus.unsplash.com/premium_photo-1731951686879-da72f23ae22d?q=80&w=715&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  technologies: ["C++", "FLTK"],
+  status: "Technical",
+  github: "https://github.com/maria-mouratidi/bipbop-game.git",
+  live: "https://github.com/maria-mouratidi/bipbop-game.git#readme"
+  // forks: 0,
+  // stars: 0
+}
   // {
-  //   id: 4,
+  //   id: ,
   //   title: "Fair airfare",
   //   description: "An algorithm predicting dynamic pricing from airlines to help with booking.",
   //   image: "https://images.unsplash.com/photo-1567748534085-467f8a8a475d?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -110,7 +124,7 @@ const projects = [
 
   // },
   //   {
-  //   id: 4,
+  //   id: ,
   //   title: "Wolf in AI clothing",
   //   description: "AI agents that play the conversation game Werewolf (Mafia) inspired by the AIWolfDial2025 challenge.",
   //   image: "",
@@ -247,20 +261,33 @@ const MobileCard = ({ project, onPrev, onNext, isTransitioning, styles, techIcon
             <FaGithub />
             Code
           </a>
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`
-              ${styles.button} border px-3 py-2 rounded-lg
-              flex items-center gap-2 text-xs font-medium
-              transition-all duration-300 hover:scale-105
-              flex-1 justify-center
-            `}
-          >
-            <FaExternalLinkAlt />
-            Demo
-          </a>
+          {project.live ? (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`
+                ${styles.button} border px-3 py-2 rounded-lg
+                flex items-center gap-2 text-xs font-medium
+                transition-all duration-300 hover:scale-105
+                flex-1 justify-center
+              `}
+            >
+              <FaExternalLinkAlt />
+              Demo
+            </a>
+          ) : (
+            <div
+              className={`
+                bg-gray-400/20 border border-gray-400/40 text-gray-500 px-3 py-2 rounded-lg
+                flex items-center gap-2 text-xs font-medium
+                flex-1 justify-center cursor-not-allowed
+              `}
+            >
+              <FaExternalLinkAlt />
+              Demo
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -389,21 +416,34 @@ if (normalizedIndex === 0) {
             <FaGithub />
             Code
           </a>
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`
-              ${styles.button} border px-3 py-2 rounded-lg
-              flex items-center gap-2 text-xs font-medium
-              transition-all duration-300 hover:scale-105
-              flex-1 justify-center
-            `}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <FaExternalLinkAlt />
-            Demo
-          </a>
+          {project.live ? (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`
+                ${styles.button} border px-3 py-2 rounded-lg
+                flex items-center gap-2 text-xs font-medium
+                transition-all duration-300 hover:scale-105
+                flex-1 justify-center
+              `}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <FaExternalLinkAlt />
+              Demo
+            </a>
+          ) : (
+            <div
+              className={`
+                bg-gray-400/20 border border-gray-400/40 text-gray-500 px-3 py-2 rounded-lg
+                flex items-center gap-2 text-xs font-medium
+                flex-1 justify-center cursor-not-allowed
+              `}
+            >
+              <FaExternalLinkAlt />
+              Demo
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -416,7 +456,7 @@ const Projects = () => {
   const styles = themeStyles[theme] || themeStyles.light;
   const isMobile = useIsMobile(768);
 
-  const [activeStatus, setActiveStatus] = useState("Completed");
+  const [activeStatus, setActiveStatus] = useState("All");
   
   const getInitialIndex = () => {
     const revelIndex = projects.findIndex(p => p.id === 11);

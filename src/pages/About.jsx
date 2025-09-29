@@ -55,9 +55,9 @@ const themeStyles = {
 };
 
 const allSkillDetails = [
-  { key: "python", name: "Python", icon: <SiPython className="text-yellow-500"/>, desc: "Programming Language", percent: 95 },
+  { key: "python", name: "Python", icon: <SiPython className="text-yellow-500"/>, desc: "Programming Language", percent: 90 },
   { key: "js", name: "Javascript", icon: <SiJavascript className="text-yellow-400"/>, desc: "Programming Language", percent: 15 },
-  { key: "c++", name: "C++", icon: <SiCplusplus className="text-blue-400"/>, desc: "Programming Language", percent: 40 },
+  { key: "c++", name: "C++", icon: <SiCplusplus className="text-blue-400"/>, desc: "Programming Language", percent: 30 },
   { key: "prolog", name: "Prolog", icon: <DiProlog className="text-blue-400"/>, desc: "Programming Language", percent: 20 },
   { key: "sql", name: "SQL", icon: <SiMicrosoftsqlserver className="text-red-800"/>, desc: "Programming Language", percent: 75 },
   { key: "azure", name: "Azure", icon: <VscAzure className="text-blue-600"/>, desc: "Cloud Platform", percent: 50 },
@@ -68,7 +68,7 @@ const allSkillDetails = [
   { key: "mysql", name: "MySQL", icon: <SiMysql className="text-blue-700"/>, desc: "RDBMS", percent: 80 },
   { key: "git", name: "Git", icon: <FaGitAlt className="text-orange-700"/>, desc: "Version Control", percent: 90 },
   { key: "docker", name: "Docker", icon: <FaDocker className="text-blue-500"/>, desc: "Containerization", percent: 30 },
-  { key: "jira", name: "Jira", icon: <FaJira className="text-blue-500"/>, desc: "Project Management", percent: 78 },
+  { key: "jira", name: "Jira", icon: <FaJira className="text-blue-500"/>, desc: "Project Management", percent: 50 },
   { key: "agile", name: "Agile & Scrum", icon: <FaTools className="text-green-600"/>, desc: "Methodology", percent: 80 },
 ];
 
@@ -76,7 +76,7 @@ const allSkillDetails = [
 const skillSections = [
   { group: "Programming Languages", icon: <FaCode className="text-yellow-600" />, keys: ["python", "c++", "js", "prolog"] }, //TODO: add C++ graphics
     { group: "Back-End Development", icon: <FaServer className="text-blue-500" />, keys: [ "restapi", "nodejs"] },
-  { group: "Front-End Development", icon: <FaReact className="text-cyan-400" />, keys: ["react"] },
+  //{ group: "Front-End Development", icon: <FaReact className="text-cyan-400" />, keys: ["react"] },
   { group: "Databases", icon: <FaDatabase className="text-orange-700" />, keys: ["mysql", "mongodb"] },
   // { group: "Testing & Debugging", icon: <FaBug className="text-red-500" />, keys: ["jest", "postman", "chromedevtools"] },
   { group: "DevOps & Deployment", icon: <FaTools className="text-green-600" />, keys: ["git", "azure", "docker"] },

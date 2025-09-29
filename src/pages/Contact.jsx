@@ -76,7 +76,7 @@ const socialLinks = [
   {
     icon: <FaLinkedin />,
     name: "LinkedIn",
-    url: "www.linkedin.com/in/maria-mouratidi",
+    url: "https://www.linkedin.com/in/maria-mouratidi",
     color: "text-blue-600",
     description: "Let's connect"
   },

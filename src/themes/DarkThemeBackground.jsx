@@ -266,19 +266,6 @@ const DarkThemeBackground = () => {
           pointerEvents: "none",
         }}
       />
-      {/* Moon */}
-      <div
-        style={{
-          position: "absolute",
-          top: 32,
-          right: 50,
-          zIndex: 10,
-          pointerEvents: "none",
-        }}
-      >
-        <MoonSVG />
-      </div>
-      <MoonRay />
       <MountainSilhouette />
       <CometStreaks />
     </div>
