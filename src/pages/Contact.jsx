@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import {
-  FaEnvelope, FaPhone, FaMapMarkerAlt, FaRocket, FaLightbulb, FaHeart, FaReact,
-  FaGithub, FaLinkedin, FaInstagram
+  FaRegEnvelope, FaLocationArrow, FaHeart, FaReact,
+   FaLinkedin,
 } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { SiGooglescholar, SiQwiklabs } from "react-icons/si";
+import { MdEmail } from "react-icons/md";
+import { IoCall } from "react-icons/io5";
+import { SiGithub } from "react-icons/si";
 import { useTheme } from "../ThemeContext";
 
 // =================== Theme Styles ===================
@@ -43,21 +44,21 @@ const emailDomains = [
 // Update the contactInfo array to remove direct values
 const contactInfo = [
   {
-    icon: <FaEnvelope />,
+    icon: <MdEmail />,
     name: "Email",
     url: "mailto:mouratidi.m@gmail.com",
     color: "text-blue-500",
     description: "I prefer email :)"
   },
   {
-    icon: <FaPhone />,
+    icon: <IoCall />,
     name: "Phone",
     url: "tel:+31653490108",
     color: "text-green-500",
     description: "Call or text"
   },
   {
-    icon: <FaMapMarkerAlt />,
+    icon: <FaLocationArrow />,
     name: "Location",
     url: "https://maps.google.com/?q=Utrecht,Netherlands",
     color: "text-red-500",
@@ -67,7 +68,7 @@ const contactInfo = [
 
 const socialLinks = [
   {
-    icon: <FaGithub />,
+    icon: <SiGithub />,
     name: "GitHub",
     url: "https://github.com/maria-mouratidi",
     color: "text-gray-800 dark:text-gray-200",

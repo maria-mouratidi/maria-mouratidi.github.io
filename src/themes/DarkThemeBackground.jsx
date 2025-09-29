@@ -20,55 +20,6 @@ function drawStars(ctx, width, height, starCount = 80) {
   ctx.globalAlpha = 1;
   ctx.shadowBlur = 0;
 }
-
-// --- Moon SVG ---
-function MoonSVG({ style }) {
-  return (
-    <svg width="180" height="180" style={style} viewBox="0 0 180 180" fill="none">
-      <defs>
-        <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#f7f9fa" stopOpacity="1" />
-          <stop offset="55%" stopColor="#e3eaf4" stopOpacity="0.7" />
-          <stop offset="100%" stopColor="#b7c2d8" stopOpacity="0.2" />
-        </radialGradient>
-        <filter id="moonblur" x="-20" y="-20" width="220" height="220">
-          <feGaussianBlur stdDeviation="12" />
-        </filter>
-      </defs>
-      <circle cx="90" cy="70" r="66" fill="url(#moonGlow)" filter="url(#moonblur)" />
-      <circle cx="90" cy="70" r="58" fill="#f9fafc" stroke="#e3eaf4" strokeWidth="2" />
-      <ellipse cx="110" cy="65" rx="10" ry="4.5" fill="#e6e8ed" opacity="0.18"/>
-      <ellipse cx="70" cy="82" rx="5.5" ry="2.5" fill="#e6e8ed" opacity="0.11"/>
-      <ellipse cx="105" cy="85" rx="3.5" ry="1.1" fill="#e6e8ed" opacity="0.12"/>
-      <ellipse cx="80" cy="62" rx="2.8" ry="1.3" fill="#c8cdd8" opacity="0.09"/>
-      <ellipse cx="95" cy="60" rx="1.7" ry="1.2" fill="#b0bed7" opacity="0.12"/>
-    </svg>
-  );
-}
-
-// --- Moon Ray ---
-function MoonRay() {
-  return (
-    <div
-      style={{
-        position: "absolute",
-        left: "50%",
-        top: "58%",
-        width: "120vw",
-        height: "140px",
-        background:
-          "linear-gradient(94deg, rgba(200,220,255,0.12) 0%, rgba(255,255,255,0.24) 58%, rgba(200,220,255,0.10) 100%)",
-        filter: "blur(22px)",
-        borderRadius: "70px",
-        transform: "translate(-50%, -50%) rotate(-13deg)",
-        zIndex: 3,
-        pointerEvents: "none",
-        opacity: 0.9,
-      }}
-    />
-  );
-}
-
 // --- Mountain Silhouette (surface) ---
 function MountainSilhouette({ width = 1920, height = 120 }) {
   return (

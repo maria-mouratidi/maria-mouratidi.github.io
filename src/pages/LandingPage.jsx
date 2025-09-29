@@ -8,30 +8,30 @@ const images = [
 ];
 
 const accentsMap = {
-  lavender: {
-    highlight: "text-[#38487c]", // New blue color
-    secondary: "text-gray-700",
-    text: "text-gray-600",
-    glassBackground: "bg-[#38487c]/[0.08]", // New blue color
-    glassBorder: "border-[#38487c]/[0.15]", // New blue color
-    buttonPrimary: "bg-[#38487c] hover:bg-[#4a5a8e] text-white border-none", // Button with hover effect
-    buttonSecondary: "bg-white/90 text-[#38487c] hover:bg-[#eef0f6] border-none", // Secondary button
-    imageBorder: "border-[#38487c]/[0.2]", // Image border
-    shadowColor: "rgba(56, 72, 124, 0.1)", // Shadow with new blue RGB
-    nameColor: "text-[#38487c]", // Name color
+  light: {
+    highlight: "text-[#d97706]", // Lighter amber for better readability
+    secondary: "text-amber-700", // Lighter than amber-800
+    text: "text-amber-800", // Lighter than amber-900
+    glassBackground: "bg-amber-50/50", // Very light amber background
+    glassBorder: "border-amber-300/40", // Softer border
+    buttonPrimary: "bg-amber-500 hover:bg-amber-600 text-white border-none", // Lighter amber button
+    buttonSecondary: "bg-white/95 text-amber-700 hover:bg-amber-50 border-amber-200", // Lighter text
+    imageBorder: "border-amber-300/25", // Softer image border
+    shadowColor: "rgba(217, 119, 6, 0.12)", // Lighter shadow
+    nameColor: "text-amber-600", // Lighter amber for name
     backdropBlur: "backdrop-blur-[20px]",
   },
   dark: {
-    highlight: "text-[#6983c5]", // Lighter blue for dark theme
+    highlight: "text-[#8ba3d4]", // Lighter, softer blue
     secondary: "text-white/80",
     text: "text-white/90",
     glassBackground: "bg-[#1a1f2e]/[0.75]", // Dark blue background
-    glassBorder: "border-[#38487c]/[0.3]",
-    buttonPrimary: "bg-[#38487c]/90 hover:bg-[#4a5a8e] text-white border-none",
-    buttonSecondary: "bg-[#202942]/90 text-[#6983c5] hover:bg-[#2a365a] border-[#38487c]/30",
-    imageBorder: "border-[#38487c]/[0.3]",
-    shadowColor: "rgba(56, 72, 124, 0.2)",
-    nameColor: "text-[#6983c5]",
+    glassBorder: "border-[#5a6c9e]/[0.25]", // Lighter border
+    buttonPrimary: "bg-[#5a6c9e]/80 hover:bg-[#6b7db0] text-white border-none", // Lighter button
+    buttonSecondary: "bg-[#202942]/90 text-[#8ba3d4] hover:bg-[#2a365a] border-[#5a6c9e]/25", // Lighter text and border
+    imageBorder: "border-[#5a6c9e]/[0.25]", // Lighter image border
+    shadowColor: "rgba(90, 108, 158, 0.15)", // Lighter shadow
+    nameColor: "text-[#8ba3d4]", // Lighter blue for name
     backdropBlur: "backdrop-blur-[20px]",
   }
 };
@@ -125,7 +125,7 @@ const TypewriterText = React.memo(({ currentText, accents }) => (
 // Main component
 function LandingPage() {
   const { theme } = useTheme();
-  const accents = useMemo(() => accentsMap[theme] || accentsMap.lavender, [theme]);
+  const accents = useMemo(() => accentsMap[theme] );
 
   const [isLoaded, setIsLoaded] = useState(false);
 
