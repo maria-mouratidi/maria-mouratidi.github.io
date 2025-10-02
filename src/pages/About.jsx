@@ -102,28 +102,26 @@ const experienceGroups = [
         location: "Rotterdam, Netherlands",
         period: "12/2023 – Present",
         description: [
-          "Built end-to-end LLM-powered automation agents for business workflow processing, including CRM systems and invoice processing solutions",
-          "Developed intelligent document processing pipelines that extract, transform, and restructure data from emails, files and other unstructured formats",
-          "Integrated multi-platform connectors including WhatsApp Business API, Microsoft Office, SharePoint, for seamless data flow",
-          "Designed and implemented behavior tree architectures for complex agent decision-making and workflow orchestration",
-          "Created custom evaluation frameworks with ground truth validation to measure extraction accuracy and system performance"
+          "Built LLM-powered agents for business workflow processing, including a CRM and invoice processing",
+          "Developed document processing pipelines that extract, transform, and restructure data from various file formats",
+          "Integrated multi-platform connectors into the company's platform for seamless data flow",
+          "Designed and implemented behavior tree architectures for agent workflows",
+          "Created custom evaluations with ground truth svalidation to measure extraction accuracy and system performance"
         ],
         skills: [
           "Python",
-          "FastAPI",
+          "Bash",
           "Azure",
           "OpenAI API",
+          "FastAPI",
           "LangChain",
           "MySQL",
-          "MongoDB",,  
           "WhatsApp Business API",
           "Microsoft APIs",
           "HubSpot API",
           "Docker",
-          "Jira",
-          "WSL",
-          "Behavior Trees",
-          "Ground Truth Validation"
+          "Jira"
+
         ]
       }
     ]
@@ -354,7 +352,7 @@ export default function About() {
           About <span className={styles.accent}>Me</span>
         </h1>
         <p className={`text-lg md:text-xl ${styles.textSecondary} max-w-3xl mx-auto leading-relaxed`}>
-          AI Researcher and Engineer, focused on Natural Language Processing.
+          Interested in how humans and LMs process language, reason, and make decisions. My interests include Natural Language Understanding, LLMs and foundation models, and human-AI collaboration.
         </p>
       </div>
       {/* Main Tabs */}
@@ -491,7 +489,7 @@ export default function About() {
                 className={`flex-1 min-w-[200px] mb-6 md:mb-0 p-4 md:p-6 rounded-2xl border ${styles.cardBg} ${styles.cardHover} ${styles.glow} shadow-lg flex flex-col gap-3 md:gap-4 items-center animate-slideup`}
                 style={{ animationDelay: `${idx * 0.16}s` }}
               >
-                <div className="mb-2 flex items-center gap-2">
+                <div className="mb-2 flex items-start gap-2">
                   {edu.icon}
                   <span className={edulabelStyle}>{edu.label}</span>
                 </div>

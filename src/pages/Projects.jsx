@@ -5,7 +5,7 @@ import {
 import {
   SiReact, SiNodedotjs, SiMongodb, SiBootstrap, SiPython, SiPhp, SiDjango, SiMysql, SiScikitlearn, SiPandas, SiOpencv, SiFirebase,
   SiSocketdotio, SiOpenai, SiWhatsapp, SiFastapi, SiCplusplus,
-  SiNumpy, SiScipy
+  SiNumpy, SiScipy, SiArduino
 } from "react-icons/si";
 
 import { useTheme } from "../ThemeContext";
@@ -57,12 +57,15 @@ const techIcons = {
   NumPy: <SiNumpy className="text-blue-500" />,
   "C++": <SiCplusplus className="text-blue-600" />,
   FLTK: (<img src="/images/fltk-logo.png" alt="FLTK" />),
+  Arduino: <SiArduino className="text-blue-400" />,
+  R: (<img src="/images/r-logo.png" alt="R" />),
+  NetLogo: (<img src="/images/netlogo.png" alt="NetLogo" />),
 };
 
 // ========== Projects ========== 
 const projects = [
   {
-    id: 1,
+    id: 2,
     title: "CRM in your WhatsApp",
     description: "WhatsApp-integrated lead management system with automated follow-up scheduling and reminder notifications.",
     image: "https://images.unsplash.com/photo-1719204718581-5c95889c8ec9?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -74,7 +77,7 @@ const projects = [
     // stars: 26
   },
   {
-    id: 2, 
+    id: 8, 
     title: "Twitter Opinion Dynamics",
     description: "Cognitive maps of twitter opinion groups and modeling their presence dynamics",
     image: "https://plus.unsplash.com/premium_photo-1684225764726-44b41eabc363?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -86,7 +89,7 @@ const projects = [
     // stars: 26
   },
   {
-    id: 3,
+    id: 6,
     title: "EEG analysis in syntactic processing",
     description: "EEG time-frequency analysis of syntactic processing in monolingual vs bilingual populations.",
     image: "https://images.unsplash.com/photo-1617994452722-4145e196248b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -99,7 +102,7 @@ const projects = [
 
   },
 {
-  id: 4,
+  id: 5,
   title: "BipBop Breakout Game",
   description: "Classic Breakout-style game with realistic ball physics, paddle controls and progressive brick destruction.",
   image: "https://plus.unsplash.com/premium_photo-1687980926467-d59979447f76?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -107,6 +110,55 @@ const projects = [
   status: "Technical",
   github: "https://github.com/maria-mouratidi/bipbop-game.git",
   live: "https://github.com/maria-mouratidi/bipbop-game.git#readme"
+  // forks: 0,
+  // stars: 0
+},
+{
+  id: 7,
+  title: "Marco Polo Robot",
+  description: "Arduino-based autonomous robot that plays Marco Polo using dual sound sensors for directional audio detection, ultrasonic obstacle avoidance, and interrupt-driven responses for real-time interaction.",
+  image: "https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  technologies: ["Arduino", "C++"],
+  status: "Technical",
+  github: "https://github.com/maria-mouratidi/marco-polo.git",
+  live: ""
+  // forks: 0,
+  // stars: 0
+},
+{
+  id: 1,
+  title: "Spell Wizard",
+  description: "Spell correction using edit distance, frequency analysis, and n-gram language model perplexity for context-aware text correction.",
+  image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=773&auto=format&fit=crop&ixlib=rb-4.0.1&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  technologies: ["Python", "NLTK"],
+  status: "Technical",
+  github: "https://github.com/maria-mouratidi/spellchecker.git",
+  live: "https://github.com/maria-mouratidi/spellchecker/blob/main/examples/demo.ipynb"
+  // forks: 0,
+  // stars: 0
+},
+{
+  id: 3,
+  title: "Judge a book by its cover?",
+  description: "Multi-modal ML for book classification using text, numerical and image data.",
+  image: "https://images.unsplash.com/photo-1755541608494-5c02cf56e1f4?q=80&w=657&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  technologies: ["Python", "Scikit-learn", "Pandas"],
+  status: "Research",
+  github: "https://github.com/maria-mouratidi/book-classification.git",
+  live: ""
+  // forks: 0,
+  // stars: 0
+},
+{
+  id: 4,
+  title: "Social Media Censorship and Rebellion Simulation",
+  description: "Multi-agent simulation on how social media censorship affects rebellion outbreaks, extending Epstein's classic model.",
+ //image: "images/network.png",
+  image: "https://plus.unsplash.com/premium_photo-1677997799184-da1ce07cf70f?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  technologies: ["NetLogo", "R"],
+  status: "Research",
+  github: "https://github.com/maria-mouratidi/rebellion-simulation.git",
+  live: "https://github.com/maria-mouratidi/rebellion-simulation.git#readme"
   // forks: 0,
   // stars: 0
 }

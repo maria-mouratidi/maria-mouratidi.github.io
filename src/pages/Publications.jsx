@@ -39,11 +39,19 @@ const publications = [
     place: "Varna, Bulgaria",
     year: "2025",
     authors: "Maria Mouratidi, Massimo Poesio",
-    abstract: "",
+    abstract: `As transformers become increasingly prevalent in NLP research, evaluating their cognitive alignment with human language processing has become essential for validating them as
+                models of human language. This study compares eye-gaze patterns in human reading with
+                transformer attention using different attention
+                representations (raw attention, attention flow,
+                gradient-based saliency). We employ both statistical correlation analysis and predictive modeling using PCA-reduced representations of
+                eye-tracking features across two reading tasks.
+                The findings reveal lower correlations and predictive capacity for the decoder model compared to the encoder model, with implications
+                for the gap between behavioral performance
+                and cognitive plausibility of different transformer designs.`,
     link: "",
     type: "Conference Paper",
     status: "Accepted",
-    image: ""
+    image: "public/images/attn.png"
   },
   // Add more publications here
 ];

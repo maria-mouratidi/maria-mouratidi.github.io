@@ -9,7 +9,7 @@ const sectionIcons = {
   about: <FaUserTie />,
   skills: <GiSkills />,
   experience: <FaUserTie />,
-  certifications: <FaAward />,
+  publications: <FaAward />,
   projects: <FaProjectDiagram />,
   contact: <FaEnvelope />,
 };

@@ -138,12 +138,6 @@ export default function Contact() {
 
       {/* Combined Contact Information & Social Links in one grid */}
       <div className="mb-16">
-        {/* <div className="text-center mb-8">
-          <h2 className={`text-3xl font-bold ${styles.text} mb-4 flex items-center justify-center gap-3`}>
-            <FaRocket className={`${styles.accent} mr-2`} />
-            Connect With Me
-          </h2>
-        </div> */}
         
         {/* Centered container for all links */}
         <div className="flex justify-center">
@@ -162,8 +156,19 @@ export default function Contact() {
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className={`text-sm ${styles.textSecondary} text-center md:text-left break-words w-full`}>
                 <p className="flex items-center justify-center md:justify-start gap-2 flex-wrap break-all w-full">
-                  © {currentYear} Maria Mouratidi
+                  {currentYear} Maria Mouratidi
                   <FaHeart className={`${styles.accent} animate-pulse`} />
+                </p>
+                <p className="text-xs mt-1 opacity-60">
+                  Design adapted from{" "}
+                  <a 
+                    href="https://abshetty.in/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={`${styles.accent} hover:underline`}
+                  >
+                    A.B. Shetty
+                  </a>
                 </p>
               </div>
               <div className="flex items-center gap-2 text-sm whitespace-nowrap">

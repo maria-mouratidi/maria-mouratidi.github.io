@@ -14,7 +14,7 @@ import Redirector from "./Redirector";
 // Lazy load components that aren't immediately visible
 const About = lazy(() => import("./pages/About"));
 const Projects = lazy(() => import("./pages/Projects"));
-const Certifications = lazy(() => import("./pages/Certifications"));
+const Publications = lazy(() => import("./pages/Publications"));
 const Contact = lazy(() => import("./pages/Contact"));
 
 // Loading fallback component
@@ -72,7 +72,7 @@ const SECTIONS = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "projects", label: "Projects" },
-  { id: "certifications", label: "Publications" },
+  { id: "publications", label: "Publications" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -106,16 +106,16 @@ function Portfolio() {
         setLoadedSections(prev => new Set([...prev, 'contact']));
       }, 1000);
 
-      // Load certifications last (likely has images)
-      const loadCertifications = setTimeout(() => {
-        setLoadedSections(prev => new Set([...prev, 'certifications']));
+      // Load publications last (likely has images)
+      const loadPublications = setTimeout(() => {
+        setLoadedSections(prev => new Set([...prev, 'publications']));
       }, 1500);
 
       return () => {
         clearTimeout(loadAbout);
         clearTimeout(loadProjects);
         clearTimeout(loadContact);
-        clearTimeout(loadCertifications);
+        clearTimeout(loadPublications);
       };
     }
   }, [introDone]);
@@ -210,7 +210,7 @@ function Portfolio() {
       <Suspense fallback={<PageLoader />}>
         {id === "about" && <About />}
         {id === "projects" && <Projects />}
-        {id === "certifications" && <Certifications />}
+        {id === "publications" && <Publications />}
         {id === "contact" && (
           <div className="w-full">
             <Contact />
