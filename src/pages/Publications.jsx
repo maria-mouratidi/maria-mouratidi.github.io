@@ -51,7 +51,7 @@ const publications = [
     link: "",
     type: "Conference Paper",
     status: "Accepted",
-    image: "public/images/attn.png"
+    image: "images/attn.png"
   },
   // Add more publications here
 ];
