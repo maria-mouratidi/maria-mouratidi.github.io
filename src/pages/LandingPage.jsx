@@ -3,8 +3,6 @@ import { useTheme } from "../ThemeContext";
 
 const images = [
   "/images/profile0.png",
-  "/images/profile0.png",
-  "/images/profile0.png",
 ];
 
 const accentsMap = {
