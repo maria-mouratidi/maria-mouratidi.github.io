@@ -5,7 +5,7 @@ import {
 import {
   SiReact, SiNodedotjs, SiMongodb, SiBootstrap, SiPython, SiPhp, SiDjango, SiMysql, SiScikitlearn, SiPandas, SiOpencv, SiFirebase,
   SiSocketdotio, SiOpenai, SiWhatsapp, SiFastapi, SiCplusplus, SiPytorch,
-  SiNumpy, SiScipy, SiArduino
+  SiNumpy, SiScipy, SiArduino, SiTensorflow
 } from "react-icons/si";
 
 import { useTheme } from "../ThemeContext";
@@ -44,7 +44,7 @@ const techIcons = {
   "Node.js": <SiNodedotjs className="text-green-600" />,
   MongoDB: <SiMongodb className="text-green-500" />,
   Python: <SiPython className="text-yellow-500" />,
-  "Scikit-learn": <SiScikitlearn className="text-yellow-600" />,
+  "Scikit-learn": (<img src="/images/scikit-learn-logo.png" alt="Scikit-learn" />),
   Pandas: <SiPandas className="text-black" />,
   MySQL: <SiMysql className="text-blue-700" />,
   "OpenAI API": <SiOpenai className="text-black-500" />,
@@ -61,6 +61,10 @@ const techIcons = {
   R: (<img src="/images/r-logo.png" alt="R" />),
   NetLogo: (<img src="/images/netlogo.png" alt="NetLogo" />),
   PyTorch: <SiPytorch className="text-orange-600" />,
+  "HuggingFace": (<img src="/images/huggingface-logo.png" alt="HuggingFace" />),
+  TensorFlow: <SiTensorflow className="text-orange-600" />,
+  OWL: (<img src="/images/owl-logo.png" alt="OWL" />),
+  SPARQL: (<img src="/images/sparql-logo.png" alt="SPARQL" />),
 };
 
 // ========== Projects ========== 
@@ -84,7 +88,7 @@ const projects = [
     image: "https://images.unsplash.com/photo-1755541608494-5c02cf56e1f4?q=80&w=657&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     image: "https://images.unsplash.com/photo-1713124893221-59a4133cf6ed?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     technologies: ["Python", "Scikit-learn", "Pandas"],
-    status: "Research",
+    status: "Technical",
     github: "https://github.com/maria-mouratidi/book-classification.git",
     live: ""
     // forks: 0,
@@ -96,12 +100,22 @@ const projects = [
     description: "Spoken language classification CNN model of 6 European languages.",
     image: "https://images.unsplash.com/photo-1579010269379-6168cf383a68?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     technologies: ["PyTorch", "NumPy"],
-    status: "Research",
+    status: "Technical",
     github: "https://github.com/maria-mouratidi/spoken-lang-detect.git",
     live: ""
   },
   {
   id: 5,
+  title: "Fact-Checking Agent",
+  description: "Intelligent agent that fact-checks statements using ontology reasoning and LLMs with trust-based ranking.",
+  image: "https://images.unsplash.com/photo-1516382799247-87df95d790b7?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  technologies: [ "NLTK", "OWL", "SPARQL"],
+  status: "Technical",
+  github: "https://github.com/maria-mouratidi/factchecking-agent.git",
+  live: ""
+},
+  {
+  id: 6,
   title: "Social Media Censorship and Rebellion Simulation",
   description: "Multi-agent simulation on how social media censorship affects rebellion outbreaks, extending Epstein's classic model.",
  //image: "images/network.png",
@@ -114,7 +128,7 @@ const projects = [
   // stars: 0
 },
 {
-  id: 6,
+  id: 7,
   title: "BipBop Breakout Game",
   description: "Classic Breakout-style game with realistic ball physics, paddle controls and progressive brick destruction.",
   image: "https://plus.unsplash.com/premium_photo-1687980926467-d59979447f76?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -126,7 +140,7 @@ const projects = [
   // stars: 0
 },
 {
-  id: 7,
+  id: 8,
   title: "Marco Polo Robot",
   description: "Arduino-based autonomous robot that plays Marco Polo using dual sound sensors for directional audio detection, ultrasonic obstacle avoidance, and interrupt-driven responses for real-time interaction.",
   image: "https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -138,7 +152,7 @@ const projects = [
   // stars: 0
 },
   {
-    id: 9, 
+    id: 9,
     title: "Twitter Opinion Dynamics",
     description: "Cognitive maps of twitter opinion groups and modeling their presence dynamics",
     image: "https://plus.unsplash.com/premium_photo-1684225764726-44b41eabc363?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -150,19 +164,31 @@ const projects = [
     // stars: 26
   },
   {
-  id: 8,
-  title: "Spell Wizard",
-  description: "Spell correction using edit distance, frequency analysis, and n-gram language model perplexity for context-aware text correction.",
-  image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=773&auto=format&fit=crop&ixlib=rb-4.0.1&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  technologies: ["Python", "NLTK"],
-  status: "Technical",
-  github: "https://github.com/maria-mouratidi/spellchecker.git",
-  live: "https://github.com/maria-mouratidi/spellchecker/blob/main/examples/demo.ipynb"
+  id: 10,
+  title: "Restaurant Recommendation Dialogue System",
+  description: "AI-powered dialogue system investigating choice variety effects on user satisfaction in restaurant recommendations.",
+  image: "https://plus.unsplash.com/premium_photo-1726729343701-00ed5b8148b1?q=80&w=725&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  technologies: ["TensorFlow", "Scikit-learn", "Word2Vec"],
+  status: "Research",
+  github: "https://github.com/maria-mouratidi/restaurant-rec.git",
+  live: ""
   // forks: 0,
   // stars: 0
 },
   {
-    id: 9,
+  id: 11,
+  title: "GPT-2 Fine-tuning",
+  description: "Fine-tuning on human next-word prediction to better approximate human language prediction patterns.",
+  image: "https://plus.unsplash.com/premium_photo-1727674259884-98d2c054b217?q=80&w=1112&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  technologies: ["PyTorch", "HuggingFace"],
+  status: "Research",
+  github: "https://github.com/maria-mouratidi/cloze-finetuning.git",
+  live: ""
+  // forks: 0,
+  // stars: 0
+},
+  {
+    id: 12,
     title: "EEG analysis in syntactic processing",
     description: "EEG time-frequency analysis of syntactic processing in monolingual vs bilingual populations.",
     image: "https://images.unsplash.com/photo-1617994452722-4145e196248b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -175,6 +201,18 @@ const projects = [
     // stars: 15
 
   },
+  {
+  id: 13,
+  title: "Spell Wizard",
+  description: "Spell correction using edit distance, frequency analysis, and n-gram language model perplexity for context-aware text correction.",
+  image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=773&auto=format&fit=crop&ixlib=rb-4.0.1&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  technologies: ["Python", "NLTK"],
+  status: "Technical",
+  github: "https://github.com/maria-mouratidi/spellchecker.git",
+  live: "https://github.com/maria-mouratidi/spellchecker/blob/main/examples/demo.ipynb"
+  // forks: 0,
+  // stars: 0
+},
   // {
   //   id: ,
   //   title: "Fair airfare",
@@ -524,7 +562,7 @@ const Projects = () => {
   const [activeStatus, setActiveStatus] = useState("All");
   
   const getInitialIndex = () => {
-    const revelIndex = projects.findIndex(p => p.id === 11);
+    const revelIndex = projects.findIndex(p => p.id === 1);
     return revelIndex === -1 ? 0 : revelIndex;
   };
 
@@ -544,7 +582,7 @@ const Projects = () => {
   };
   useEffect(() => {
     let newIndex = 0;
-    const revelIdx = filteredProjects.findIndex(p => p.id === 11);
+    const revelIdx = filteredProjects.findIndex(p => p.id === 1);
     if (revelIdx !== -1) {
       newIndex = revelIdx;
     }
