@@ -208,10 +208,10 @@ const educationGroups = [
 // ========== COMPONENTS ==========
 function MainTabBar({ activeTab, setActiveTab, styles }) {
   const tabs = [
-    { id: "skills", label: "Skills", icon: <FaCode className="text-blue-500" /> },
-    // { id: "highlights", label: "Highlights", icon: <FaTrophy className="text-yellow-500" /> },
+    { id: "education", label: "Education", icon: <FaGraduationCap className="text-green-500" /> },
     { id: "experience", label: "Experience", icon: <FaBriefcase className="text-purple-600" /> },
-    { id: "education", label: "Education", icon: <FaGraduationCap className="text-green-500" /> }
+    { id: "skills", label: "Skills", icon: <FaCode className="text-blue-500" /> },
+    // { id: "highlights", label: "Highlights", icon: <FaTrophy className="text-yellow-500" /> }
   ];
   return (
     <div className="grid grid-cols-4 md:flex md:flex-row items-center justify-center mb-8 md:mb-12 gap-2 md:gap-0">
@@ -332,7 +332,7 @@ function SkillCard({ skill, styles, isMobile = false }) {
 export default function About() {
   const { theme } = useTheme();
   const styles = themeStyles[theme] || themeStyles.icy;
-  const [activeTab, setActiveTab] = useState("skills");
+  const [activeTab, setActiveTab] = useState("education");
   const [skillsTab, setSkillsTab] = useState(0);
   const [expTab, setExpTab] = useState(0);
   const [eduTab, setEduTab] = useState(0);
@@ -358,76 +358,43 @@ export default function About() {
       {/* Main Tabs */}
       <MainTabBar activeTab={activeTab} setActiveTab={setActiveTab} styles={styles} />
       <div className="min-h-[400px] md:min-h-[600px] transition-all duration-500">
-        {/* Skills */}
-        {activeTab === "skills" && (
-          <div className="flex flex-col md:flex-row gap-6 md:gap-10 animate-fadein">
-            <SideTabBar
-              groups={skillSections}
-              activeIndex={skillsTab}
-              setActiveIndex={setSkillsTab}
-              iconMap={skillGroupIcons}
-            />
-            <div className="flex-1 transition-all duration-500">
-              <div className="mb-4 md:mb-6 flex items-center gap-2">
-                {skillSections[skillsTab].icon}
-                <h2 className={`text-lg md:text-2xl font-bold ${styles.text} mb-3`}>
-                  {skillSections[skillsTab].group}
-                </h2>
-              </div>
-              {/* Mobile Grid - 4 columns */}
-              <div className="grid grid-cols-4 gap-3 md:hidden">
-                {skillSections[skillsTab].keys.map((key) => {
-                  const skill = allSkillDetails.find(s => s.key === key);
-                  if (!skill) return null;
-                  return (
-                    <SkillCard key={key} skill={skill} styles={styles} isMobile={true} />
-                  );
-                })}
-              </div>
-              {/* Desktop Grid - 2 columns */}
-              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-2 gap-5">
-                {skillSections[skillsTab].keys.map((key) => {
-                  const skill = allSkillDetails.find(s => s.key === key);
-                  if (!skill) return null;
-                  return (
-                    <SkillCard key={key} skill={skill} styles={styles} isMobile={false} />
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        )}
-        {/* Highlights */}
-        {activeTab === "highlights" && (
-          <div className="w-full transition-all duration-500 animate-fadein">
-            <div className={`w-full mx-auto ${styles.cardBg} ${styles.cardHover} border rounded-2xl shadow-xl p-4 md:p-7 ${styles.glow} transition-all duration-500`}>
-              <div className="flex items-center mb-4 md:mb-6 gap-3">
-                <FaTrophy className={`text-2xl md:text-3xl ${styles.accent}`} />
-                <h2 className={`text-2xl md:text-3xl font-bold ${styles.text}`}>Highlights</h2>
-              </div>
-              <ul className="flex flex-col gap-4 md:gap-6 w-full">
-                {highlights.map((ach, i) => (
-                  <li key={i} className="flex gap-3 md:gap-4 items-start animate-slideup" style={{ animationDelay: `${i * 0.11}s` }}>
-                    <span className="text-xl md:text-2xl mt-1 leading-none select-none">{ach.emoji}</span>
-                    <div className="flex flex-col w-full">
-                      <div className="flex items-center gap-2 text-sm md:text-lg font-medium">
-                        <span className={`${styles.text}`}>{ach.text}</span>
-                        {ach.link &&
-                          <a
-                            href={ach.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`ml-1 ${styles.accent} hover:underline inline-flex items-center`}
-                          >
-                            <FaExternalLinkAlt className="text-xs md:text-sm" />
-                          </a>
-                        }
-                      </div>
+        {/* Education */}
+        {activeTab === "education" && (
+          <div className="flex flex-col md:flex-row gap-4 md:gap-7 items-stretch animate-fadein">
+            {educationGroups.map((edu, idx) => (
+              <div
+                key={edu.label}
+                className={`flex-1 min-w-[200px] mb-6 md:mb-0 p-4 md:p-6 rounded-2xl border ${styles.cardBg} ${styles.cardHover} ${styles.glow} shadow-lg flex flex-col gap-3 md:gap-4 items-center animate-slideup`}
+                style={{ animationDelay: `${idx * 0.16}s` }}
+              >
+                <div className="mb-2 flex items-start gap-2">
+                  {edu.icon}
+                  <span className={edulabelStyle}>{edu.label}</span>
+                </div>
+                {edu.entries.map((entry, idy) => (
+                  <div key={idy} className="flex flex-col items-center text-center">
+                    <div className="text-base md:text-lg font-bold mb-1 flex items-center gap-2">
+                      <FaGraduationCap className="text-cyan-500" />
+                      {entry.degree}
                     </div>
-                  </li>
+                    <div className={`text-sm md:text-base font-semibold ${styles.accent}`}>{entry.institution}</div>
+                    <div className="flex flex-wrap gap-2 md:gap-3 justify-center text-xs md:text-sm items-center my-2">
+                      <span className="flex items-center gap-1 text-gray-500 dark:text-gray-400">
+                        <FaCalendarAlt className="text-xs" />
+                        {entry.period}
+                      </span>
+                      <span className="flex items-center gap-1 text-gray-500 dark:text-gray-400">
+                        <FaMapMarkerAlt className="text-xs" />
+                        {entry.location}
+                      </span>
+                    </div>
+                    <div className={`text-sm md:text-base font-semibold ${styles.text} mt-2`}>
+                      {entry.grade}
+                    </div>
+                  </div>
                 ))}
-              </ul>
-            </div>
+              </div>
+            ))}
           </div>
         )}
         {/* Experience */}
@@ -480,43 +447,43 @@ export default function About() {
             </div>
           </div>
         )}
-        {/* Education */}
-        {activeTab === "education" && (
-          <div className="flex flex-col md:flex-row gap-4 md:gap-7 items-stretch animate-fadein">
-            {educationGroups.map((edu, idx) => (
-              <div
-                key={edu.label}
-                className={`flex-1 min-w-[200px] mb-6 md:mb-0 p-4 md:p-6 rounded-2xl border ${styles.cardBg} ${styles.cardHover} ${styles.glow} shadow-lg flex flex-col gap-3 md:gap-4 items-center animate-slideup`}
-                style={{ animationDelay: `${idx * 0.16}s` }}
-              >
-                <div className="mb-2 flex items-start gap-2">
-                  {edu.icon}
-                  <span className={edulabelStyle}>{edu.label}</span>
-                </div>
-                {edu.entries.map((entry, idy) => (
-                  <div key={idy} className="flex flex-col items-center text-center">
-                    <div className="text-base md:text-lg font-bold mb-1 flex items-center gap-2">
-                      <FaGraduationCap className="text-cyan-500" />
-                      {entry.degree}
-                    </div>
-                    <div className={`text-sm md:text-base font-semibold ${styles.accent}`}>{entry.institution}</div>
-                    <div className="flex flex-wrap gap-2 md:gap-3 justify-center text-xs md:text-sm items-center my-2">
-                      <span className="flex items-center gap-1 text-gray-500 dark:text-gray-400">
-                        <FaCalendarAlt className="text-xs" />
-                        {entry.period}
-                      </span>
-                      <span className="flex items-center gap-1 text-gray-500 dark:text-gray-400">
-                        <FaMapMarkerAlt className="text-xs" />
-                        {entry.location}
-                      </span>
-                    </div>
-                    <div className={`text-sm md:text-base font-semibold ${styles.text} mt-2`}>
-                      {entry.grade}
-                    </div>
-                  </div>
-                ))}
+        {/* Skills */}
+        {activeTab === "skills" && (
+          <div className="flex flex-col md:flex-row gap-6 md:gap-10 animate-fadein">
+            <SideTabBar
+              groups={skillSections}
+              activeIndex={skillsTab}
+              setActiveIndex={setSkillsTab}
+              iconMap={skillGroupIcons}
+            />
+            <div className="flex-1 transition-all duration-500">
+              <div className="mb-4 md:mb-6 flex items-center gap-2">
+                {skillSections[skillsTab].icon}
+                <h2 className={`text-lg md:text-2xl font-bold ${styles.text} mb-3`}>
+                  {skillSections[skillsTab].group}
+                </h2>
               </div>
-            ))}
+              {/* Mobile Grid - 4 columns */}
+              <div className="grid grid-cols-4 gap-3 md:hidden">
+                {skillSections[skillsTab].keys.map((key) => {
+                  const skill = allSkillDetails.find(s => s.key === key);
+                  if (!skill) return null;
+                  return (
+                    <SkillCard key={key} skill={skill} styles={styles} isMobile={true} />
+                  );
+                })}
+              </div>
+              {/* Desktop Grid - 2 columns */}
+              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-2 gap-5">
+                {skillSections[skillsTab].keys.map((key) => {
+                  const skill = allSkillDetails.find(s => s.key === key);
+                  if (!skill) return null;
+                  return (
+                    <SkillCard key={key} skill={skill} styles={styles} isMobile={false} />
+                  );
+                })}
+              </div>
+            </div>
           </div>
         )}
       </div>
