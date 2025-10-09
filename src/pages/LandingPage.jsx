@@ -35,8 +35,8 @@ const accentsMap = {
 };
 
 const typewriterText = [
-  "NLP Researcher",
-  "AI Engineer", 
+  "NLP Research",
+  "AI Engineering", 
 ];
 
 // Memoized floating elements component
@@ -250,7 +250,7 @@ function LandingPage() {
 
               <div className={`space-y-4 mb-10 ${accents.text} text-center md:text-left`}>
                 {/* <p className="text-lg md:text-xl leading-relaxed animate-fade-in-up">
-                  <span className={`${accents.highlight} font-semibold`}>NLP Researcher and AI Engineer</span>
+                  <span className={`${accents.highlight} font-semibold`}>NLP Research and AI Engineering</span>
                 </p> */}
               </div>
 
