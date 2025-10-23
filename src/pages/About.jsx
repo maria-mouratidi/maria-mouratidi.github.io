@@ -352,7 +352,7 @@ export default function About() {
           About <span className={styles.accent}>Me</span>
         </h1>
         <p className={`text-lg md:text-xl ${styles.textSecondary} max-w-3xl mx-auto leading-relaxed`}>
-          Interested in how humans and LMs process language, reason, and make decisions. My interests include Natural Language Understanding, LLMs and foundation models, and human-AI collaboration.
+          Interested in how humans and LMs process language and use context to reason and make decisions. My interests include Natural Language Understanding, LLMs and foundation models, mechanistic interpretability and human-AI alignment.
         </p>
       </div>
       {/* Main Tabs */}
