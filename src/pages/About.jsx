@@ -100,7 +100,7 @@ const experienceGroups = [
         title: "AI Engineer",
         company: "Next Epoch",
         location: "Rotterdam, Netherlands",
-        period: "12/2023 – Present",
+        period: "12/2023 – Present (Part time)",
         description: [
           "Built LLM-powered agents for business workflow processing, including a CRM and invoice processing",
           "Developed document processing pipelines that extract, transform, and restructure data from various file formats",
