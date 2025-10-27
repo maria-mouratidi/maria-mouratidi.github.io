@@ -665,7 +665,7 @@ const Projects = () => {
                 My Projects
               </h1>
               <p className={`text-lg md:text-xl ${styles.textSecondary} max-w-3xl mx-auto`}>
-                A collection of my academic personal and freelance projects.
+                A collection of my academic, personal and work projects.
               </p>
             </div>
             {/* Status Filter */}
