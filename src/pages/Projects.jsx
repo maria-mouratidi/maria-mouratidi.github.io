@@ -84,7 +84,7 @@ const projects = [
     {
     id: 3,
     title: "Judge a book by its cover",
-    description: "Multi-modal machine learning for book genre classification using three data modalities: using text data (titles and descriptions), and image data (book covers)",
+    description: "Multi-modal ML for book genre classification using text, numerical and image data.",
     image: "https://images.unsplash.com/photo-1755541608494-5c02cf56e1f4?q=80&w=657&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     image: "https://images.unsplash.com/photo-1713124893221-59a4133cf6ed?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     technologies: ["Python", "Scikit-learn", "Pandas"],
@@ -142,7 +142,7 @@ const projects = [
 {
   id: 8,
   title: "Marco Polo Robot",
-  description: "An Arduino-based autonomous robot that plays a game of Marco Polo using sound detection and obstacle avoidance. The robot emits periodic beeps (like saying 'Marco') and responds to sound by turning towards the source (like responding to 'Polo'). It uses dual sound sensors to detect and locate sound sources, an ultrasonic sensor for obstacle navigation, and produces audio feedback through a piezo buzzer.",
+  description: "Arduino-based autonomous robot that plays Marco Polo using dual sound sensors for directional audio detection, ultrasonic obstacle avoidance, and interrupt-driven responses for real-time interaction.",
   image: "https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   technologies: ["Arduino", "C++"],
   status: "Technical",
@@ -154,7 +154,7 @@ const projects = [
   {
     id: 9,
     title: "Twitter Opinion Dynamics",
-    description: "A pipeline for simulating twitter opinion groups and their dynamic presence in the platform using topic modeling, and fuzzy cognitive maps based on the semantic overlap.",
+    description: "Cognitive maps of twitter opinion groups and modeling their presence dynamics",
     image: "https://plus.unsplash.com/premium_photo-1684225764726-44b41eabc363?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     technologies: ["NLTK", "networkx", "Gensim",],
     status: "Research",
@@ -166,7 +166,7 @@ const projects = [
   {
   id: 10,
   title: "Restaurant Recommendation Dialogue System",
-  description: "An intelligent restaurant recommendation agent serving as both a functional system and an experimental platform for investigating whether reducing user agency by limiting choice options can lead to better satisfaction, inspired by the 'paradox of choice' theory.",
+  description: "AI-powered dialogue system investigating choice variety effects on user satisfaction in restaurant recommendations.",
   image: "https://plus.unsplash.com/premium_photo-1726729343701-00ed5b8148b1?q=80&w=725&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   technologies: ["TensorFlow", "Scikit-learn", "Word2Vec"],
   status: "Research",
@@ -178,7 +178,7 @@ const projects = [
   {
   id: 11,
   title: "GPT-2 Fine-tuning",
-  description: "Research investigating whether fine-tuning GPT-2 on Cloze datasets (human next-word predictions) can improve the model's predictions generalized over different datasets. The project includes data processing from multiple Cloze sources, model training with special token handling, perplexity-based evaluation comparing pre-trained and fine-tuned models.",
+  description: "Fine-tuning on human next-word prediction to better approximate human language prediction patterns.",
   image: "https://plus.unsplash.com/premium_photo-1727674259884-98d2c054b217?q=80&w=1112&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   technologies: ["PyTorch", "HuggingFace"],
   status: "Research",
@@ -190,7 +190,7 @@ const projects = [
   {
     id: 12,
     title: "EEG analysis in syntactic processing",
-    description: "Analyzing neural oscillations during sentence comprehension, with focus on auxiliary verb processing and syntactic ambiguity resolutionEEG time-frequency analysis of syntactic processing in monolingual vs bilingual populations.",
+    description: "EEG time-frequency analysis of syntactic processing in monolingual vs bilingual populations.",
     image: "https://images.unsplash.com/photo-1617994452722-4145e196248b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     image: "https://thumbs.dreamstime.com/b/electroencephalogram-result-paper-close-up-brain-activity-test-diagnosis-epilepsy-electroencephalogram-result-paper-158185773.jpg?w=992",
     technologies: ["Python", "SciPy", "NumPy"],
@@ -204,7 +204,7 @@ const projects = [
   {
   id: 13,
   title: "Spell Wizard",
-  description: "Statistical spell checking that combines edit distance, frequency analysis, and language model perplexity for accurate context-aware text correction.",
+  description: "Spell correction using edit distance, frequency analysis, and n-gram language model perplexity for context-aware text correction.",
   image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=773&auto=format&fit=crop&ixlib=rb-4.0.1&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   technologies: ["Python", "NLTK"],
   status: "Technical",
@@ -263,13 +263,7 @@ function useIsMobile(breakpoint = 768) {
 
 // ========== Mobile Card ==========
 const MobileCard = ({ project, onPrev, onNext, isTransitioning, styles, techIcons }) => {
-  const [showFullDescription, setShowFullDescription] = useState(false);
   if (!project) return null;
-  
-  const truncatedDescription = project.description?.length > 100 
-    ? project.description.substring(0, 100) + "..."
-    : project.description;
-
   return (
     <div className={`
       w-full max-w-sm mx-auto
@@ -320,16 +314,8 @@ const MobileCard = ({ project, onPrev, onNext, isTransitioning, styles, techIcon
         <div>
           <h3 className={`text-lg font-bold ${styles.text} mb-1`}>{project.title}</h3>
           <p className={`${styles.textSecondary} text-sm leading-relaxed`}>
-            {showFullDescription ? project.description : truncatedDescription}
+            {project.description}
           </p>
-          {project.description?.length > 100 && (
-            <button
-              onClick={() => setShowFullDescription(!showFullDescription)}
-              className={`${styles.accent} text-sm font-medium mt-1 hover:underline`}
-            >
-              {showFullDescription ? 'Show less' : 'Read more'}
-            </button>
-          )}
         </div>
         <div className="flex flex-wrap gap-1">
           {project.technologies.slice(0, 3).map((tech, techIndex) => (
@@ -413,7 +399,6 @@ const MobileCard = ({ project, onPrev, onNext, isTransitioning, styles, techIcon
 
 // ========== Desktop Card ==========
 const DesktopCard = ({ project, index, currentIndex, filteredProjects, styles, techIcons, goToSlide }) => {
-  const [showFullDescription, setShowFullDescription] = useState(false);
   const totalCards = filteredProjects.length;
   const normalizedIndex = (index - currentIndex + totalCards) % totalCards;
   let transform = '';
@@ -450,11 +435,6 @@ if (normalizedIndex === 0) {
   };
 
   const isCenter = normalizedIndex === 0;
-  
-  const truncatedDescription = project.description?.length > 80 
-    ? project.description.substring(0, 80) + "..."
-    : project.description;
-
   return (
     <div
       className={`
@@ -487,20 +467,9 @@ if (normalizedIndex === 0) {
       <div className="space-y-4">
         <div>
           <h3 className={`text-lg font-bold ${styles.text} mb-1 line-clamp-1`}>{project.title}</h3>
-          <p className={`${styles.textSecondary} text-sm leading-relaxed`}>
-            {showFullDescription ? project.description : truncatedDescription}
+          <p className={`${styles.textSecondary} text-sm leading-relaxed line-clamp-2`}>
+            {project.description}
           </p>
-          {project.description?.length > 80 && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setShowFullDescription(!showFullDescription);
-              }}
-              className={`${styles.accent} text-sm font-medium mt-1 hover:underline`}
-            >
-              {showFullDescription ? 'Show less' : 'Read more'}
-            </button>
-          )}
         </div>
         <div className="flex flex-wrap gap-1">
           {project.technologies.slice(0, 3).map((tech, techIndex) => (
