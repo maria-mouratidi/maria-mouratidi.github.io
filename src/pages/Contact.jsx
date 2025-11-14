@@ -4,7 +4,6 @@ import {
    FaLinkedin,
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { IoCall } from "react-icons/io5";
 import { SiGithub } from "react-icons/si";
 import { useTheme } from "../ThemeContext";
 
@@ -48,14 +47,7 @@ const contactInfo = [
     name: "Email",
     url: "mailto:mouratidi.m@gmail.com",
     color: "text-blue-500",
-    description: "I prefer email :)"
-  },
-  {
-    icon: <IoCall />,
-    name: "Phone",
-    url: "tel:+31653490108",
-    color: "text-green-500",
-    description: "Call or text"
+    description: "Email me!"
   },
   {
     icon: <FaLocationArrow />,
@@ -98,7 +90,7 @@ const SocialCard = ({ social, index, theme }) => {
       href={social.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`block p-4 rounded-xl border transition-all duration-500 ${styles.cardBg} ${styles.cardHover} shadow-lg transform ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'} group`}
+      className={`block p-4 rounded-xl border transition-all duration-500 ${styles.cardBg} ${styles.cardHover} shadow-lg transform ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'} group w-full`}
       style={{ transitionDelay: `${index * 75}ms` }}
       aria-label={social.name}
       title={social.name}
@@ -141,7 +133,7 @@ export default function Contact() {
         
         {/* Centered container for all links */}
         <div className="flex justify-center">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-w-20xl">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-2xl mx-auto">
             {allLinks.map((item, index) => (
               <SocialCard key={item.name} social={item} index={index} theme={theme} />
             ))}
