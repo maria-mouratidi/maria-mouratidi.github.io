@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect, Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { FaArrowUp } from "react-icons/fa";
 
 import Navbar from "./components/Navbar";
@@ -289,6 +291,8 @@ export default function App() {
           <Route path="/:slug" element={<Redirector />} />
         </Routes>
       </Router>
+      <Analytics />
+      <SpeedInsights />
     </ThemeProvider>
   );
 }
