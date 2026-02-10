@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { useTheme } from "../ThemeContext";
 
 const images = [
-  "/images/profile0.png",
+  "/images/profile0.jpg",
 ];
 
 const accentsMap = {
@@ -59,53 +59,72 @@ const FloatingElements = React.memo(() => (
 ));
 
 // Memoized profile image component
-const ProfileImages = React.memo(({ imgIdx, images }) => (
+const ProfileImages = React.memo(({ imgIdx, images, accents }) => (
   <div
     className="flex items-center justify-center profile-pic-container"
     style={{
-      marginTop: "-80px", // <-- Add this line
+      marginTop: "0px",
       flex: "0 0 auto",
-      minWidth: "320px",
-      minHeight: "320px", 
+      minWidth: "280px",
+      minHeight: "280px",
       width: "100%",
       height: "100%",
-      maxWidth: "420px",
-      maxHeight: "620px",
+      maxWidth: "380px",
+      maxHeight: "380px",
       display: "flex",
       alignItems: "center",
       justifyContent: "center"
     }}
   >
+    {/* Glass-morphism picture frame */}
     <div
-      className="rounded-3xl overflow-hidden bg-transparent relative flex items-center justify-center"
+      className={`
+        ${accents.glassBackground} ${accents.backdropBlur} ${accents.glassBorder}
+        border-2 rounded-[2rem] p-2.5 md:p-3 relative
+        hover:scale-[1.01] transition-all duration-700 ease-out
+        profile-frame
+      `}
       style={{
         width: "100%",
         height: "100%",
-        minHeight: 650,
-        minWidth: 650,
-        maxWidth: 650,
-        maxHeight: 650,
+        maxWidth: 400,
+        maxHeight: 400,
         aspectRatio: "1/1",
+        boxShadow: `0 8px 32px 0 ${accents.shadowColor}`,
       }}
     >
-      {images.map((src, i) => (
-        <img
-          key={src}
-          src={src}
-          alt={`Profile ${i + 1}`}
-          loading={i === 0 ? "eager" : "lazy"} // Load first image eagerly
-          className={`
-            absolute rounded-3xl w-full h-full object-contain object-center
-            profile-img-fade
-            ${imgIdx === i ? "opacity-100 z-10" : "opacity-0 z-0"}
-          `}
-          style={{
-            transition: "opacity 2.4s cubic-bezier(.4,0,.2,1)",
-            background: "transparent",
-            borderRadius: "1.5rem"
-          }}
-        />
-      ))}
+      {/* Gradient border shimmer */}
+      <div
+        className="absolute inset-0 rounded-[2rem] pointer-events-none z-0"
+        style={{
+          background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%, rgba(255,255,255,0.05) 100%)",
+        }}
+      />
+
+      {/* Image cutout */}
+      <div
+        className="rounded-[1.5rem] overflow-hidden w-full h-full relative z-10"
+        style={{
+          boxShadow: "inset 0 2px 12px rgba(0,0,0,0.08)",
+        }}
+      >
+        {images.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt={`Profile ${i + 1}`}
+            loading={i === 0 ? "eager" : "lazy"}
+            className={`
+              absolute inset-0 w-full h-full object-cover
+              profile-img-fade
+              ${imgIdx === i ? "opacity-100 z-10" : "opacity-0 z-0"}
+            `}
+            style={{
+              transition: "opacity 2.4s cubic-bezier(.4,0,.2,1)",
+            }}
+          />
+        ))}
+      </div>
     </div>
   </div>
 ));
@@ -200,7 +219,7 @@ function LandingPage() {
     >
       <FloatingElements />
 
-      <ProfileImages imgIdx={0} images={images} />
+      <ProfileImages imgIdx={0} images={images} accents={accents} />
 
       {/* Content Section */}
       <div
@@ -349,30 +368,38 @@ function LandingPage() {
 
         @media (max-width: 1023px) {
           .profile-pic-container {
-            min-width: 190px !important;
-            min-height: 190px !important;
-            max-width: 250px !important;
-            max-height: 250px !important;
+            min-width: 180px !important;
+            min-height: 180px !important;
+            max-width: 240px !important;
+            max-height: 240px !important;
+          }
+          .profile-frame {
+            max-width: 240px !important;
+            max-height: 240px !important;
           }
         }
         @media (max-width: 750px) {
           .profile-pic-container {
-            min-width: 80vw !important;
-            min-height: 80vw !important;
-            max-width: 90vw !important;
-            max-height: 90vw !important;
+            min-width: 55vw !important;
+            min-height: 55vw !important;
+            max-width: 65vw !important;
+            max-height: 65vw !important;
           }
-          .profile-img-fade {
-            max-width: 100vw !important;
-            max-height: 100vw !important;
+          .profile-frame {
+            max-width: 65vw !important;
+            max-height: 65vw !important;
           }
         }
         @media (max-width: 640px) {
           .profile-pic-container {
-            min-width: 92vw !important;
-            min-height: 92vw !important;
-            max-width: 99vw !important;
-            max-height: 99vw !important;
+            min-width: 60vw !important;
+            min-height: 60vw !important;
+            max-width: 70vw !important;
+            max-height: 70vw !important;
+          }
+          .profile-frame {
+            max-width: 70vw !important;
+            max-height: 70vw !important;
           }
         }
         /* Prevent horizontal scroll on mobile */
@@ -383,10 +410,14 @@ function LandingPage() {
           .profile-pic-container {
             min-width: 0 !important;
             min-height: 0 !important;
-            max-width: 96vw !important;
-            max-height: 96vw !important;
-            width: 90vw !important;
-            height: 90vw !important;
+            max-width: 65vw !important;
+            max-height: 65vw !important;
+            width: 60vw !important;
+            height: 60vw !important;
+          }
+          .profile-frame {
+            max-width: 65vw !important;
+            max-height: 65vw !important;
           }
         }
       `}</style>
