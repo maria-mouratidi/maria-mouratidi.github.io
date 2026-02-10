@@ -48,7 +48,7 @@ const publications = [
                 The findings reveal lower correlations and predictive capacity for the decoder model compared to the encoder model, with implications
                 for the gap between behavioral performance
                 and cognitive plausibility of different transformer designs.`,
-    link: "",
+    link: "https://aclanthology.org/2025.gaze4nlp-1.4/",
     type: "Conference Paper",
     status: "Accepted",
     image: "images/attn.png"
@@ -214,7 +214,6 @@ const Publications = () => {
             <span style={{ minWidth: 0, maxWidth: "100%" }}>Publications</span>
           </h1>
           <p className={`text-xl ${styles.textSecondary} max-w-3xl mx-auto`}>
-            My research contributions in Cognitive Science and NLP. 
           </p>
         </div>
 

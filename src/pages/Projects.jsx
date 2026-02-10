@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import {
-  FaGithub, FaExternalLinkAlt, FaCodeBranch, FaStar, FaChevronLeft, FaChevronRight, FaRocket, FaFilter, FaCode,
+  FaGithub, FaExternalLinkAlt, FaChevronLeft, FaChevronRight, FaRocket, FaFilter, FaCode,
 } from "react-icons/fa";
 import {
   SiReact, SiNodedotjs, SiMongodb, SiBootstrap, SiPython, SiPhp, SiDjango, SiMysql, SiScikitlearn, SiPandas, SiOpencv, SiFirebase,
@@ -8,6 +8,7 @@ import {
   SiNumpy, SiScipy, SiArduino, SiTensorflow
 } from "react-icons/si";
 
+import { VscAzure } from "react-icons/vsc";
 import { useTheme } from "../ThemeContext";
 
 // ========== Theme Styles ==========
@@ -48,8 +49,14 @@ const techIcons = {
   Pandas: <SiPandas className="text-black" />,
   MySQL: <SiMysql className="text-blue-700" />,
   "OpenAI API": <SiOpenai className="text-black-500" />,
+  "Azure OpenAI": <VscAzure className="text-blue-600" />,
   "WhatsApp API": <SiWhatsapp className="text-green-500" />,
+  "WhatsApp Business API": <SiWhatsapp className="text-green-500" />,
   FastAPI: <SiFastapi className="text-green-500" />,
+  PostgreSQL: <SiMysql className="text-blue-600" />,
+  Docker: <SiFastapi className="text-blue-500" />,
+  n8n: <SiNodedotjs className="text-orange-500" />,
+  "Microsoft Graph API": <SiNodedotjs className="text-blue-500" />,
   "Gensim": (<img src="/images/gensim-circle.png" alt="Gensim" />),
   NLTK: (<img src="/images/nltk-logo.png" alt="NLTK" />),
   networkx: (<img src="/images/networkx-logo.png" alt="networkx" />),
@@ -65,180 +72,179 @@ const techIcons = {
   TensorFlow: <SiTensorflow className="text-orange-600" />,
   OWL: (<img src="/images/owl-logo.png" alt="OWL" />),
   SPARQL: (<img src="/images/sparql-logo.png" alt="SPARQL" />),
+  Word2Vec: <SiPython className="text-blue-500" />,
+  LangGraph: <SiPython className="text-green-600" />,
+  "Next.js": <SiNodedotjs className="text-black" />,
+  Terraform: <SiFastapi className="text-purple-600" />,
+  Supabase: <SiMongodb className="text-green-600" />,
+  Qdrant: <SiMongodb className="text-red-500" />,
+  Ollama: <SiPython className="text-gray-700" />,
 };
 
-// ========== Projects ========== 
+// ========== Projects ==========
 const projects = [
+  // === TECHNICAL (Production / Work) ===
+  {
+    id: 1,
+    title: "Email Order Processing",
+    description: "Email processing system that classifies multilingual product inquiries into standardized article codes and returns structured order data to the sales team.",
+    image: "https://images.unsplash.com/photo-1554224155-cfa08c2a758f?q=80&w=1126&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    technologies: ["Python", "FastAPI", "Azure OpenAI", "PostgreSQL", "Docker", "Microsoft Graph API"],
+    status: "Technical",
+    github: "",
+    live: ""
+  },
   {
     id: 2,
-    title: "CRM in your WhatsApp",
-    description: "WhatsApp-integrated lead management system with automated follow-up scheduling and reminder notifications.",
-    image: "https://images.unsplash.com/photo-1719204718581-5c95889c8ec9?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    technologies: ["FastAPI", "OpenAI API", "WhatsApp API"],
+    title: "Smart Training Follow-Up",
+    description: "Stateful system that dynamically tracks trainee engagement, goals, and progress, and sends personalized follow-up emails before the next training session.",
+    image: "https://images.unsplash.com/photo-1557200134-90327ee9fafa?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    technologies: ["Python", "FastAPI", "Azure OpenAI", "Microsoft Graph API"],
     status: "Technical",
-    github: "https://github.com/maria-mouratidi/whatsapp-crm",
-    live: "https://github.com/maria-mouratidi/whatsapp-crm#readme",
-    // forks: 16,
-    // stars: 26
-  },
-    {
-    id: 3,
-    title: "Judge a book by its cover",
-    description: "Multi-modal ML for book genre classification using text, numerical and image data.",
-    image: "https://images.unsplash.com/photo-1755541608494-5c02cf56e1f4?q=80&w=657&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    image: "https://images.unsplash.com/photo-1713124893221-59a4133cf6ed?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    technologies: ["Python", "Scikit-learn", "Pandas"],
-    status: "Technical",
-    github: "https://github.com/maria-mouratidi/book-classification.git",
+    github: "",
     live: ""
-    // forks: 0,
-    // stars: 0
   },
   {
+    id: 3,
+    title: "WhatsApp Hours Tracker",
+    description: "Conversational agent where employees submit work hours through natural language, with identity verification, project validation against a database, and multi-turn approval workflows.",
+    image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    technologies: ["WhatsApp Business API", "Supabase", "n8n", "Azure OpenAI"],
+    status: "Technical",
+    github: "",
+    live: ""
+  },
+  {
+    id: 15,
+    title: "Fullstack Chatbot Demo",
+    description: "Minimal, fully deployable chatbot with a stateful conversational backend and infrastructure-as-code managed cloud deployment.",
+    image: "https://images.unsplash.com/photo-1554224155-cfa08c2a758f?q=80&w=1126&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    technologies: ["FastAPI", "LangGraph", "Terraform", "Azure OpenAI", "Docker"],
+    status: "Technical",
+    github: "https://github.com/maria-mouratidi/chatbot-prod",
+    live: ""
+  },
+  {
+    id: 16,
+    title: "Chat with Local Documents",
+    description: "RAG application that lets you chat with your local documents using chunking, embeddings, vector search, and reranking for accurate retrieval-augmented generation.",
+    image: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    technologies: ["Python", "Qdrant", "Ollama"],
+    status: "Technical",
+    github: "https://github.com/maria-mouratidi/chat-local-docs",
+    live: ""
+  },
+  // === RESEARCH ===
+  {
     id: 4,
+    title: "Judge a book by its cover",
+    description: "Multi-modal ML for book genre classification using text, numerical and image data.",
+    image: "https://images.unsplash.com/photo-1713124893221-59a4133cf6ed?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    technologies: ["Python", "Scikit-learn", "Pandas"],
+    status: "Research",
+    github: "https://github.com/maria-mouratidi/book-classification.git",
+    live: ""
+  },
+  {
+    id: 5,
     title: "What's the language?",
     description: "Spoken language classification CNN model of 6 European languages.",
     image: "https://images.unsplash.com/photo-1579010269379-6168cf383a68?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     technologies: ["PyTorch", "NumPy"],
-    status: "Technical",
+    status: "Research",
     github: "https://github.com/maria-mouratidi/spoken-lang-detect.git",
     live: ""
   },
   {
-  id: 5,
-  title: "Fact-Checking Agent",
-  description: "Intelligent agent that fact-checks statements using ontology reasoning and LLMs with trust-based ranking.",
-  image: "https://images.unsplash.com/photo-1516382799247-87df95d790b7?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  technologies: [ "NLTK", "OWL", "SPARQL"],
-  status: "Technical",
-  github: "https://github.com/maria-mouratidi/factchecking-agent.git",
-  live: ""
-},
-  {
-  id: 6,
-  title: "Social Media Censorship and Rebellion Simulation",
-  description: "Multi-agent simulation on how social media censorship affects rebellion outbreaks, extending Epstein's classic model.",
- //image: "images/network.png",
-  image: "https://plus.unsplash.com/premium_photo-1677997799184-da1ce07cf70f?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  technologies: ["NetLogo", "R"],
-  status: "Research",
-  github: "https://github.com/maria-mouratidi/rebellion-simulation.git",
-  live: "https://github.com/maria-mouratidi/rebellion-simulation.git#readme"
-  // forks: 0,
-  // stars: 0
-},
-{
-  id: 7,
-  title: "BipBop Breakout Game",
-  description: "Classic Breakout-style game with realistic ball physics, paddle controls and progressive brick destruction.",
-  image: "https://plus.unsplash.com/premium_photo-1687980926467-d59979447f76?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  technologies: ["C++", "FLTK"],
-  status: "Technical",
-  github: "https://github.com/maria-mouratidi/bipbop-game.git",
-  live: "https://github.com/maria-mouratidi/bipbop-game.git#readme"
-  // forks: 0,
-  // stars: 0
-},
-{
-  id: 8,
-  title: "Marco Polo Robot",
-  description: "Arduino-based autonomous robot that plays Marco Polo using dual sound sensors for directional audio detection, ultrasonic obstacle avoidance, and interrupt-driven responses for real-time interaction.",
-  image: "https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  technologies: ["Arduino", "C++"],
-  status: "Technical",
-  github: "https://github.com/maria-mouratidi/marco-polo.git",
-  live: ""
-  // forks: 0,
-  // stars: 0
-},
-  {
-    id: 9,
-    title: "Twitter Opinion Dynamics",
-    description: "Cognitive maps of twitter opinion groups and modeling their presence dynamics",
-    image: "https://plus.unsplash.com/premium_photo-1684225764726-44b41eabc363?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    technologies: ["NLTK", "networkx", "Gensim",],
+    id: 6,
+    title: "Fact-Checking Agent",
+    description: "Intelligent agent that fact-checks statements using ontology reasoning and LLMs with trust-based ranking.",
+    image: "https://images.unsplash.com/photo-1516382799247-87df95d790b7?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    technologies: ["NLTK", "OWL", "SPARQL"],
     status: "Research",
-    github: "https://github.com/maria-mouratidi/simulating-twitter-communities",
-    live: "",
-    // forks: 16,
-    // stars: 26
+    github: "https://github.com/maria-mouratidi/factchecking-agent.git",
+    live: ""
   },
   {
-  id: 10,
-  title: "Restaurant Recommendation Dialogue System",
-  description: "AI-powered dialogue system investigating choice variety effects on user satisfaction in restaurant recommendations.",
-  image: "https://plus.unsplash.com/premium_photo-1726729343701-00ed5b8148b1?q=80&w=725&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  technologies: ["TensorFlow", "Scikit-learn", "Word2Vec"],
-  status: "Research",
-  github: "https://github.com/maria-mouratidi/restaurant-rec.git",
-  live: ""
-  // forks: 0,
-  // stars: 0
-},
+    id: 7,
+    title: "Social Media Censorship and Rebellion Simulation",
+    description: "Multi-agent simulation on how social media censorship affects rebellion outbreaks, extending Epstein's classic model.",
+    image: "https://plus.unsplash.com/premium_photo-1677997799184-da1ce07cf70f?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    technologies: ["NetLogo", "R"],
+    status: "Research",
+    github: "https://github.com/maria-mouratidi/rebellion-simulation.git",
+    live: "https://github.com/maria-mouratidi/rebellion-simulation.git#readme"
+  },
   {
-  id: 11,
-  title: "GPT-2 Fine-tuning",
-  description: "Fine-tuning on human next-word prediction to better approximate human language prediction patterns.",
-  image: "https://plus.unsplash.com/premium_photo-1727674259884-98d2c054b217?q=80&w=1112&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  technologies: ["PyTorch", "HuggingFace"],
-  status: "Research",
-  github: "https://github.com/maria-mouratidi/cloze-finetuning.git",
-  live: ""
-  // forks: 0,
-  // stars: 0
-},
+    id: 8,
+    title: "BipBop Breakout Game",
+    description: "Classic Breakout-style game with realistic ball physics, paddle controls and progressive brick destruction.",
+    image: "https://plus.unsplash.com/premium_photo-1687980926467-d59979447f76?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    technologies: ["C++", "FLTK"],
+    status: "Research",
+    github: "https://github.com/maria-mouratidi/bipbop-game.git",
+    live: "https://github.com/maria-mouratidi/bipbop-game.git#readme"
+  },
+  {
+    id: 9,
+    title: "Marco Polo Robot",
+    description: "Arduino-based autonomous robot that plays Marco Polo using dual sound sensors for directional audio detection, ultrasonic obstacle avoidance, and interrupt-driven responses for real-time interaction.",
+    image: "https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    technologies: ["Arduino", "C++"],
+    status: "Research",
+    github: "https://github.com/maria-mouratidi/marco-polo.git",
+    live: ""
+  },
+  {
+    id: 10,
+    title: "Twitter Opinion Dynamics",
+    description: "Cognitive maps of twitter opinion groups and modeling their presence dynamics.",
+    image: "https://plus.unsplash.com/premium_photo-1684225764726-44b41eabc363?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    technologies: ["NLTK", "networkx", "Gensim"],
+    status: "Research",
+    github: "https://github.com/maria-mouratidi/simulating-twitter-communities",
+    live: ""
+  },
+  {
+    id: 11,
+    title: "Restaurant Recommendation Dialogue System",
+    description: "AI-powered dialogue system investigating choice variety effects on user satisfaction in restaurant recommendations.",
+    image: "https://plus.unsplash.com/premium_photo-1726729343701-00ed5b8148b1?q=80&w=725&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    technologies: ["TensorFlow", "Scikit-learn", "Word2Vec"],
+    status: "Research",
+    github: "https://github.com/maria-mouratidi/restaurant-rec.git",
+    live: ""
+  },
   {
     id: 12,
+    title: "GPT-2 Fine-tuning",
+    description: "Fine-tuning on human next-word prediction to better approximate human language prediction patterns.",
+    image: "https://plus.unsplash.com/premium_photo-1727674259884-98d2c054b217?q=80&w=1112&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    technologies: ["PyTorch", "HuggingFace"],
+    status: "Research",
+    github: "https://github.com/maria-mouratidi/cloze-finetuning.git",
+    live: ""
+  },
+  {
+    id: 13,
     title: "EEG analysis in syntactic processing",
     description: "EEG time-frequency analysis of syntactic processing in monolingual vs bilingual populations.",
-    image: "https://images.unsplash.com/photo-1617994452722-4145e196248b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     image: "https://thumbs.dreamstime.com/b/electroencephalogram-result-paper-close-up-brain-activity-test-diagnosis-epilepsy-electroencephalogram-result-paper-158185773.jpg?w=992",
     technologies: ["Python", "SciPy", "NumPy"],
     status: "Research",
     github: "https://github.com/maria-mouratidi/sentence-oscillations.git",
     live: ""
-    // forks: 8,
-    // stars: 15
-
   },
   {
-  id: 13,
-  title: "Spell Wizard",
-  description: "Spell correction using edit distance, frequency analysis, and n-gram language model perplexity for context-aware text correction.",
-  image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=773&auto=format&fit=crop&ixlib=rb-4.0.1&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  technologies: ["Python", "NLTK"],
-  status: "Technical",
-  github: "https://github.com/maria-mouratidi/spellchecker.git",
-  live: "https://github.com/maria-mouratidi/spellchecker/blob/main/examples/demo.ipynb"
-  // forks: 0,
-  // stars: 0
-},
-  // {
-  //   id: ,
-  //   title: "Fair airfare",
-  //   description: "An algorithm predicting dynamic pricing from airlines to help with booking.",
-  //   image: "https://images.unsplash.com/photo-1567748534085-467f8a8a475d?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  //   technologies: ["Python", "Pandas"],
-  //   status: ["In Progress"],
-  //   github: "",
-  //   live: ""
-  //   // forks: 8,
-  //   // stars: 15
-
-  // },
-  //   {
-  //   id: ,
-  //   title: "Wolf in AI clothing",
-  //   description: "AI agents that play the conversation game Werewolf (Mafia) inspired by the AIWolfDial2025 challenge.",
-  //   image: "",
-  //   technologies: ["Python", "Pandas"],
-  //   status: "In Progress",
-  //   github: "",
-  //   live: ""
-  //   // forks: 8,
-  //   // stars: 15
-
-  // }
+    id: 14,
+    title: "Spell Wizard",
+    description: "Spell correction using edit distance, frequency analysis, and n-gram language model perplexity for context-aware text correction.",
+    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=773&auto=format&fit=crop&ixlib=rb-4.0.1&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    technologies: ["Python", "NLTK"],
+    status: "Research",
+    github: "https://github.com/maria-mouratidi/spellchecker.git",
+    live: "https://github.com/maria-mouratidi/spellchecker/blob/main/examples/demo.ipynb"
+  },
 ];
 
 
@@ -260,6 +266,34 @@ function useIsMobile(breakpoint = 768) {
   }, [breakpoint]);
   return isMobile;
 }
+
+// ========== Description with Read More ==========
+const DescriptionWithReadMore = ({ description, styles, clamp = "line-clamp-2" }) => {
+  const [expanded, setExpanded] = useState(false);
+  const needsClamp = description.length > 90;
+
+  if (!needsClamp) {
+    return (
+      <p className={`${styles.textSecondary} text-sm leading-relaxed`}>
+        {description}
+      </p>
+    );
+  }
+
+  return (
+    <div>
+      <p className={`${styles.textSecondary} text-sm leading-relaxed ${expanded ? '' : clamp}`}>
+        {description}
+      </p>
+      <button
+        onClick={(e) => { e.stopPropagation(); setExpanded(!expanded); }}
+        className={`${styles.accent} text-xs font-medium hover:underline mt-0.5`}
+      >
+        {expanded ? 'Show less' : 'Read more'}
+      </button>
+    </div>
+  );
+};
 
 // ========== Mobile Card ==========
 const MobileCard = ({ project, onPrev, onNext, isTransitioning, styles, techIcons }) => {
@@ -313,9 +347,7 @@ const MobileCard = ({ project, onPrev, onNext, isTransitioning, styles, techIcon
       <div className="space-y-4">
         <div>
           <h3 className={`text-lg font-bold ${styles.text} mb-1`}>{project.title}</h3>
-          <p className={`${styles.textSecondary} text-sm leading-relaxed`}>
-            {project.description}
-          </p>
+          <DescriptionWithReadMore description={project.description} styles={styles} clamp="line-clamp-3" />
         </div>
         <div className="flex flex-wrap gap-1">
           {project.technologies.slice(0, 3).map((tech, techIndex) => (
@@ -327,11 +359,6 @@ const MobileCard = ({ project, onPrev, onNext, isTransitioning, styles, techIcon
               {tech}
             </span>
           ))}
-          {project.technologies.length > 3 && (
-            <span className={`${styles.badge} border px-2 py-1 rounded-full text-xs font-medium`}>
-              +{project.technologies.length - 3}
-            </span>
-          )}
         </div>
         <div className="flex items-center justify-between text-sm">
           <span className={`${styles.textSecondary} flex items-center gap-1`}>
@@ -339,32 +366,42 @@ const MobileCard = ({ project, onPrev, onNext, isTransitioning, styles, techIcon
             {project.status}
           </span>
           <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1 text-gray-700">
-              <FaCodeBranch className="text-xs" />
-              {project.forks}
-            </span>
-            <span className="flex items-center gap-1 text-yellow-600">
-              <FaStar className="text-xs" />
-              {project.stars}
-            </span>
+            {project.github && (
+              <span className="flex items-center gap-1 text-gray-700">
+                <FaGithub className="text-xs" />
+              </span>
+            )}
           </div>
         </div>
         <div className="flex gap-2 pt-1">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`
-              ${styles.button} border px-3 py-2 rounded-lg
-              flex items-center gap-2 text-xs font-medium
-              transition-all duration-300 hover:scale-105
-              flex-1 justify-center
-            `}
-          >
-            <FaGithub />
-            Code
-          </a>
-          {project.live ? (
+          {project.github ? (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`
+                ${styles.button} border px-3 py-2 rounded-lg
+                flex items-center gap-2 text-xs font-medium
+                transition-all duration-300 hover:scale-105
+                flex-1 justify-center
+              `}
+            >
+              <FaGithub />
+              Code
+            </a>
+          ) : (
+            <div
+              className={`
+                bg-gray-400/20 border border-gray-400/40 text-gray-500 px-3 py-2 rounded-lg
+                flex items-center gap-2 text-xs font-medium
+                flex-1 justify-center cursor-not-allowed
+              `}
+            >
+              <FaGithub />
+              Code
+            </div>
+          )}
+          {project.live && (
             <a
               href={project.live}
               target="_blank"
@@ -379,17 +416,6 @@ const MobileCard = ({ project, onPrev, onNext, isTransitioning, styles, techIcon
               <FaExternalLinkAlt />
               Demo
             </a>
-          ) : (
-            <div
-              className={`
-                bg-gray-400/20 border border-gray-400/40 text-gray-500 px-3 py-2 rounded-lg
-                flex items-center gap-2 text-xs font-medium
-                flex-1 justify-center cursor-not-allowed
-              `}
-            >
-              <FaExternalLinkAlt />
-              Demo
-            </div>
           )}
         </div>
       </div>
@@ -439,10 +465,10 @@ if (normalizedIndex === 0) {
     <div
       className={`
         absolute top-0
-        w-[340px] h-[470px]
+        w-[360px] h-[520px] overflow-hidden
         ${styles.cardBg} ${isCenter ? styles.cardHover : ''}
         border rounded-2xl p-7 ${styles.glow} shadow-2xl
-        cursor-pointer select-none
+        cursor-pointer select-none flex flex-col
         ${isCenter ? 'hover:scale-105' : ''}
       `}
       style={{
@@ -464,12 +490,10 @@ if (normalizedIndex === 0) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
       </div>
-      <div className="space-y-4">
+      <div className="space-y-4 overflow-y-auto flex-1" style={{ maxHeight: 'calc(100% - 11rem - 1rem)' }}>
         <div>
           <h3 className={`text-lg font-bold ${styles.text} mb-1 line-clamp-1`}>{project.title}</h3>
-          <p className={`${styles.textSecondary} text-sm leading-relaxed line-clamp-2`}>
-            {project.description}
-          </p>
+          <DescriptionWithReadMore description={project.description} styles={styles} clamp="line-clamp-2" />
         </div>
         <div className="flex flex-wrap gap-1">
           {project.technologies.slice(0, 3).map((tech, techIndex) => (
@@ -481,11 +505,6 @@ if (normalizedIndex === 0) {
               {tech}
             </span>
           ))}
-          {project.technologies.length > 3 && (
-            <span className={`${styles.badge} border px-2 py-1 rounded-full text-xs font-medium`}>
-              +{project.technologies.length - 3}
-            </span>
-          )}
         </div>
         <div className="flex items-center justify-between text-sm">
           <span className={`${styles.textSecondary} flex items-center gap-1`}>
@@ -493,33 +512,43 @@ if (normalizedIndex === 0) {
             {project.status}
           </span>
           <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1 text-gray-700">
-              <FaCodeBranch className="text-xs" />
-              {project.forks}
-            </span>
-            <span className="flex items-center gap-1 text-yellow-600">
-              <FaStar className="text-xs" />
-              {project.stars}
-            </span>
+            {project.github && (
+              <span className="flex items-center gap-1 text-gray-700">
+                <FaGithub className="text-xs" />
+              </span>
+            )}
           </div>
         </div>
         <div className="flex gap-2 pt-1">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`
-              ${styles.button} border px-3 py-2 rounded-lg
-              flex items-center gap-2 text-xs font-medium
-              transition-all duration-300 hover:scale-105
-              flex-1 justify-center
-            `}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <FaGithub />
-            Code
-          </a>
-          {project.live ? (
+          {project.github ? (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`
+                ${styles.button} border px-3 py-2 rounded-lg
+                flex items-center gap-2 text-xs font-medium
+                transition-all duration-300 hover:scale-105
+                flex-1 justify-center
+              `}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <FaGithub />
+              Code
+            </a>
+          ) : (
+            <div
+              className={`
+                bg-gray-400/20 border border-gray-400/40 text-gray-500 px-3 py-2 rounded-lg
+                flex items-center gap-2 text-xs font-medium
+                flex-1 justify-center cursor-not-allowed
+              `}
+            >
+              <FaGithub />
+              Code
+            </div>
+          )}
+          {project.live && (
             <a
               href={project.live}
               target="_blank"
@@ -535,17 +564,6 @@ if (normalizedIndex === 0) {
               <FaExternalLinkAlt />
               Demo
             </a>
-          ) : (
-            <div
-              className={`
-                bg-gray-400/20 border border-gray-400/40 text-gray-500 px-3 py-2 rounded-lg
-                flex items-center gap-2 text-xs font-medium
-                flex-1 justify-center cursor-not-allowed
-              `}
-            >
-              <FaExternalLinkAlt />
-              Demo
-            </div>
           )}
         </div>
       </div>
@@ -559,7 +577,7 @@ const Projects = () => {
   const styles = themeStyles[theme] || themeStyles.light;
   const isMobile = useIsMobile(768);
 
-  const [activeStatus, setActiveStatus] = useState("All");
+  const [activeStatus, setActiveStatus] = useState("Technical");
   
   const getInitialIndex = () => {
     const revelIndex = projects.findIndex(p => p.id === 1);
@@ -747,7 +765,7 @@ const Projects = () => {
                 {/* Desktop Cards Container */}
                 <div
                   ref={containerRef}
-                  className="w-[1000px] h-[540px] mx-auto relative"
+                  className="w-[1000px] h-[590px] mx-auto relative"
                   onMouseDown={handleStart}
                   onMouseMove={handleMove}
                   onMouseUp={handleEnd}

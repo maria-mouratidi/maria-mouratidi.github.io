@@ -5,13 +5,13 @@ import {
   FaMapMarkerAlt, FaCalendarAlt, FaReact, FaNodeJs, FaGitAlt, FaDocker, FaJira,
 } from "react-icons/fa";
 import {
-  SiPython, SiJavascript, SiCplusplus, SiMysql, SiMongodb, SiDjango, SiMicrosoftsqlserver
+  SiPython, SiJavascript, SiCplusplus, SiMysql, SiMongodb, SiPostgresql,
+  SiFastapi, SiPydantic, SiOpenai, SiTerraform, SiPytorch, SiTensorflow,
 } from "react-icons/si";
 import {DiProlog
 } from "react-icons/di";
 import {VscAzure
 } from "react-icons/vsc";
-import { FaChrome } from "react-icons/fa";
 import { useTheme } from "../ThemeContext";
 
 // ========== THEME STYLES (certificate style) ==========
@@ -24,9 +24,6 @@ const themeStyles = {
     accent: "text-yellow-600",
     cardTitle: "font-bold text-gray-800",
     cardDesc: "font-normal text-gray-700",
-    percent: "text-yellow-600",
-    barBg: "bg-yellow-100/50",
-    bar: "from-yellow-400 to-yellow-200",
     button: "bg-yellow-400/20 hover:bg-yellow-400/30 text-yellow-900 border-yellow-500/40",
     glow: "shadow-yellow-400/20",
     badge: "bg-yellow-100/30 text-yellow-900 border-yellow-400/40",
@@ -42,9 +39,6 @@ const themeStyles = {
     accent: "text-blue-400",
     cardTitle: "font-bold text-gray-100",
     cardDesc: "font-normal text-gray-300",
-    percent: "text-blue-400",
-    barBg: "bg-blue-900/50",
-    bar: "from-blue-400 to-blue-900",
     button: "bg-blue-600/20 hover:bg-blue-600/30 text-blue-200 border-blue-500/40",
     glow: "shadow-blue-400/20",
     badge: "bg-blue-900/30 text-blue-200 border-blue-500/40",
@@ -55,32 +49,43 @@ const themeStyles = {
 };
 
 const allSkillDetails = [
-  { key: "python", name: "Python", icon: <SiPython className="text-yellow-500"/>, desc: "Programming Language", percent: 90 },
-  { key: "js", name: "Javascript", icon: <SiJavascript className="text-yellow-400"/>, desc: "Programming Language", percent: 15 },
-  { key: "c++", name: "C++", icon: <SiCplusplus className="text-blue-400"/>, desc: "Programming Language", percent: 30 },
-  { key: "prolog", name: "Prolog", icon: <DiProlog className="text-blue-400"/>, desc: "Programming Language", percent: 20 },
-  { key: "sql", name: "SQL", icon: <SiMicrosoftsqlserver className="text-red-800"/>, desc: "Programming Language", percent: 75 },
-  { key: "azure", name: "Azure", icon: <VscAzure className="text-blue-600"/>, desc: "Cloud Platform", percent: 50 },
-  { key: "react", name: "React.js", icon: <FaReact className="text-cyan-400"/>, desc: "Front-End Framework", percent: 10 },
-  { key: "nodejs", name: "Node.js", icon: <FaNodeJs className="text-green-600"/>, desc: "Backend Runtime", percent: 30 },
-  { key: "restapi", name: "RESTful APIs", icon: <FaServer className="text-blue-400"/>, desc: "API Design", percent: 50 },
-  { key: "mongodb", name: "MongoDB", icon: <SiMongodb className="text-green-500"/>, desc: "NoSQL Database", percent: 60 },
-  { key: "mysql", name: "MySQL", icon: <SiMysql className="text-blue-700"/>, desc: "RDBMS", percent: 80 },
-  { key: "git", name: "Git", icon: <FaGitAlt className="text-orange-700"/>, desc: "Version Control", percent: 90 },
-  { key: "docker", name: "Docker", icon: <FaDocker className="text-blue-500"/>, desc: "Containerization", percent: 30 },
-  { key: "jira", name: "Jira", icon: <FaJira className="text-blue-500"/>, desc: "Project Management", percent: 50 },
-  { key: "agile", name: "Agile & Scrum", icon: <FaTools className="text-green-600"/>, desc: "Methodology", percent: 80 },
+  // Backend & APIs
+  { key: "python", name: "Python", icon: <SiPython className="text-yellow-500"/>, desc: "Programming Language" },
+  { key: "fastapi", name: "FastAPI", icon: <SiFastapi className="text-green-500"/>, desc: "Web Framework" },
+  { key: "pydantic", name: "Pydantic", icon: <SiPydantic className="text-red-500"/>, desc: "Data Validation" },
+  { key: "restapi", name: "RESTful APIs", icon: <FaServer className="text-blue-400"/>, desc: "API Design" },
+  // GenAI & LLMs
+  { key: "azureopenai", name: "Azure OpenAI", icon: <VscAzure className="text-blue-600"/>, desc: "LLM Provider" },
+  { key: "openai", name: "OpenAI API", icon: <SiOpenai className="text-black"/>, desc: "LLM Provider" },
+  { key: "langchain", name: "LangChain", icon: <FaCode className="text-green-600"/>, desc: "LLM Framework" },
+  { key: "langraph", name: "LangGraph", icon: <FaCode className="text-blue-500"/>, desc: "Agent Framework" },
+  { key: "n8n", name: "n8n", icon: <FaTools className="text-orange-500"/>, desc: "Workflow Automation" },
+  // Databases
+  { key: "postgres", name: "PostgreSQL", icon: <SiPostgresql className="text-blue-600"/>, desc: "RDBMS" },
+  { key: "mysql", name: "MySQL", icon: <SiMysql className="text-blue-700"/>, desc: "RDBMS" },
+  { key: "mongodb", name: "MongoDB", icon: <SiMongodb className="text-green-500"/>, desc: "NoSQL Database" },
+  // DevOps
+  { key: "docker", name: "Docker", icon: <FaDocker className="text-blue-500"/>, desc: "Containerization" },
+  { key: "azure", name: "Azure Container Apps", icon: <VscAzure className="text-blue-600"/>, desc: "Cloud Platform" },
+  { key: "terraform", name: "Terraform", icon: <SiTerraform className="text-purple-600"/>, desc: "Infrastructure as Code" },
+  { key: "git", name: "Git", icon: <FaGitAlt className="text-orange-700"/>, desc: "Version Control" },
+  // ML & NLP
+  { key: "pytorch", name: "PyTorch", icon: <SiPytorch className="text-orange-600"/>, desc: "ML Framework" },
+  { key: "tensorflow", name: "TensorFlow", icon: <SiTensorflow className="text-orange-500"/>, desc: "ML Framework" },
+  { key: "huggingface", name: "HuggingFace", icon: <FaCode className="text-yellow-500"/>, desc: "Transformers Library" },
+  { key: "scikitlearn", name: "scikit-learn", icon: <FaCode className="text-orange-400"/>, desc: "ML Library" },
+  // Other
+  { key: "jira", name: "Jira", icon: <FaJira className="text-blue-500"/>, desc: "Project Management" },
 ];
 
 // GROUPS
 const skillSections = [
-  { group: "Programming Languages", icon: <FaCode className="text-yellow-600" />, keys: ["python", "c++", "js", "prolog"] }, //TODO: add C++ graphics
-    { group: "Back-End Development", icon: <FaServer className="text-blue-500" />, keys: [ "restapi", "nodejs"] },
-  //{ group: "Front-End Development", icon: <FaReact className="text-cyan-400" />, keys: ["react"] },
-  { group: "Databases", icon: <FaDatabase className="text-orange-700" />, keys: ["mysql", "mongodb"] },
-  // { group: "Testing & Debugging", icon: <FaBug className="text-red-500" />, keys: ["jest", "postman", "chromedevtools"] },
-  { group: "DevOps & Deployment", icon: <FaTools className="text-green-600" />, keys: ["git", "azure", "docker"] },
-  { group: "Project Management", icon: <FaJira className="text-blue-500" />, keys: ["jira"] }
+  { group: "Backend & APIs", icon: <FaServer className="text-blue-500" />, keys: ["python", "fastapi", "pydantic", "restapi"] },
+  { group: "GenAI & LLMs", icon: <FaCode className="text-yellow-600" />, keys: ["azureopenai", "openai", "langchain", "langraph", "n8n"] },
+  { group: "Databases", icon: <FaDatabase className="text-orange-700" />, keys: ["postgres", "mysql", "mongodb"] },
+  { group: "DevOps", icon: <FaTools className="text-green-600" />, keys: ["docker", "azure", "terraform", "git"] },
+  { group: "ML & NLP", icon: <FaCode className="text-blue-500" />, keys: ["pytorch", "tensorflow", "huggingface", "scikitlearn"] },
+  { group: "Other", icon: <FaJira className="text-blue-500" />, keys: ["jira"] }
 ];
 
 // HIGHLIGHTS, EXPERIENCE, EDUCATION
@@ -102,26 +107,48 @@ const experienceGroups = [
         location: "Rotterdam, Netherlands",
         period: "12/2023 – Present (Part time)",
         description: [
-          "Built LLM-powered agents for business workflow processing, including a CRM and invoice processing",
-          "Developed document processing pipelines that extract, transform, and restructure data from various file formats",
-          "Integrated multi-platform connectors into the company's platform for seamless data flow",
-          "Designed and implemented behavior tree architectures for agent workflows",
-          "Created custom evaluations with ground truth svalidation to measure extraction accuracy and system performance"
+          "Developing end-to-end LLM-powered data processing pipelines and deploying them as containerized backend applications.",
+          "Built an email processing system with product inquiry classification into standardized article codes and structured output to the sales team.",
+          "Developed a stateful system that dynamically tracks trainee's engagement, goals, and progress, and sends personalized follow-up emails before the next training session.",
+          "Built a WhatsApp-based conversational agent for natural-language work hour submission with identity verification, project validation, and multi-turn approval workflows."
         ],
         skills: [
           "Python",
-          "Bash",
-          "Azure",
-          "OpenAI API",
           "FastAPI",
-          "LangChain",
-          "MySQL",
-          "WhatsApp Business API",
-          "Microsoft APIs",
-          "HubSpot API",
+          "Pydantic",
+          "Azure OpenAI",
+          "PostgreSQL",
           "Docker",
+          "Azure Container Apps",
+          "Terraform",
+          "Microsoft Graph API",
+          "WhatsApp Business API",
+          "n8n",
+          "Git",
+          "uv",
           "Jira"
-
+        ]
+      }
+    ]
+  },
+  {
+    label: "University of Thessaly",
+    entries: [
+      {
+        title: "Motion Capture Researcher — HERMES Team",
+        company: "University of Thessaly",
+        location: "Remote",
+        period: "11/2025 – Present (Part time)",
+        description: [
+          "Researching motion capture methods and creating proposals for tailored motion data collection",
+          "Implementing Deep Learning models for gait analysis and motion classification for integration with biomechanical models for the HERMES exoskeleton system",
+        ],
+        skills: [
+          "Deep Learning",
+          "Motion Capture",
+          "PyTorch",
+          "Gait Analysis",
+          "Research",
         ]
       }
     ]
@@ -130,17 +157,17 @@ const experienceGroups = [
     label: "Utrecht University",
     entries: [
       {
-        title: "Teaching Assistant - Human Centered Machine Learning",
+        title: "Teaching Assistant — Human-Centered Machine Learning",
         company: "Utrecht University",
         location: "Utrecht, Netherlands",
-        period: "04/2025 – 08/2025",
+        period: "04/2025 – 06/2025",
         description: [
-          "Leading lab sessions",
-          "Supporting students with assignments",
-          "Grading coursework",
+          "Supported Master AI students with assignments in Machine Learning and Explainable AI",
+          "Hosted lab sessions explaining complex AI concepts and providing feedback",
+          "Assisted in grading for the Human-Centered Machine Learning course",
         ],
         skills: [
-          "Machine Learning",  
+          "Machine Learning",
           "Explainable AI",
           "Algorithmic Fairness",
           "Teaching",
@@ -174,7 +201,7 @@ const experienceGroups = [
         period: "Aug 2021 – Apr 2023",
         description: [
           "Finetuning GPT-2 with human next-word prediction",
-          "Analyzed generazability of the finetuned model across datasets",
+          "Analyzed generalizability of the finetuned model across datasets",
         ],
         skills: [
           "Model finetuning",
@@ -292,36 +319,16 @@ function SkillCard({ skill, styles, isMobile = false }) {
         hover:scale-105
       `}
       style={{
-        minHeight: 110,
-        padding: "1.2rem 1.4rem",
+        padding: "0.8rem 1rem",
         border: "1.5px solid rgba(0,195,255,0.11)",
         backdropFilter: "blur(7px)"
       }}
     >
-      <div className="flex items-center justify-between mb-1">
-        <div className="flex items-center gap-2">
-          <span className="text-3xl">{skill.icon}</span>
-          <div>
-            <div className={`text-[18px] ${styles.cardTitle}`}>{skill.name}</div>
-            <div className={`text-[15px] ${styles.cardDesc}`} style={{marginTop: -2}}>{skill.desc}</div>
-          </div>
-        </div>
-        <div className={`font-bold text-xl ${styles.percent}`}>{skill.percent}%</div>
-      </div>
-      {/* Progress Bar */}
-      <div className="w-full mt-2 mb-1">
-        <div className={`h-[6px] rounded-full relative overflow-hidden ${styles.barBg}`}>
-          <div
-            className={`absolute top-0 left-0 h-full rounded-full transition-all duration-300 ${styles.bar}`}
-            style={{
-              width: `${skill.percent}%`,
-              background: styles.bar === "from-cyan-400 to-cyan-200"
-                ? "linear-gradient(90deg, #22d3ee 25%, #a5f3fc 100%)"
-                : styles.bar === "from-yellow-400 to-yellow-200"
-                ? "linear-gradient(90deg, #facc15 25%, #fef08a 100%)"
-                : "linear-gradient(90deg, #60a5fa 25%, #1e3a8a 100%)"
-            }}
-          ></div>
+      <div className="flex items-center gap-2">
+        <span className="text-2xl">{skill.icon}</span>
+        <div>
+          <div className={`text-[15px] ${styles.cardTitle}`}>{skill.name}</div>
+          <div className={`text-[13px] ${styles.cardDesc}`} style={{marginTop: -1}}>{skill.desc}</div>
         </div>
       </div>
     </div>
@@ -352,7 +359,7 @@ export default function About() {
           About <span className={styles.accent}>Me</span>
         </h1>
         <p className={`text-lg md:text-xl ${styles.textSecondary} max-w-3xl mx-auto leading-relaxed`}>
-          I’m driven by how language enables intelligence. I’m particularly interested in how humans and language models process language and use context to reason and make judgments. My core interests include Natural Language Understanding, foundation models, mechanistic interpretability, and human-AI alignment.
+          AI Engineer and NLP Researcher with experience in developing and evaluating LLM-based pipelines. I work on integrating data processing and LLM workflows directly into clients' systems, enabling language-based business intelligence with a human-centered approach.
         </p>
       </div>
       {/* Main Tabs */}
@@ -474,7 +481,7 @@ export default function About() {
                 })}
               </div>
               {/* Desktop Grid - 2 columns */}
-              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-2 gap-5">
+              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {skillSections[skillsTab].keys.map((key) => {
                   const skill = allSkillDetails.find(s => s.key === key);
                   if (!skill) return null;
