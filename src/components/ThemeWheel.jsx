@@ -31,12 +31,12 @@ const themeColors = {
   dark: "#374151",
 };
 const themeAccents = {
-  light: "#0d9488",
-  dark: "#0d9488",
+  light: "#d44d6b",
+  dark: "#e8607e",
 };
 const themeIcons = {
-  light: <MdSunny color="#0d9488" />,
-  dark: <FaMoon color="#2dd4bf" />,
+  light: <MdSunny color="#d44d6b" />,
+  dark: <FaMoon color="#e8607e" />,
 };
 
 // Memoized theme arc component
@@ -125,7 +125,7 @@ const CenterButton = React.memo(({
       borderRadius: "50%",
       border: `${size * 0.027}px solid ${themeAccents[theme]}`, // Use accent for border
       background: centerBg,
-      color: theme === "light" ? "#0d9488" : "#2dd4bf",
+      color: theme === "light" ? "#d44d6b" : "#e8607e",
       fontWeight: 900,
       fontSize: size * 0.18,
       display: "flex",
@@ -207,8 +207,8 @@ export default function ThemeWheelArc({
   const centerStyles = useMemo(() => {
     const centerBg =
       theme === "light"
-        ? "radial-gradient(circle at 40% 60%, #ffffff 30%, #ccfbf1 60%, #0d9488 100%)"
-        : "radial-gradient(circle at 30% 70%, #f0fdfa 30%, #5eead4 60%, #115e59 100%)";
+        ? "radial-gradient(circle at 40% 60%, #ffffff 30%, #ffc2d1 60%, #d44d6b 100%)"
+        : "radial-gradient(circle at 30% 70%, #fff1f4 30%, #e8607e 60%, #a3364f 100%)";
 
     const centerBorderColor = customCursor ? "#10b981" : themeColors[theme];
     const centerGlowColor = customCursor ? "#10b981" : themeAccents[theme];
@@ -294,14 +294,14 @@ export default function ThemeWheelArc({
         <defs>
           {/* Gradients for each theme */}
           <radialGradient id="lightGradient" cx="50%" cy="30%" r="70%">
-            <stop offset="0%" stopColor="#f0fdfa" />
-            <stop offset="60%" stopColor="#99f6e4" />
-            <stop offset="100%" stopColor="#0d9488" />
+            <stop offset="0%" stopColor="#fff1f4" />
+            <stop offset="60%" stopColor="#ffc2d1" />
+            <stop offset="100%" stopColor="#d44d6b" />
           </radialGradient>
           <radialGradient id="darkGradient" cx="50%" cy="30%" r="70%">
-            <stop offset="0%" stopColor="#ccfbf1" />
-            <stop offset="60%" stopColor="#2dd4bf" />
-            <stop offset="100%" stopColor="#115e59" />
+            <stop offset="0%" stopColor="#ffc2d1" />
+            <stop offset="60%" stopColor="#e8607e" />
+            <stop offset="100%" stopColor="#a3364f" />
           </radialGradient>
           
           {/* Glow filter for active theme */}

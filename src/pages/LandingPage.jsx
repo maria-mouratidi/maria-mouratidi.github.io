@@ -3,20 +3,20 @@ import { useTheme } from "../ThemeContext";
 
 const accentsMap = {
   light: {
-    highlight: "text-teal-700",
+    highlight: "text-dusty-700",
     secondary: "text-gray-500",
     text: "text-gray-600",
     buttonPrimary: "bg-gray-900 hover:bg-gray-800 text-white border-none",
-    buttonSecondary: "text-gray-500 hover:text-teal-700 border-gray-200/50 hover:border-teal-500/30",
-    nameColor: "text-teal-700",
+    buttonSecondary: "text-gray-500 hover:text-dusty-700 border-gray-200/50 hover:border-dusty-500/30",
+    nameColor: "text-dusty-700",
   },
   dark: {
-    highlight: "text-teal-600",
+    highlight: "text-dusty-600",
     secondary: "text-gray-400",
     text: "text-gray-400",
     buttonPrimary: "bg-white hover:bg-gray-100 text-gray-900 border-none",
-    buttonSecondary: "text-gray-400 hover:text-teal-600 border-white/[0.10] hover:border-teal-600/30",
-    nameColor: "text-teal-600",
+    buttonSecondary: "text-gray-400 hover:text-dusty-600 border-white/[0.10] hover:border-dusty-600/30",
+    nameColor: "text-dusty-600",
   }
 };
 

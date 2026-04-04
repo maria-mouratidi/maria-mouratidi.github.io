@@ -3,6 +3,20 @@ module.exports = {
   content: ["./src/**/*.{js,jsx}"],
   theme: {
     extend: {
+      colors: {
+        dusty: {
+          50:  "#fff1f4",
+          100: "#ffe0e7",
+          200: "#ffc2d1",
+          300: "#ff9db3",
+          400: "#f47a97",
+          500: "#e8607e",
+          600: "#d44d6b",
+          700: "#be3f5c",
+          800: "#a3364f",
+          900: "#8a2e44",
+        },
+      },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
       },

@@ -19,33 +19,33 @@ import { useTheme } from "../ThemeContext";
 const themeStyles = {
   light: {
     cardBg: "bg-white/60 backdrop-blur-md border-gray-200/30",
-    cardHover: "hover:bg-white/80 hover:border-teal-500/20 hover:scale-[1.02]",
+    cardHover: "hover:bg-white/80 hover:border-dusty-500/20 hover:scale-[1.02]",
     text: "text-gray-900",
     textSecondary: "text-gray-500",
-    accent: "text-teal-700",
+    accent: "text-dusty-700",
     cardTitle: "font-medium text-gray-900",
     cardDesc: "font-light text-gray-500",
-    button: "bg-white/70 hover:bg-teal-50 text-gray-700 border-gray-200/50 hover:border-teal-500/30",
+    button: "bg-white/70 hover:bg-dusty-50 text-gray-700 border-gray-200/50 hover:border-dusty-500/30",
     glow: "",
     badge: "bg-white/50 text-gray-600 border-gray-200/30",
-    filterActive: "bg-teal-50 text-teal-800 border-teal-500/40",
-    sidebarActive: "bg-teal-50 text-teal-800 border-teal-500/30 font-medium",
-    sidebar: "text-gray-600 hover:text-teal-700"
+    filterActive: "bg-dusty-50 text-dusty-800 border-dusty-500/40",
+    sidebarActive: "bg-dusty-50 text-dusty-800 border-dusty-500/30 font-medium",
+    sidebar: "text-gray-600 hover:text-dusty-700"
   },
   dark: {
     cardBg: "bg-neutral-900/60 backdrop-blur-md border-white/[0.08]",
-    cardHover: "hover:bg-neutral-900/70 hover:border-teal-600/20 hover:scale-[1.02]",
+    cardHover: "hover:bg-neutral-900/70 hover:border-dusty-600/20 hover:scale-[1.02]",
     text: "text-gray-100",
     textSecondary: "text-gray-400",
-    accent: "text-teal-600",
+    accent: "text-dusty-600",
     cardTitle: "font-medium text-gray-100",
     cardDesc: "font-light text-gray-400",
-    button: "bg-white/[0.06] hover:bg-white/[0.10] text-gray-300 border-white/[0.10] hover:border-teal-600/30",
+    button: "bg-white/[0.06] hover:bg-white/[0.10] text-gray-300 border-white/[0.10] hover:border-dusty-600/30",
     glow: "",
     badge: "bg-white/[0.06] text-gray-400 border-white/[0.10]",
-    filterActive: "bg-teal-500/10 text-teal-500 border-teal-600/30",
-    sidebarActive: "bg-teal-500/10 text-teal-500 border-teal-600/30 font-medium",
-    sidebar: "text-gray-400 hover:text-teal-600"
+    filterActive: "bg-dusty-500/10 text-dusty-500 border-dusty-600/30",
+    sidebarActive: "bg-dusty-500/10 text-dusty-500 border-dusty-600/30 font-medium",
+    sidebar: "text-gray-400 hover:text-dusty-600"
   }
 };
 

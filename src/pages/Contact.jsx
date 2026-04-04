@@ -11,22 +11,22 @@ import { useTheme } from "../ThemeContext";
 const themeStyles = {
   light: {
     cardBg: "bg-white/60 backdrop-blur-md border-gray-200/30",
-    cardHover: "hover:bg-white/80 hover:border-teal-500/20",
+    cardHover: "hover:bg-white/80 hover:border-dusty-500/20",
     text: "text-gray-900",
     textSecondary: "text-gray-500",
-    accent: "text-teal-700",
-    icon: "text-teal-700",
+    accent: "text-dusty-700",
+    icon: "text-dusty-700",
     footerBg: "bg-white/60 backdrop-blur-md border-t border-gray-200/20",
     primaryButton: "bg-gray-900 hover:bg-gray-800 text-white",
     glow: ""
   },
   dark: {
     cardBg: "bg-neutral-900/60 backdrop-blur-md border-white/[0.08]",
-    cardHover: "hover:bg-neutral-900/70 hover:border-teal-600/20",
+    cardHover: "hover:bg-neutral-900/70 hover:border-dusty-600/20",
     text: "text-gray-100",
     textSecondary: "text-gray-400",
-    accent: "text-teal-600",
-    icon: "text-teal-600",
+    accent: "text-dusty-600",
+    icon: "text-dusty-600",
     footerBg: "bg-neutral-900/60 backdrop-blur-md border-t border-white/[0.08]",
     primaryButton: "bg-white hover:bg-gray-100 text-gray-900",
     glow: ""
@@ -35,9 +35,9 @@ const themeStyles = {
 
 const emailInitial = "mouratidi.m";
 const emailDomains = [
-  { domain: "gmail.com", color: "#0d9488" },
+  { domain: "gmail.com", color: "#d44d6b" },
   { domain: "gmail.com", color: "#6b7280" },
-  { domain: "gmail.com", color: "#0d9488" }
+  { domain: "gmail.com", color: "#d44d6b" }
 ];
 
 // Update the contactInfo array to remove direct values

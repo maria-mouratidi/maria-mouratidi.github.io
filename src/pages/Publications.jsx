@@ -7,25 +7,25 @@ import { useTheme } from "../ThemeContext";
 const themeStyles = {
   light: {
     cardBg: "bg-white/60 backdrop-blur-md border-gray-200/30",
-    cardHover: "hover:bg-white/80 hover:border-teal-500/20 hover:scale-[1.02]",
+    cardHover: "hover:bg-white/80 hover:border-dusty-500/20 hover:scale-[1.02]",
     text: "text-gray-900",
     textSecondary: "text-gray-500",
-    accent: "text-teal-700",
-    button: "bg-white/70 hover:bg-teal-50 text-gray-700 border-gray-200/50 hover:border-teal-500/30",
+    accent: "text-dusty-700",
+    button: "bg-white/70 hover:bg-dusty-50 text-gray-700 border-gray-200/50 hover:border-dusty-500/30",
     badge: "bg-white/50 text-gray-600 border-gray-200/30",
     glow: "",
-    linkButton: "bg-white/70 hover:bg-teal-50 text-gray-700 border-gray-200/50 hover:border-teal-500/30"
+    linkButton: "bg-white/70 hover:bg-dusty-50 text-gray-700 border-gray-200/50 hover:border-dusty-500/30"
   },
   dark: {
     cardBg: "bg-neutral-900/60 backdrop-blur-md border-white/[0.08]",
-    cardHover: "hover:bg-neutral-900/70 hover:border-teal-600/20 hover:scale-[1.02]",
+    cardHover: "hover:bg-neutral-900/70 hover:border-dusty-600/20 hover:scale-[1.02]",
     text: "text-gray-100",
     textSecondary: "text-gray-400",
-    accent: "text-teal-600",
-    button: "bg-white/[0.06] hover:bg-white/[0.10] text-gray-300 border-white/[0.10] hover:border-teal-600/30",
+    accent: "text-dusty-600",
+    button: "bg-white/[0.06] hover:bg-white/[0.10] text-gray-300 border-white/[0.10] hover:border-dusty-600/30",
     badge: "bg-white/[0.06] text-gray-400 border-white/[0.10]",
     glow: "",
-    linkButton: "bg-white/[0.06] hover:bg-white/[0.10] text-gray-300 border-white/[0.10] hover:border-teal-600/30"
+    linkButton: "bg-white/[0.06] hover:bg-white/[0.10] text-gray-300 border-white/[0.10] hover:border-dusty-600/30"
   }
 };
 

@@ -88,22 +88,22 @@ const socials = [
 
 const accentsMap = {
   light: {
-    highlight: "text-teal-700",
-    highlightDomain: "text-teal-600",
+    highlight: "text-dusty-700",
+    highlightDomain: "text-dusty-600",
     highlightDomain2: "text-gray-500",
     highlightDomain3: "text-gray-600",
     atColor: "text-gray-900",
     outline: "theme-outline",
-    iconHover: "hover:text-teal-700",
+    iconHover: "hover:text-dusty-700",
   },
   dark: {
-    highlight: "text-teal-600",
-    highlightDomain: "text-teal-600",
+    highlight: "text-dusty-600",
+    highlightDomain: "text-dusty-600",
     highlightDomain2: "text-gray-500",
     highlightDomain3: "text-gray-400",
     atColor: "text-white",
     outline: "theme-outline",
-    iconHover: "hover:text-teal-600",
+    iconHover: "hover:text-dusty-600",
   }
 };
 
