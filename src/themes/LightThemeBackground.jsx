@@ -32,7 +32,7 @@ function MoonRay() {
         width: "120vw",
         height: "140px",
         background:
-          "linear-gradient(94deg, rgba(156,163,175,0.10) 0%, rgba(107,114,128,0.18) 58%, rgba(156,163,175,0.08) 100%)",
+          "linear-gradient(94deg, rgba(232,96,126,0.04) 0%, rgba(212,77,107,0.08) 58%, rgba(232,96,126,0.03) 100%)",
         filter: "blur(22px)",
         borderRadius: "70px",
         transform: "translate(-50%, -50%) rotate(-13deg)",
