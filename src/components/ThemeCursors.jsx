@@ -45,7 +45,7 @@ function SunCursor() {
           top: pos.y - 18,
           pointerEvents: "none",
         }}
-        className="fixed z-[10000] w-9 h-9 rounded-full bg-yellow-300 opacity-90 shadow-2xl blur-[1.5px] border-[2.5px] border-yellow-500"
+        className="fixed z-[10000] w-9 h-9 rounded-full bg-teal-300 opacity-80 shadow-2xl blur-[1.5px] border-[2.5px] border-teal-500"
       />
       <div
         style={{
@@ -53,7 +53,7 @@ function SunCursor() {
           top: pos.y - 8,
           pointerEvents: "none",
         }}
-        className="fixed z-[10001] w-4 h-4 rounded-full bg-yellow-400 border-[1.5px] border-yellow-500 shadow"
+        className="fixed z-[10001] w-4 h-4 rounded-full bg-teal-400 border-[1.5px] border-teal-500 shadow"
       />
     </>
   );
@@ -69,7 +69,7 @@ function MoonCursor() {
           top: pos.y - 18,
           pointerEvents: "none",
         }}
-        className="fixed z-[10000] w-9 h-9 rounded-full bg-blue-200/80 shadow-2xl blur-[2px] border-[2px] border-blue-300"
+        className="fixed z-[10000] w-9 h-9 rounded-full bg-teal-400/60 shadow-2xl blur-[2px] border-[2px] border-teal-500"
       />
       <div
         style={{
@@ -77,7 +77,7 @@ function MoonCursor() {
           top: pos.y - 8,
           pointerEvents: "none",
         }}
-        className="fixed z-[10001] w-4 h-4 rounded-full bg-white border-[1px] border-blue-200 shadow"
+        className="fixed z-[10001] w-4 h-4 rounded-full bg-white border-[1px] border-teal-300 shadow"
       />
     </>
   );

@@ -14,27 +14,27 @@ import { useTheme } from "../ThemeContext";
 // ========== Theme Styles ==========
 const themeStyles = {
   light: {
-    cardBg: "bg-white/10 backdrop-blur-xl border-yellow-200/20",
-    cardHover: "hover:bg-yellow-50/20 hover:border-yellow-400/40 hover:shadow-yellow-400/30",
-    text: "text-gray-800",
-    textSecondary: "text-gray-600",
-    accent: "text-yellow-600",
-    button: "bg-yellow-400/20 hover:bg-yellow-400/30 text-yellow-900 border-yellow-500/40",
-    badge: "bg-yellow-100/30 text-yellow-900 border-yellow-400/40",
-    glow: "shadow-yellow-400/20",
-    filterActive: "bg-yellow-500/30 text-yellow-900 border-yellow-500/60",
+    cardBg: "bg-white/60 backdrop-blur-md border-gray-200/30",
+    cardHover: "hover:bg-white/80 hover:border-teal-500/20 hover:scale-[1.02]",
+    text: "text-gray-900",
+    textSecondary: "text-gray-500",
+    accent: "text-teal-700",
+    button: "bg-white/70 hover:bg-teal-50 text-gray-700 border-gray-200/50 hover:border-teal-500/30",
+    badge: "bg-white/50 text-gray-600 border-gray-200/30",
+    glow: "",
+    filterActive: "bg-teal-50 text-teal-800 border-teal-500/40",
     bg: ""
   },
   dark: {
-    cardBg: "bg-gray-900/10 backdrop-blur-xl border-gray-700/20",
-    cardHover: "hover:bg-gray-900/20 hover:border-blue-500/40 hover:shadow-blue-400/30",
+    cardBg: "bg-neutral-900/60 backdrop-blur-md border-white/[0.08]",
+    cardHover: "hover:bg-neutral-900/70 hover:border-teal-600/20 hover:scale-[1.02]",
     text: "text-gray-100",
-    textSecondary: "text-gray-300",
-    accent: "text-blue-400",
-    button: "bg-blue-600/20 hover:bg-blue-600/30 text-blue-200 border-blue-500/40",
-    badge: "bg-blue-900/30 text-blue-200 border-blue-500/40",
-    glow: "shadow-blue-400/20",
-    filterActive: "bg-blue-600/30 text-blue-200 border-blue-500/60",
+    textSecondary: "text-gray-400",
+    accent: "text-teal-600",
+    button: "bg-white/[0.06] hover:bg-white/[0.10] text-gray-300 border-white/[0.10] hover:border-teal-600/30",
+    badge: "bg-white/[0.06] text-gray-400 border-white/[0.10]",
+    glow: "",
+    filterActive: "bg-teal-500/10 text-teal-500 border-teal-600/30",
     bg: ""
   }
 };
@@ -107,7 +107,7 @@ const projects = [
   {
     id: 3,
     title: "WhatsApp Hours Tracker",
-    description: "Conversational agent where employees submit work hours through natural language, with identity verification, project validation against a database, and multi-turn approval workflows.",
+    description: "Conversational agent where employees submit work hours through natural language, with identity and project verification.",
     image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     technologies: ["WhatsApp Business API", "Supabase", "n8n", "Azure OpenAI"],
     status: "Technical",
@@ -117,12 +117,12 @@ const projects = [
   {
     id: 15,
     title: "Fullstack Chatbot Demo",
-    description: "Minimal, fully deployable chatbot with a stateful conversational backend and infrastructure-as-code managed cloud deployment.",
+    description: "Minimal, fully deployable chatbot with a stateful conversational backend.",
     image: "https://images.unsplash.com/photo-1554224155-cfa08c2a758f?q=80&w=1126&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     technologies: ["FastAPI", "LangGraph", "Terraform", "Azure OpenAI", "Docker"],
     status: "Technical",
     github: "https://github.com/maria-mouratidi/chatbot-prod",
-    live: ""
+    live: "https://chatbot-prod-tau.vercel.app/"
   },
   {
     id: 16,
@@ -678,7 +678,7 @@ const Projects = () => {
           <div className="max-w-7xl mx-auto">
             {/* Header */}
             <div className="text-center mb-8">
-              <h1 className={`pt-10 text-4xl md:text-5xl font-bold ${styles.text} mb-4 flex items-center justify-center gap-4`}>
+              <h1 className={`pt-10 text-4xl md:text-5xl font-light tracking-tight ${styles.text} mb-4 flex items-center justify-center gap-4`}>
                 <FaCode className={styles.accent} />
                 My Projects
               </h1>

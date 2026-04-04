@@ -1,27 +1,27 @@
 import React, { useRef, useEffect, useState } from "react";
 
 // --- Starfield generator ---
-function drawStars(ctx, width, height, starCount = 80) {
+function drawStars(ctx, width, height, starCount = 120) {
   ctx.clearRect(0, 0, width, height);
   for (let i = 0; i < starCount; i++) {
     const x = Math.random() * width;
-    const y = Math.random() * height * 0.7;
+    const y = Math.random() * height;
     const r = Math.random() * 1.3 + 0.3;
     const opacity = Math.random() * 0.6 + 0.35; // Increased opacity for better visibility
     ctx.beginPath();
     ctx.arc(x, y, r, 0, Math.PI * 2, false);
     ctx.closePath();
     ctx.globalAlpha = opacity;
-    ctx.fillStyle = "#f59e0b"; // More vibrant yellow/orange
+    ctx.fillStyle = "#9ca3af";
     ctx.shadowBlur = 2;
-    ctx.shadowColor = "#f59e0b";
+    ctx.shadowColor = "#9ca3af";
     ctx.fill();
   }
   ctx.globalAlpha = 1;
   ctx.shadowBlur = 0;
 }
 
-// --- Moon Ray (same as dark theme but yellow colors) ---
+// --- Subtle light ray ---
 function MoonRay() {
   return (
     <div
@@ -32,7 +32,7 @@ function MoonRay() {
         width: "120vw",
         height: "140px",
         background:
-          "linear-gradient(94deg, rgba(254,240,138,0.12) 0%, rgba(251,191,36,0.24) 58%, rgba(254,240,138,0.10) 100%)",
+          "linear-gradient(94deg, rgba(156,163,175,0.10) 0%, rgba(107,114,128,0.18) 58%, rgba(156,163,175,0.08) 100%)",
         filter: "blur(22px)",
         borderRadius: "70px",
         transform: "translate(-50%, -50%) rotate(-13deg)",
@@ -63,9 +63,9 @@ function MountainSilhouette({ width = 1920, height = 120 }) {
     >
       <defs>
         <linearGradient id="moonEdge" x1="0" y1="0" x2="0" y2={height}>
-          <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.4" /> {/* More vibrant yellow */}
-          <stop offset="40%" stopColor="#d97706" stopOpacity="0.25" />
-          <stop offset="100%" stopColor="#92400e" stopOpacity="0"/>
+          <stop offset="0%" stopColor="#9ca3af" stopOpacity="0.3" />
+          <stop offset="40%" stopColor="#6b7280" stopOpacity="0.18" />
+          <stop offset="100%" stopColor="#4b5563" stopOpacity="0"/>
         </linearGradient>
       </defs>
       <path
@@ -161,15 +161,15 @@ function CometStreaks() {
           >
             <defs>
               <linearGradient id={`comet-tail-${i}`} x1={x1} y1={y1} x2={x2} y2={y2} gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.1" /> {/* More visible start */}
-                <stop offset="35%" stopColor="#fbbf24" stopOpacity="0.45" /> {/* Increased opacity */}
-                <stop offset="80%" stopColor="#fde68a" stopOpacity="0.9" /> {/* More vibrant */}
-                <stop offset="100%" stopColor="#fef3c7" stopOpacity="0" />
+                <stop offset="0%" stopColor="#6b7280" stopOpacity="0.08" />
+                <stop offset="35%" stopColor="#9ca3af" stopOpacity="0.35" />
+                <stop offset="80%" stopColor="#d1d5db" stopOpacity="0.7" />
+                <stop offset="100%" stopColor="#e5e7eb" stopOpacity="0" />
               </linearGradient>
               <radialGradient id={`comet-head-${i}`} cx="50%" cy="50%" r="80%">
-                <stop offset="0%" stopColor="#f59e0b" stopOpacity="1" /> {/* Vibrant orange center */}
-                <stop offset="35%" stopColor="#fbbf24" stopOpacity="0.7" />
-                <stop offset="100%" stopColor="#fde68a" stopOpacity="0" />
+                <stop offset="0%" stopColor="#6b7280" stopOpacity="1" />
+                <stop offset="35%" stopColor="#9ca3af" stopOpacity="0.6" />
+                <stop offset="100%" stopColor="#d1d5db" stopOpacity="0" />
               </radialGradient>
             </defs>
             <line
@@ -181,7 +181,7 @@ function CometStreaks() {
               strokeWidth={c.thickness}
               strokeLinecap="round"
               style={{
-                filter: "blur(0.3px) drop-shadow(0 0 5px #fbbf2488)"
+                filter: "blur(0.3px) drop-shadow(0 0 5px #9ca3af88)"
               }}
             />
             <circle
@@ -190,7 +190,7 @@ function CometStreaks() {
               r={c.headRadius}
               fill={`url(#comet-head-${i})`}
               style={{
-                filter: "blur(0.3px) drop-shadow(0 0 10px #f59e0b)"
+                filter: "blur(0.3px) drop-shadow(0 0 10px #9ca3af)"
               }}
             />
           </svg>
@@ -200,22 +200,40 @@ function CometStreaks() {
   );
 }
 
-const LightThemeBackground = () => {
+const LightThemeBackground = ({ activeSection }) => {
   const canvasRef = useRef(null);
+  const [canvasOpacity, setCanvasOpacity] = useState(1);
+  const prevSectionRef = useRef(null);
 
-  // Always fit canvas to viewport, redraw stars on resize
-  useEffect(() => {
+  // Draw stars helper
+  const redraw = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    function resizeAndDraw() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      const ctx = canvas.getContext("2d");
-      drawStars(ctx, canvas.width, canvas.height);
-    }
-    resizeAndDraw();
-    window.addEventListener("resize", resizeAndDraw);
-    return () => window.removeEventListener("resize", resizeAndDraw);
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const ctx = canvas.getContext("2d");
+    drawStars(ctx, canvas.width, canvas.height);
+  };
+
+  // On section change: fade out, redraw, fade in
+  useEffect(() => {
+    if (prevSectionRef.current === activeSection) return;
+    const isFirst = prevSectionRef.current === null;
+    prevSectionRef.current = activeSection;
+    if (isFirst) return;
+    setCanvasOpacity(0);
+    const timer = setTimeout(() => {
+      redraw();
+      setCanvasOpacity(1);
+    }, 400);
+    return () => clearTimeout(timer);
+  }, [activeSection]);
+
+  // Initial draw + resize
+  useEffect(() => {
+    redraw();
+    window.addEventListener("resize", redraw);
+    return () => window.removeEventListener("resize", redraw);
   }, []);
 
   return (
@@ -223,12 +241,10 @@ const LightThemeBackground = () => {
       className="fixed inset-0 w-full h-full z-0 pointer-events-none"
       aria-hidden="true"
       style={{
-        background: "linear-gradient(120deg, #fafdff 0%, #fefce8 60%, #e2e8f0 100%)",
-        transition: "opacity 1s cubic-bezier(.4,0,.2,1)",
+        background: "#ffffff",
         overflow: "hidden",
       }}
     >
-      {/* Star field */}
       <canvas
         ref={canvasRef}
         style={{
@@ -238,6 +254,8 @@ const LightThemeBackground = () => {
           height: "100vh",
           zIndex: 1,
           pointerEvents: "none",
+          opacity: canvasOpacity,
+          transition: `opacity ${canvasOpacity === 0 ? '0.3s' : '1.2s'} ease-in-out`,
         }}
       />
       <MoonRay />

@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
 
 // --- Starfield generator ---
-function drawStars(ctx, width, height, starCount = 80) {
+function drawStars(ctx, width, height, starCount = 120) {
   ctx.clearRect(0, 0, width, height);
   for (let i = 0; i < starCount; i++) {
     const x = Math.random() * width;
-    const y = Math.random() * height * 0.7;
+    const y = Math.random() * height;
     const r = Math.random() * 1.3 + 0.3;
     const opacity = Math.random() * 0.6 + 0.25;
     ctx.beginPath();
@@ -39,9 +39,9 @@ function MountainSilhouette({ width = 1920, height = 120 }) {
     >
       <defs>
         <linearGradient id="moonEdge" x1="0" y1="0" x2="0" y2={height}>
-          <stop offset="0%" stopColor="#bcc6e0" stopOpacity="0.26" />
-          <stop offset="40%" stopColor="#101a2a" stopOpacity="0.12" />
-          <stop offset="100%" stopColor="#101a2a" stopOpacity="0"/>
+          <stop offset="0%" stopColor="#9ca3af" stopOpacity="0.26" />
+          <stop offset="40%" stopColor="#111827" stopOpacity="0.12" />
+          <stop offset="100%" stopColor="#111827" stopOpacity="0"/>
         </linearGradient>
       </defs>
       <path
@@ -137,15 +137,15 @@ function CometStreaks() {
           >
             <defs>
               <linearGradient id={`comet-tail-${i}`} x1={x1} y1={y1} x2={x2} y2={y2} gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#95e5ff" stopOpacity="0.01" />
-                <stop offset="35%" stopColor="#bdf2ff" stopOpacity="0.30" />
-                <stop offset="80%" stopColor="#e9f7ff" stopOpacity="0.85" />
-                <stop offset="100%" stopColor="#e9f7ff" stopOpacity="0" />
+                <stop offset="0%" stopColor="#9ca3af" stopOpacity="0.01" />
+                <stop offset="35%" stopColor="#d1d5db" stopOpacity="0.30" />
+                <stop offset="80%" stopColor="#e5e7eb" stopOpacity="0.85" />
+                <stop offset="100%" stopColor="#e5e7eb" stopOpacity="0" />
               </linearGradient>
               <radialGradient id={`comet-head-${i}`} cx="50%" cy="50%" r="80%">
                 <stop offset="0%" stopColor="#fff" stopOpacity="1" />
-                <stop offset="35%" stopColor="#b6e9ff" stopOpacity="0.5" />
-                <stop offset="100%" stopColor="#bdf2ff" stopOpacity="0" />
+                <stop offset="35%" stopColor="#d1d5db" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#e5e7eb" stopOpacity="0" />
               </radialGradient>
             </defs>
             <line
@@ -157,7 +157,7 @@ function CometStreaks() {
               strokeWidth={c.thickness}
               strokeLinecap="round"
               style={{
-                filter: "blur(0.3px) drop-shadow(0 0 5px #bdf2ff88)"
+                filter: "blur(0.3px) drop-shadow(0 0 5px #d1d5db88)"
               }}
             />
             <circle
@@ -176,22 +176,39 @@ function CometStreaks() {
   );
 }
 
-const DarkThemeBackground = () => {
+const DarkThemeBackground = ({ activeSection }) => {
   const canvasRef = useRef(null);
+  const [canvasOpacity, setCanvasOpacity] = useState(1);
+  const prevSectionRef = useRef(null);
 
-  // Always fit canvas to viewport, redraw stars on resize
-  useEffect(() => {
+  const redraw = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    function resizeAndDraw() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      const ctx = canvas.getContext("2d");
-      drawStars(ctx, canvas.width, canvas.height);
-    }
-    resizeAndDraw();
-    window.addEventListener("resize", resizeAndDraw);
-    return () => window.removeEventListener("resize", resizeAndDraw);
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const ctx = canvas.getContext("2d");
+    drawStars(ctx, canvas.width, canvas.height);
+  };
+
+  // On section change: fade out, redraw, fade in
+  useEffect(() => {
+    if (prevSectionRef.current === activeSection) return;
+    const isFirst = prevSectionRef.current === null;
+    prevSectionRef.current = activeSection;
+    if (isFirst) return;
+    setCanvasOpacity(0);
+    const timer = setTimeout(() => {
+      redraw();
+      setCanvasOpacity(1);
+    }, 400);
+    return () => clearTimeout(timer);
+  }, [activeSection]);
+
+  // Initial draw + resize
+  useEffect(() => {
+    redraw();
+    window.addEventListener("resize", redraw);
+    return () => window.removeEventListener("resize", redraw);
   }, []);
 
   return (
@@ -200,12 +217,10 @@ const DarkThemeBackground = () => {
       aria-hidden="true"
       style={{
         background:
-          "radial-gradient(ellipse at 70% 16%, #2a375a 0px, #101a2a 90%, #070e1e 100%)",
-        transition: "opacity 1s cubic-bezier(.4,0,.2,1)",
+          "radial-gradient(ellipse at 70% 16%, #141414 0px, #0a0a0a 90%, #000000 100%)",
         overflow: "hidden",
       }}
     >
-      {/* Star field */}
       <canvas
         ref={canvasRef}
         style={{
@@ -215,6 +230,8 @@ const DarkThemeBackground = () => {
           height: "100vh",
           zIndex: 1,
           pointerEvents: "none",
+          opacity: canvasOpacity,
+          transition: `opacity ${canvasOpacity === 0 ? '0.3s' : '1.2s'} ease-in-out`,
         }}
       />
       <MountainSilhouette />

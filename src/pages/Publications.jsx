@@ -1,31 +1,31 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaBook, FaExternalLinkAlt, FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
-import { SiLivejournal } from "react-icons/si";
+import { FaExternalLinkAlt, FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
+import { RiDoubleQuotesL } from "react-icons/ri";
 import { useTheme } from "../ThemeContext";
 
 // ===== THEME STYLES =====
 const themeStyles = {
   light: {
-    cardBg: "bg-white/15 backdrop-blur-xl border-yellow-200/20",
-    cardHover: "hover:bg-yellow-50/25 hover:border-yellow-400/40 hover:shadow-yellow-400/20",
-    text: "text-gray-800",
-    textSecondary: "text-gray-600",
-    accent: "text-yellow-600",
-    button: "bg-yellow-400/20 hover:bg-yellow-400/30 text-yellow-900 border-yellow-500/40",
-    badge: "bg-yellow-100/30 text-yellow-900 border-yellow-400/40",
-    glow: "shadow-yellow-400/20",
-    linkButton: "bg-yellow-500/20 hover:bg-yellow-500/30 text-yellow-800 border-yellow-500/40"
+    cardBg: "bg-white/60 backdrop-blur-md border-gray-200/30",
+    cardHover: "hover:bg-white/80 hover:border-teal-500/20 hover:scale-[1.02]",
+    text: "text-gray-900",
+    textSecondary: "text-gray-500",
+    accent: "text-teal-700",
+    button: "bg-white/70 hover:bg-teal-50 text-gray-700 border-gray-200/50 hover:border-teal-500/30",
+    badge: "bg-white/50 text-gray-600 border-gray-200/30",
+    glow: "",
+    linkButton: "bg-white/70 hover:bg-teal-50 text-gray-700 border-gray-200/50 hover:border-teal-500/30"
   },
   dark: {
-    cardBg: "bg-gray-900/15 backdrop-blur-xl border-gray-700/20",
-    cardHover: "hover:bg-gray-900/25 hover:border-blue-500/40 hover:shadow-blue-400/20",
+    cardBg: "bg-neutral-900/60 backdrop-blur-md border-white/[0.08]",
+    cardHover: "hover:bg-neutral-900/70 hover:border-teal-600/20 hover:scale-[1.02]",
     text: "text-gray-100",
-    textSecondary: "text-gray-300",
-    accent: "text-blue-400",
-    button: "bg-blue-600/20 hover:bg-blue-600/30 text-blue-200 border-blue-500/40",
-    badge: "bg-blue-900/30 text-blue-200 border-blue-500/40",
-    glow: "shadow-blue-400/20",
-    linkButton: "bg-blue-600/20 hover:bg-blue-600/30 text-blue-200 border-blue-500/40"
+    textSecondary: "text-gray-400",
+    accent: "text-teal-600",
+    button: "bg-white/[0.06] hover:bg-white/[0.10] text-gray-300 border-white/[0.10] hover:border-teal-600/30",
+    badge: "bg-white/[0.06] text-gray-400 border-white/[0.10]",
+    glow: "",
+    linkButton: "bg-white/[0.06] hover:bg-white/[0.10] text-gray-300 border-white/[0.10] hover:border-teal-600/30"
   }
 };
 
@@ -121,7 +121,6 @@ const PublicationCard = ({ publication, index }) => {
       {/* Conference/Journal Info */}
       <div className="space-y-2 mb-4">
         <div className="flex items-center gap-2">
-          <FaBook className={`${styles.accent} text-sm`} />
           <span className={`${styles.accent} font-semibold text-sm`}>
             {publication.conference || publication.journal}
           </span>
@@ -201,7 +200,7 @@ const Publications = () => {
         {/* Header Section */}
         <div className="text-center mb-12">
           <h1
-            className={`pt-10 text-4xl sm:text-5xl font-bold ${styles.text} mb-4 flex flex-wrap items-center justify-center gap-2 break-words`}
+            className={`pt-10 text-4xl sm:text-5xl font-light tracking-tight ${styles.text} mb-4 flex flex-wrap items-center justify-center gap-2 break-words`}
             style={{
               wordBreak: "break-word",
               overflowWrap: "break-word",
@@ -210,7 +209,7 @@ const Publications = () => {
               whiteSpace: "normal"
             }}
           >
-            <SiLivejournal className={`shrink-0 ${styles.accent}`} style={{ fontSize: "1.2em" }} />
+            <RiDoubleQuotesL className={`shrink-0 ${styles.accent}`} />
             <span style={{ minWidth: 0, maxWidth: "100%" }}>Publications</span>
           </h1>
           <p className={`text-xl ${styles.textSecondary} max-w-3xl mx-auto`}>

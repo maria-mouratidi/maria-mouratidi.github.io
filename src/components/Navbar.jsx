@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, useMemo, useCallback } from "react"
 import { FaHome, FaProjectDiagram, FaGraduationCap, FaEnvelope, FaUserTie, FaUser, FaAward } from "react-icons/fa";
 import { GiSkills } from "react-icons/gi";
 import { useTheme } from "../ThemeContext";
+import ThemeToggle from "./ThemeToggle";
 
 // Section icons for nav
 const sectionIcons = {
@@ -16,26 +17,26 @@ const sectionIcons = {
 
 const themeNavbarStyles = {
   light: {
-    bg: "bg-white/20 backdrop-blur-lg",
-    border: "border border-yellow-200/60",
-    link: "text-black",
-    active: "bg-white/80 text-black",
-    hover: "hover:bg-yellow-100/40 hover:text-black",
-    fill: "bg-yellow-100/75",
-    outline: "ring-yellow-400",
-    highlight: "bg-yellow-400/70",
-    toggleBtn: "bg-black text-white hover:bg-black/80",
+    bg: "bg-white/60 backdrop-blur-md",
+    border: "border border-gray-200/30",
+    link: "text-gray-600",
+    active: "bg-teal-50 text-teal-800",
+    hover: "hover:text-teal-700",
+    fill: "bg-white/60",
+    outline: "ring-teal-500/30",
+    highlight: "bg-teal-600/70",
+    toggleBtn: "bg-gray-900 text-white hover:bg-gray-800",
   },
   dark: {
-    bg: "bg-gray-900/80 backdrop-blur-lg",
-    border: "border border-gray-700/60",
-    link: "text-white",
-    active: "bg-gray-700/80 text-white",
-    hover: "hover:bg-gray-800/70 hover:text-white",
-    fill: "bg-gray-800/70",
-    outline: "ring-blue-400",
-    highlight: "bg-blue-600/70",
-    toggleBtn: "bg-black text-white hover:bg-black/80",
+    bg: "bg-neutral-900/60 backdrop-blur-md",
+    border: "border border-white/[0.08]",
+    link: "text-gray-400",
+    active: "bg-teal-500/10 text-teal-300",
+    hover: "hover:text-teal-600",
+    fill: "bg-white/[0.06]",
+    outline: "ring-teal-600/30",
+    highlight: "bg-teal-600/70",
+    toggleBtn: "bg-white text-gray-900 hover:bg-gray-100",
   },
 };
 
@@ -227,6 +228,7 @@ export default function Navbar({ sections = [], onNavClick }) {
               />
             );
           })}
+          <ThemeToggle />
         </div>
       </nav>
 
@@ -301,6 +303,9 @@ export default function Navbar({ sections = [], onNavClick }) {
               />
             );
           })}
+          <div className="mt-4 pt-4 border-t border-white/10">
+            <ThemeToggle />
+          </div>
         </nav>
       </div>
     </>

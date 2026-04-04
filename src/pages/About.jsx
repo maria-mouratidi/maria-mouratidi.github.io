@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import {
-  FaBriefcase, FaGraduationCap, FaCode, FaTrophy, FaBuilding, FaSchool, FaUniversity,
+  FaBriefcase, FaGraduationCap, FaCode, FaTrophy, FaBuilding, FaSchool,
   FaServer, FaTools, FaDatabase, FaCheckCircle, FaExternalLinkAlt,
   FaMapMarkerAlt, FaCalendarAlt, FaReact, FaNodeJs, FaGitAlt, FaDocker, FaJira,
 } from "react-icons/fa";
 import {
   SiPython, SiJavascript, SiCplusplus, SiMysql, SiMongodb, SiPostgresql,
   SiFastapi, SiPydantic, SiOpenai, SiTerraform, SiPytorch, SiTensorflow,
+  SiGithub,
 } from "react-icons/si";
 import {DiProlog
 } from "react-icons/di";
@@ -17,34 +18,34 @@ import { useTheme } from "../ThemeContext";
 // ========== THEME STYLES (certificate style) ==========
 const themeStyles = {
   light: {
-    cardBg: "bg-white/15 backdrop-blur-xl border-yellow-200/20",
-    cardHover: "hover:bg-yellow-50/25 hover:border-yellow-400/40 hover:shadow-yellow-400/20",
-    text: "text-gray-800",
-    textSecondary: "text-gray-600",
-    accent: "text-yellow-600",
-    cardTitle: "font-bold text-gray-800",
-    cardDesc: "font-normal text-gray-700",
-    button: "bg-yellow-400/20 hover:bg-yellow-400/30 text-yellow-900 border-yellow-500/40",
-    glow: "shadow-yellow-400/20",
-    badge: "bg-yellow-100/30 text-yellow-900 border-yellow-400/40",
-    filterActive: "bg-yellow-500/30 text-yellow-900 border-yellow-500/60",
-    sidebarActive: "bg-yellow-400/20 text-yellow-900 border-yellow-500/40 font-bold",
-    sidebar: "text-yellow-900 hover:text-yellow-700"
+    cardBg: "bg-white/60 backdrop-blur-md border-gray-200/30",
+    cardHover: "hover:bg-white/80 hover:border-teal-500/20 hover:scale-[1.02]",
+    text: "text-gray-900",
+    textSecondary: "text-gray-500",
+    accent: "text-teal-700",
+    cardTitle: "font-medium text-gray-900",
+    cardDesc: "font-light text-gray-500",
+    button: "bg-white/70 hover:bg-teal-50 text-gray-700 border-gray-200/50 hover:border-teal-500/30",
+    glow: "",
+    badge: "bg-white/50 text-gray-600 border-gray-200/30",
+    filterActive: "bg-teal-50 text-teal-800 border-teal-500/40",
+    sidebarActive: "bg-teal-50 text-teal-800 border-teal-500/30 font-medium",
+    sidebar: "text-gray-600 hover:text-teal-700"
   },
   dark: {
-    cardBg: "bg-gray-900/15 backdrop-blur-xl border-gray-700/20",
-    cardHover: "hover:bg-gray-900/25 hover:border-blue-500/40 hover:shadow-blue-400/20",
+    cardBg: "bg-neutral-900/60 backdrop-blur-md border-white/[0.08]",
+    cardHover: "hover:bg-neutral-900/70 hover:border-teal-600/20 hover:scale-[1.02]",
     text: "text-gray-100",
-    textSecondary: "text-gray-300",
-    accent: "text-blue-400",
-    cardTitle: "font-bold text-gray-100",
-    cardDesc: "font-normal text-gray-300",
-    button: "bg-blue-600/20 hover:bg-blue-600/30 text-blue-200 border-blue-500/40",
-    glow: "shadow-blue-400/20",
-    badge: "bg-blue-900/30 text-blue-200 border-blue-500/40",
-    filterActive: "bg-blue-600/30 text-blue-200 border-blue-500/60",
-    sidebarActive: "bg-blue-600/20 text-blue-200 border-blue-500/40 font-bold",
-    sidebar: "text-blue-200 hover:text-blue-400"
+    textSecondary: "text-gray-400",
+    accent: "text-teal-600",
+    cardTitle: "font-medium text-gray-100",
+    cardDesc: "font-light text-gray-400",
+    button: "bg-white/[0.06] hover:bg-white/[0.10] text-gray-300 border-white/[0.10] hover:border-teal-600/30",
+    glow: "",
+    badge: "bg-white/[0.06] text-gray-400 border-white/[0.10]",
+    filterActive: "bg-teal-500/10 text-teal-500 border-teal-600/30",
+    sidebarActive: "bg-teal-500/10 text-teal-500 border-teal-600/30 font-medium",
+    sidebar: "text-gray-400 hover:text-teal-600"
   }
 };
 
@@ -53,7 +54,7 @@ const allSkillDetails = [
   { key: "python", name: "Python", icon: <SiPython className="text-yellow-500"/>, desc: "Programming Language" },
   { key: "fastapi", name: "FastAPI", icon: <SiFastapi className="text-green-500"/>, desc: "Web Framework" },
   { key: "pydantic", name: "Pydantic", icon: <SiPydantic className="text-red-500"/>, desc: "Data Validation" },
-  { key: "restapi", name: "RESTful APIs", icon: <FaServer className="text-blue-400"/>, desc: "API Design" },
+  { key: "asyncio", name: "AsyncIO", icon: <SiPython className="text-blue-500"/>, desc: "Concurrent Programming" },
   // GenAI & LLMs
   { key: "azureopenai", name: "Azure OpenAI", icon: <VscAzure className="text-blue-600"/>, desc: "LLM Provider" },
   { key: "openai", name: "OpenAI API", icon: <SiOpenai className="text-black"/>, desc: "LLM Provider" },
@@ -63,11 +64,11 @@ const allSkillDetails = [
   // Databases
   { key: "postgres", name: "PostgreSQL", icon: <SiPostgresql className="text-blue-600"/>, desc: "RDBMS" },
   { key: "mysql", name: "MySQL", icon: <SiMysql className="text-blue-700"/>, desc: "RDBMS" },
-  { key: "mongodb", name: "MongoDB", icon: <SiMongodb className="text-green-500"/>, desc: "NoSQL Database" },
   // DevOps
   { key: "docker", name: "Docker", icon: <FaDocker className="text-blue-500"/>, desc: "Containerization" },
   { key: "azure", name: "Azure Container Apps", icon: <VscAzure className="text-blue-600"/>, desc: "Cloud Platform" },
   { key: "terraform", name: "Terraform", icon: <SiTerraform className="text-purple-600"/>, desc: "Infrastructure as Code" },
+  { key: "githubactions", name: "GitHub Actions", icon: <SiGithub className="text-black"/>, desc: "CI/CD Pipelines" },
   { key: "git", name: "Git", icon: <FaGitAlt className="text-orange-700"/>, desc: "Version Control" },
   // ML & NLP
   { key: "pytorch", name: "PyTorch", icon: <SiPytorch className="text-orange-600"/>, desc: "ML Framework" },
@@ -80,12 +81,12 @@ const allSkillDetails = [
 
 // GROUPS
 const skillSections = [
-  { group: "Backend & APIs", icon: <FaServer className="text-blue-500" />, keys: ["python", "fastapi", "pydantic", "restapi"] },
-  { group: "GenAI & LLMs", icon: <FaCode className="text-yellow-600" />, keys: ["azureopenai", "openai", "langchain", "langraph", "n8n"] },
-  { group: "Databases", icon: <FaDatabase className="text-orange-700" />, keys: ["postgres", "mysql", "mongodb"] },
-  { group: "DevOps", icon: <FaTools className="text-green-600" />, keys: ["docker", "azure", "terraform", "git"] },
-  { group: "ML & NLP", icon: <FaCode className="text-blue-500" />, keys: ["pytorch", "tensorflow", "huggingface", "scikitlearn"] },
-  { group: "Other", icon: <FaJira className="text-blue-500" />, keys: ["jira"] }
+  { group: "Backend & APIs", icon: <FaServer />, keys: ["python", "fastapi", "pydantic", "restapi"] },
+  { group: "GenAI & LLMs", icon: <FaCode />, keys: ["azureopenai", "openai", "langchain", "langraph", "n8n"] },
+  { group: "Databases", icon: <FaDatabase />, keys: ["postgres", "mysql", "mongodb"] },
+  { group: "DevOps", icon: <FaTools />, keys: ["docker", "azure", "terraform", "git"] },
+  { group: "ML & NLP", icon: <FaCode />, keys: ["pytorch", "tensorflow", "huggingface", "scikitlearn"] },
+  { group: "Other", icon: <FaJira />, keys: ["jira"] }
 ];
 
 // HIGHLIGHTS, EXPERIENCE, EDUCATION
@@ -105,12 +106,9 @@ const experienceGroups = [
         title: "AI Engineer",
         company: "Next Epoch",
         location: "Rotterdam, Netherlands",
-        period: "12/2023 – Present (Part time)",
+        period: "12/2023 – Present",
         description: [
-          "Developing end-to-end LLM-powered data processing pipelines and deploying them as containerized backend applications.",
-          "Built an email processing system with product inquiry classification into standardized article codes and structured output to the sales team.",
-          "Developed a stateful system that dynamically tracks trainee's engagement, goals, and progress, and sends personalized follow-up emails before the next training session.",
-          "Built a WhatsApp-based conversational agent for natural-language work hour submission with identity verification, project validation, and multi-turn approval workflows."
+          "Developing end-to-end LLM-based applications in production to automate business operations"
         ],
         skills: [
           "Python",
@@ -120,13 +118,7 @@ const experienceGroups = [
           "PostgreSQL",
           "Docker",
           "Azure Container Apps",
-          "Terraform",
-          "Microsoft Graph API",
-          "WhatsApp Business API",
-          "n8n",
           "Git",
-          "uv",
-          "Jira"
         ]
       }
     ]
@@ -138,16 +130,14 @@ const experienceGroups = [
         title: "Motion Capture Researcher — HERMES Team",
         company: "University of Thessaly",
         location: "Remote",
-        period: "11/2025 – Present (Part time)",
+        period: "11/2025 – Present",
         description: [
-          "Researching motion capture methods and creating proposals for tailored motion data collection",
-          "Implementing Deep Learning models for gait analysis and motion classification for integration with biomechanical models for the HERMES exoskeleton system",
+          "Implementing Deep Learning models for gait prediction and motion classification for integration with biomechanical models for the HERMES exoskeleton system",
         ],
         skills: [
           "Deep Learning",
           "Motion Capture",
           "PyTorch",
-          "Gait Analysis",
           "Research",
         ]
       }
@@ -162,9 +152,8 @@ const experienceGroups = [
         location: "Utrecht, Netherlands",
         period: "04/2025 – 06/2025",
         description: [
-          "Supported Master AI students with assignments in Machine Learning and Explainable AI",
-          "Hosted lab sessions explaining complex AI concepts and providing feedback",
-          "Assisted in grading for the Human-Centered Machine Learning course",
+        "Supported Master AI students with assignments in fair machine learning and explainable AI",
+        "Hosted lab sessions where I explained explainable AI concepts and provided feedback"
         ],
         skills: [
           "Machine Learning",
@@ -185,8 +174,7 @@ const experienceGroups = [
         location: "Tilburg, Netherlands",
         period: "Aug 2021 – Apr 2023",
         description: [
-          "Supporting first-year students",
-          "Helping with university integration, admin, team building, socializing",
+          "Hosted weekly meetings to support first-year students with university integration, admin, team-building, and socializing."
         ],
         skills: [
           "Mentoring",
@@ -200,7 +188,7 @@ const experienceGroups = [
         location: "Tilburg, Netherlands",
         period: "Aug 2021 – Apr 2023",
         description: [
-          "Finetuning GPT-2 with human next-word prediction",
+          "Finetuned GPT-2 with human next-word prediction",
           "Analyzed generalizability of the finetuned model across datasets",
         ],
         skills: [
@@ -222,12 +210,13 @@ const educationGroups = [
   // },
   {
     label: "MSc Artificial Intelligence",
-    icon: <FaGraduationCap className="text-yellow-600" />,
+    logo: "/images/uu-logo.svg",
     entries: [{  institution: "Utrecht University", period: "2025", location: "Utrecht, Netherlands", grade: "8.2 GPA", }]
   },
   {
-    label: "BSc Cognitive Science and Artificial Intelligence",
-    icon: <FaUniversity className="text-blue-500" />,
+    label: "BSc Cognitive Science and AI",
+    logo: "/images/tilburg-logo.svg",
+    logoSize: 52,
     entries: [{  institution: "Tilburg University", period: "2023", location: "Tilburg, Netherlands", grade: "8 GPA, Cum Laude" }]
   }
 ];
@@ -235,9 +224,9 @@ const educationGroups = [
 // ========== COMPONENTS ==========
 function MainTabBar({ activeTab, setActiveTab, styles }) {
   const tabs = [
-    { id: "education", label: "Education", icon: <FaGraduationCap className="text-green-500" /> },
-    { id: "experience", label: "Experience", icon: <FaBriefcase className="text-purple-600" /> },
-    { id: "skills", label: "Skills", icon: <FaCode className="text-blue-500" /> },
+    { id: "education", label: "Education", icon: <FaGraduationCap /> },
+    { id: "experience", label: "Experience", icon: <FaBriefcase /> },
+    { id: "skills", label: "Skills", icon: <FaCode /> },
     // { id: "highlights", label: "Highlights", icon: <FaTrophy className="text-yellow-500" /> }
   ];
   return (
@@ -253,7 +242,7 @@ function MainTabBar({ activeTab, setActiveTab, styles }) {
             }`}
           style={{ minWidth: "auto" }}
         >
-          <span className="text-base md:text-lg flex items-center">
+          <span className={`text-base md:text-lg flex items-center ${styles.accent}`}>
             {tab.icon}
           </span>
           <span className="hidden sm:inline">{tab.label}</span>
@@ -279,7 +268,7 @@ function SideTabBar({ groups, activeIndex, setActiveIndex, iconMap = {} }) {
               : `${styles.sidebar} border-transparent`}
           `}
         >
-          {iconMap && iconMap[g.label || g.group] ? iconMap[g.label || g.group] : g.icon}
+          <span className={styles.accent}>{iconMap && iconMap[g.label || g.group] ? iconMap[g.label || g.group] : g.icon}</span>
           <span className="whitespace-nowrap text-xs md:text-lg leading-tight">{g.label || g.group}</span>
         </button>
       ))}
@@ -355,11 +344,11 @@ export default function About() {
     <section id="about" className="relative w-full max-w-7xl mx-auto px-4 py-8 md:py-16 scroll-mt-24">
       {/* About Me heading and description - always at the top */}
       <div className="text-center mb-8 pt-8">
-        <h1 className={`text-3xl md:text-5xl lg:text-6xl font-bold ${styles.text} mb-4`}>
+        <h1 className={`text-3xl md:text-5xl lg:text-6xl font-light tracking-tight ${styles.text} mb-4`}>
           About <span className={styles.accent}>Me</span>
         </h1>
         <p className={`text-lg md:text-xl ${styles.textSecondary} max-w-3xl mx-auto leading-relaxed`}>
-          AI Engineer and NLP Researcher with experience in developing and evaluating LLM-based pipelines. I work on integrating data processing and LLM workflows directly into clients' systems, enabling language-based business intelligence with a human-centered approach.
+          AI Engineer with experience integrating LLM workflows directly into clients' systems, enabling language-based business intelligence with a human-centered approach.
         </p>
       </div>
       {/* Main Tabs */}
@@ -374,14 +363,21 @@ export default function About() {
                 className={`flex-1 min-w-[200px] mb-6 md:mb-0 p-4 md:p-6 rounded-2xl border ${styles.cardBg} ${styles.cardHover} ${styles.glow} shadow-lg flex flex-col gap-3 md:gap-4 items-center animate-slideup`}
                 style={{ animationDelay: `${idx * 0.16}s` }}
               >
-                <div className="mb-2 flex items-start gap-2">
-                  {edu.icon}
+                {edu.logo && (
+                  <img
+                    src={edu.logo}
+                    alt=""
+                    className={`object-contain ${theme === 'dark' ? 'invert brightness-75 opacity-60' : 'grayscale opacity-80'}`}
+                    style={{ width: edu.logoSize || 44, height: edu.logoSize || 44 }}
+                  />
+                )}
+                <div className={`${styles.accent}`}>
                   <span className={edulabelStyle}>{edu.label}</span>
                 </div>
                 {edu.entries.map((entry, idy) => (
                   <div key={idy} className="flex flex-col items-center text-center">
-                    <div className="text-base md:text-lg font-bold mb-1 flex items-center gap-2">
-                      <FaGraduationCap className="text-cyan-500" />
+                    <div className={`text-base md:text-lg font-bold mb-1 flex items-center gap-2 ${styles.accent}`}>
+                      <FaGraduationCap />
                       {entry.degree}
                     </div>
                     <div className={`text-sm md:text-base font-semibold ${styles.accent}`}>{entry.institution}</div>
@@ -435,7 +431,7 @@ export default function About() {
                   <ul className={`mb-3 pl-0 flex flex-col gap-2`}>
                     {exp.description.map((item, i) => (
                       <li key={i} className="flex gap-2 items-start">
-                        <span className="mt-1 text-cyan-400">
+                        <span className={`mt-1 ${styles.accent}`}>
                           <FaCheckCircle className="text-sm md:text-base" />
                         </span>
                         <span className={`${styles.textSecondary} text-sm md:text-base`}>{item}</span>

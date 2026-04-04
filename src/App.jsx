@@ -8,7 +8,6 @@ import Navbar from "./components/Navbar";
 import LandingPage from "./pages/LandingPage";
 import { ThemeProvider, useTheme } from "./ThemeContext";
 import ThemeBackground from "./components/ThemeBackground";
-import ThemeWheel from "./components/ThemeWheel";
 import ThemeCursors from "./components/ThemeCursors";
 import Intro from "./pages/Intro";
 import Redirector from "./Redirector";
@@ -32,10 +31,10 @@ const PageLoader = React.memo(() => (
 // Theme styles for ScrollToTop (moved from Contact.js)
 const themeStyles = {
   light: {
-    primaryButton: "bg-yellow-500 hover:bg-yellow-600 text-white",
+    primaryButton: "bg-gray-900 hover:bg-gray-800 text-white",
   },
   dark: {
-    primaryButton: "bg-blue-600 hover:bg-blue-700 text-white",
+    primaryButton: "bg-white hover:bg-gray-100 text-gray-900",
   }
 };
 
@@ -233,19 +232,7 @@ function Portfolio() {
       
       <Navbar sections={SECTIONS} onNavClick={scrollToSection} />
 
-      {/* ThemeWheel only on landing page */}
-      {activeSection === "home" && (
-        <div
-          style={{
-            position: "fixed",
-            top: 32,
-            left: 32,
-            zIndex: 1010,
-          }}
-        >
-          <ThemeWheel customCursor={customCursor} setCustomCursor={setCustomCursor} />
-        </div>
-      )}
+      {/* Theme toggle is now in the Navbar */}
 
       {/* ScrollToTop component - shows in all sections except home */}
       <ScrollToTop theme={theme} activeSection={activeSection} />
@@ -253,9 +240,8 @@ function Portfolio() {
       {/* Optimized scrolling container */}
       <div
         className="relative"
-        style={{ 
+        style={{
           scrollBehavior: "smooth",
-          contain: "layout style paint"
         }}
       >
         {SECTIONS.map(({ id, label }) => (
@@ -268,7 +254,6 @@ function Portfolio() {
             }`}
             style={{
               scrollSnapAlign: "start",
-              contain: "layout style paint"
             }}
           >
             {renderSection(id, label)}

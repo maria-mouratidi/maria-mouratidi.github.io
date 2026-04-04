@@ -10,34 +10,34 @@ import { useTheme } from "../ThemeContext";
 // =================== Theme Styles ===================
 const themeStyles = {
   light: {
-    cardBg: "bg-white/15 backdrop-blur-xl border-yellow-200/20",
-    cardHover: "hover:bg-yellow-50/25 hover:border-yellow-400/40",
-    text: "text-gray-800",
-    textSecondary: "text-gray-600",
-    accent: "text-yellow-600",
-    icon: "text-yellow-600",
-    footerBg: "bg-gradient-to-t from-yellow-50/20 to-yellow-50/10 backdrop-blur-xl border-t border-yellow-200/20",
-    primaryButton: "bg-yellow-500 hover:bg-yellow-600 text-white",
-    glow: "shadow-yellow-400/20"
+    cardBg: "bg-white/60 backdrop-blur-md border-gray-200/30",
+    cardHover: "hover:bg-white/80 hover:border-teal-500/20",
+    text: "text-gray-900",
+    textSecondary: "text-gray-500",
+    accent: "text-teal-700",
+    icon: "text-teal-700",
+    footerBg: "bg-white/60 backdrop-blur-md border-t border-gray-200/20",
+    primaryButton: "bg-gray-900 hover:bg-gray-800 text-white",
+    glow: ""
   },
   dark: {
-    cardBg: "bg-gray-900/15 backdrop-blur-xl border-gray-700/20",
-    cardHover: "hover:bg-gray-900/25 hover:border-blue-500/40",
+    cardBg: "bg-neutral-900/60 backdrop-blur-md border-white/[0.08]",
+    cardHover: "hover:bg-neutral-900/70 hover:border-teal-600/20",
     text: "text-gray-100",
-    textSecondary: "text-gray-300",
-    accent: "text-blue-400",
-    icon: "text-blue-400",
-    footerBg: "bg-gradient-to-t from-gray-900/20 to-gray-900/10 backdrop-blur-xl border-t border-gray-700/20",
-    primaryButton: "bg-blue-600 hover:bg-blue-700 text-white",
-    glow: "shadow-blue-400/20"
+    textSecondary: "text-gray-400",
+    accent: "text-teal-600",
+    icon: "text-teal-600",
+    footerBg: "bg-neutral-900/60 backdrop-blur-md border-t border-white/[0.08]",
+    primaryButton: "bg-white hover:bg-gray-100 text-gray-900",
+    glow: ""
   }
 };
 
 const emailInitial = "mouratidi.m";
 const emailDomains = [
-  { domain: "gmail.com", color: "#06b622" },
-  { domain: "gmail.com", color: "#ec4899" },
-  { domain: "gmail.com", color: "#a56635" }
+  { domain: "gmail.com", color: "#0d9488" },
+  { domain: "gmail.com", color: "#6b7280" },
+  { domain: "gmail.com", color: "#0d9488" }
 ];
 
 // Update the contactInfo array to remove direct values
@@ -46,14 +46,12 @@ const contactInfo = [
     icon: <MdEmail />,
     name: "Email",
     url: "mailto:mouratidi.m@gmail.com",
-    color: "text-blue-500",
     description: "Email me!"
   },
   {
     icon: <FaLocationArrow />,
     name: "Location",
     url: "https://maps.google.com/?q=Utrecht,Netherlands",
-    color: "text-red-500",
     description: "Utrecht, Netherlands"
   }
 ];
@@ -63,14 +61,12 @@ const socialLinks = [
     icon: <SiGithub />,
     name: "GitHub",
     url: "https://github.com/maria-mouratidi",
-    color: "text-gray-800 dark:text-gray-200",
     description: "Find my projects"
   },
   {
     icon: <FaLinkedin />,
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/maria-mouratidi",
-    color: "text-blue-600",
     description: "Let's connect"
   },
 ];
@@ -97,7 +93,7 @@ const SocialCard = ({ social, index, theme }) => {
     >
       <div className="text-center">
         <div className={`inline-flex p-3 rounded-lg ${styles.cardBg} border mb-3 group-hover:scale-110 transition-transform duration-300`}>
-          <span className={`text-2xl ${social.color}`}>{social.icon}</span>
+          <span className={`text-2xl ${styles.accent}`}>{social.icon}</span>
         </div>
         <h3 className={`font-semibold ${styles.text} mb-1`}>{social.name}</h3>
         <p className={`text-xs ${styles.textSecondary}`}>{social.description}</p>
@@ -119,7 +115,7 @@ export default function Contact() {
       {/* Header centered */}
       <div className="mb-8 flex flex-col items-center justify-center">
         <div className="text-center max-w-2xl mx-auto">
-          <h1 className={`text-5xl md:text-6xl font-bold ${styles.text} mb-4`}>
+          <h1 className={`text-5xl md:text-6xl font-light tracking-tight ${styles.text} mb-4`}>
             Get In <span className={styles.accent}>Touch</span>
           </h1>
           <p className={`text-xl ${styles.textSecondary} max-w-3xl mx-auto leading-relaxed`}>
@@ -143,7 +139,7 @@ export default function Contact() {
 
       {/* Footer remains unchanged */}
       <footer className={`relative mt-20 ${styles.footerBg}`}>
-        <div className={`border-t border-opacity-20 ${styles.cardBg} backdrop-blur-xl`}>
+        <div className="border-t border-opacity-20">
           <div className="max-w-7xl mx-auto px-4 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className={`text-sm ${styles.textSecondary} text-center md:text-left break-words w-full`}>
