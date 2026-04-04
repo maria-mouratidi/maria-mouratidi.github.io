@@ -81,8 +81,8 @@ const allSkillDetails = [
 
 // GROUPS
 const skillSections = [
-  { group: "Backend & APIs", icon: <FaServer />, keys: ["python", "fastapi", "pydantic", "restapi"] },
-  { group: "GenAI & LLMs", icon: <FaCode />, keys: ["azureopenai", "openai", "langchain", "langraph", "n8n"] },
+  { group: "Backend", icon: <FaServer />, keys: ["python", "fastapi", "pydantic", "restapi"] },
+  { group: "GenAI", icon: <FaCode />, keys: ["azureopenai", "openai", "langchain", "langraph", "n8n"] },
   { group: "Databases", icon: <FaDatabase />, keys: ["postgres", "mysql", "mongodb"] },
   { group: "DevOps", icon: <FaTools />, keys: ["docker", "azure", "terraform", "git"] },
   { group: "ML & NLP", icon: <FaCode />, keys: ["pytorch", "tensorflow", "huggingface", "scikitlearn"] },
@@ -278,23 +278,19 @@ function SideTabBar({ groups, activeIndex, setActiveIndex, iconMap = {} }) {
 
 function SkillCard({ skill, styles, isMobile = false }) {
   if (isMobile) {
-    // Mobile version - only show icon
     return (
       <div
         className={`
           ${styles.cardBg} ${styles.cardHover} border rounded-xl
-          transition-all duration-300 transform ${styles.glow} shadow-lg
-          hover:scale-105 flex items-center justify-center
+          transition-all duration-300 ${styles.glow}
+          flex items-center gap-2 px-3 py-2.5
         `}
         style={{
-          minHeight: 60,
-          padding: "1rem",
-          border: "1.5px solid rgba(0,195,255,0.11)",
           backdropFilter: "blur(7px)",
-          aspectRatio: "1"
         }}
       >
-        <span className="text-2xl">{skill.icon}</span>
+        <span className="text-lg shrink-0">{skill.icon}</span>
+        <span className={`text-xs font-medium ${styles.text} truncate`}>{skill.name}</span>
       </div>
     );
   }
@@ -462,12 +458,12 @@ export default function About() {
             <div className="flex-1 transition-all duration-500">
               <div className="mb-4 md:mb-6 flex items-center gap-2">
                 {skillSections[skillsTab].icon}
-                <h2 className={`text-lg md:text-2xl font-bold ${styles.text} mb-3`}>
+                <h2 className={`text-lg md:text-2xl font-bold ${styles.text}`}>
                   {skillSections[skillsTab].group}
                 </h2>
               </div>
               {/* Mobile Grid - 4 columns */}
-              <div className="grid grid-cols-4 gap-3 md:hidden">
+              <div className="grid grid-cols-2 gap-2 md:hidden">
                 {skillSections[skillsTab].keys.map((key) => {
                   const skill = allSkillDetails.find(s => s.key === key);
                   if (!skill) return null;
