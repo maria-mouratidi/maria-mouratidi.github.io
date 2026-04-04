@@ -230,22 +230,22 @@ function MainTabBar({ activeTab, setActiveTab, styles }) {
     // { id: "highlights", label: "Highlights", icon: <FaTrophy className="text-yellow-500" /> }
   ];
   return (
-    <div className="grid grid-cols-4 md:flex md:flex-row items-center justify-center mb-8 md:mb-12 gap-2 md:gap-0">
+    <div className="flex flex-row items-center justify-center mb-8 md:mb-12 gap-2 md:gap-0">
       {tabs.map(tab => (
         <button
           key={tab.id}
           onClick={() => setActiveTab(tab.id)}
-          className={`flex items-center gap-1 md:gap-2 px-3 md:px-6 py-2 md:py-3 rounded-xl font-semibold transition-all duration-300 justify-center text-sm md:text-base
+          className={`flex items-center gap-1.5 md:gap-2 px-3 md:px-6 py-2 md:py-3 rounded-xl font-medium transition-all duration-300 justify-center text-xs md:text-base
             ${activeTab === tab.id
               ? `${styles.button} border ${styles.glow} shadow-lg scale-105`
               : `${styles.textSecondary} hover:${styles.text}`
             }`}
           style={{ minWidth: "auto" }}
         >
-          <span className={`text-base md:text-lg flex items-center ${styles.accent}`}>
+          <span className={`text-sm md:text-lg flex items-center ${styles.accent}`}>
             {tab.icon}
           </span>
-          <span className="hidden sm:inline">{tab.label}</span>
+          <span>{tab.label}</span>
         </button>
       ))}
     </div>
@@ -256,20 +256,20 @@ function SideTabBar({ groups, activeIndex, setActiveIndex, iconMap = {} }) {
   const { theme } = useTheme();
   const styles = themeStyles[theme] || themeStyles.light;
   return (
-    <div className="grid grid-cols-2 md:flex md:flex-col gap-2 md:pr-6 mb-4 md:mb-0 w-full md:w-auto">
+    <div className="flex flex-wrap md:flex-col gap-1.5 md:gap-2 md:pr-6 mb-4 md:mb-0 w-full md:w-auto justify-center md:justify-start">
       {groups.map((g, idx) => (
         <button
           key={g.label || g.group}
           onClick={() => setActiveIndex(idx)}
           className={`
-            text-left px-3 md:px-5 py-2 md:py-3 rounded-xl font-semibold transition-all duration-300 border flex items-center gap-1 md:gap-2 justify-left md:justify-start text-xs md:text-base
+            px-2.5 md:px-5 py-1.5 md:py-3 rounded-lg md:rounded-xl font-medium transition-all duration-300 border flex items-center gap-1.5 md:gap-2 justify-center md:justify-start text-xs md:text-base
             ${activeIndex === idx
               ? `${styles.sidebarActive} border-2`
               : `${styles.sidebar} border-transparent`}
           `}
         >
           <span className={styles.accent}>{iconMap && iconMap[g.label || g.group] ? iconMap[g.label || g.group] : g.icon}</span>
-          <span className="whitespace-nowrap text-xs md:text-lg leading-tight">{g.label || g.group}</span>
+          <span className="whitespace-nowrap text-xs md:text-base leading-tight">{g.label || g.group}</span>
         </button>
       ))}
     </div>

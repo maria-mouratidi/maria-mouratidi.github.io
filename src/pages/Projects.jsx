@@ -687,8 +687,8 @@ const Projects = () => {
               </p>
             </div>
             {/* Status Filter */}
-            <div className="flex flex-wrap gap-4 justify-center mb-0">
-              <span className="flex items-center gap-2">
+            <div className="flex flex-wrap gap-2 md:gap-4 justify-center mb-0">
+              <span className="hidden md:flex items-center gap-2">
                 <FaFilter className={`${styles.textSecondary}`} />
                 <span className={`${styles.text} font-medium`}>Filter by Status:</span>
               </span>
@@ -697,23 +697,23 @@ const Projects = () => {
                   key={status}
                   onClick={() => setActiveStatus(status)}
                   className={`
-                    px-4 py-2 rounded-lg border text-sm font-medium transition-all duration-300
+                    px-3 md:px-4 py-1.5 md:py-2 rounded-lg border text-xs md:text-sm font-medium transition-all duration-300
                     ${activeStatus === status
-                      ? styles.filterActive + " ring-2 ring-offset-2 ring-cyan-400"
+                      ? styles.filterActive + " ring-2 ring-offset-2 ring-dusty-400"
                       : `${styles.button} hover:scale-105`
                     }
                   `}
                 >
                   {status}
-                  <span className={`ml-2 inline-block px-1.5 py-0.5 rounded-full text-xs font-bold ${
-                    activeStatus === status 
-                      ? 'bg-white/20 text-current' 
+                  <span className={`ml-1.5 inline-block px-1 py-0.5 rounded-full text-xs font-bold ${
+                    activeStatus === status
+                      ? 'bg-white/20 text-current'
                       : 'bg-black/10 text-current'
                   }`}>
                     {getProjectCount(status)}
                   </span>
                   {activeStatus === status && (
-                    <span className="ml-2 inline-block text-xs font-bold text-green-600">✓</span>
+                    <span className="ml-1 inline-block text-xs font-bold text-green-600">✓</span>
                   )}
                 </button>
               ))}
